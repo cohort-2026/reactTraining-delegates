@@ -13,4 +13,4 @@ This repository holds the delegate-facing materials for the course: delegate han
 
 Each day's `solution/` folder unlocks automatically the morning after that day, so you can check your own work without seeing the answer first. If a day's `solution/` folder isn't here yet, it isn't due yet.
 
-_Last synced: 2026-09-16T09:59:19.377Z_
+_Last synced: 2026-09-16T11:06:24.747Z_
