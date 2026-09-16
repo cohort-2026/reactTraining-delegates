@@ -8,9 +8,10 @@ This repository holds the delegate-facing materials for the course: delegate han
 - **`Training Content/`** — the same handbooks as Word documents, plus the course outline PDF.
 - **`Projects/DayNN_.../`** — that day's lab code. `starter/` is where you begin each lab; `solution/` (once it unlocks) is the finished, verified result.
 - **`Exercises/DayNN_.../`** — two small bug-fix exercises per day, based on that day's topics. See `Exercises/README.md` for how they work.
+- **`Answer Keys/DayNN_.../`** — once it unlocks, the fixed version of each exercise plus an explanation of every bug.
 
-## Solutions
+## Solutions and answer keys
 
-Each day's `solution/` folder unlocks automatically the morning after that day, so you can check your own work without seeing the answer first. If a day's `solution/` folder isn't here yet, it isn't due yet.
+Each day's `Projects/DayNN_.../solution/` and `Answer Keys/DayNN_.../` unlock automatically the morning after that day, so you can check your own work without seeing the answer first. If a day's folder isn't here yet, it isn't due yet.
 
-_Last synced: 2026-09-16T11:06:24.747Z_
+_Last synced: 2026-09-16T11:19:37.059Z_
