@@ -1,0 +1,10 @@
+{
+  "tasks": [
+    { "id": "1", "title": "Set up project", "status": "done", "points": 2, "assignee": "Zanele", "tags": ["setup"], "projectId": "website" },
+    { "id": "2", "title": "Build task list", "status": "doing", "points": 5, "assignee": "Sipho", "tags": [], "projectId": "website" },
+    { "id": "3", "title": "Write README", "status": "todo", "points": 1, "tags": ["docs"], "projectId": "website" },
+    { "id": "4", "title": "Design login screen", "status": "todo", "points": 3, "assignee": "Lerato", "tags": [], "projectId": "mobile" },
+    { "id": "5", "title": "Add offline banner", "status": "doing", "points": 3, "assignee": "Thabo", "tags": [], "projectId": "mobile" },
+    { "id": "6", "title": "Publish to the app store", "status": "todo", "points": 8, "assignee": "Naledi", "tags": ["release"], "projectId": "mobile" }
+  ]
+}

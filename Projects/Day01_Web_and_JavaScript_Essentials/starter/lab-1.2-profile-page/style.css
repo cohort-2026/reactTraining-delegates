@@ -1,0 +1,28 @@
+/* Box sizing reset: padding and border are included in an element's width */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1f2937;
+}
+
+/* TODO (step 4): style .nav with Flexbox: display flex, your name on the left,
+   links on the right (justify-content), vertically centred (align-items), and a gap. */
+
+/* TODO (step 4): style the list of links inside the nav as a row too
+   (it is also a Flexbox container), and remove the bullet points. */
+
+/* TODO: centre the page content, for example main { max-width: 900px; margin: 0 auto; } */
+
+/* TODO (step 5): style .cards as a grid of three equal columns with a gap. */
+
+/* TODO (step 5): give each .card some padding, a light border and rounded corners. */
+
+/* TODO (step 6): style .btn, then add a .btn:hover rule that changes its
+   background and text colour. */
+
+/* TODO: style the footer so it stands apart from the main content. */

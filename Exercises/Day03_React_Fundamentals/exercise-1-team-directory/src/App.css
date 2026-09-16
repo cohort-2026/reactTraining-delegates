@@ -1,0 +1,38 @@
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.team-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.member-card {
+  padding: 16px;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  background: white;
+}
+
+.member-card h3 {
+  margin: 0 0 4px;
+}
+
+.member-card p {
+  margin: 0 0 8px;
+  color: #52606d;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #0e7490;
+  color: white;
+  font-size: 14px;
+}
