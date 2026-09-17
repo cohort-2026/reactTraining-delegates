@@ -3,6 +3,7 @@
 
 function calculateTip(bill, percent) {
   const tip = bill * (percent / 100);
+  return tip; //fixed the undifined bug by adding return statement
 }
 
 function totalWithTip(bill, percent) {
@@ -12,7 +13,7 @@ function totalWithTip(bill, percent) {
 function describeLunch(lunch) {
   const total = totalWithTip(lunch.bill, lunch.percent);
 
-  if (lunch.people = 1) {
+  if (lunch.people === 1) { //added triple equal signs operator for comparison
     return lunch.place + ": total R" + total + " (no need to split)";
   }
 
@@ -31,7 +32,8 @@ console.log("Team lunch tip splitter");
 console.log("-----------------------");
 
 let splitCount = 0;
-for (let i = 0; i <= lunches.length; i++) {
+//used < not <= to to stop at the last item
+for (let i = 0; i < lunches.length; i++) {
   console.log(describeLunch(lunches[i]));
   if (lunches[i].people > 1) {
     splitCount++;
