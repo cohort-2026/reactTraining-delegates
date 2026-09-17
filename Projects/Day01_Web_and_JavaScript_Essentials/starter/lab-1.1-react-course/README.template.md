@@ -1,4 +1,4 @@
 # React Course
 
-<!-- TODO (step 6): replace this line with your name. -->
-<!-- TODO (step 6): replace this line with one sentence about what you want to build or be able to do by the end of the course. -->
+Jeremia Mosiane
+<I want to understand how to build React projects and able to build one. 
