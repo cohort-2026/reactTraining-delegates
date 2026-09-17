@@ -4,24 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile</title>
-    <!-- TODO (step 2): link the stylesheet here: <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- TODO (step 3): add a <header> containing a <nav> with class="nav".
-         Inside the nav: your name on one side, and a list of links
-         to #about, #skills and #goals on the other. -->
+     <header>
+          <nav class="nav">
+               <div class="name">Desree Madiba</div>
 
-    <!-- TODO (step 3): add a <main> with three <section>s: About, Skills and Goals.
-         Give each section an id (about, skills, goals) so the nav links jump to it. -->
+            <ul>
 
-    <!-- TODO (step 3): in the About section, add an <h2>, a short paragraph about you,
-         and a <button class="btn">Contact me</button> (step 6). -->
+              <li><a href="#about">About</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#goals">Goals</a></li>
 
-    <!-- TODO (step 5): in the Skills section, add an <h2> and a <div class="cards">
-         containing three <article class="card"> elements, one per skill. -->
+            </ul>
+          </nav>
+     </header>
 
-    <!-- TODO (step 3): in the Goals section, add an <h2> and a list of your goals. -->
+     <main>
+          <section id="About">
+               <h2>About me</h2>
 
-    <!-- TODO (step 3): add a <footer> with your name and the year. -->
+               <p>
+                   I am a passionate software developer with experience in Java,Spring Boot, REST APIs and database development. I enjoy learning new technologies and solving problems through technology.               
+               </p>
+
+                <button class="btn">Contact me</button>
+          </section>
+
+          <section id="Skills">
+               <h2>Skills</h2>
+
+               <div class="cards">
+                    <article class="card">
+                         <h3>Java</h3>
+                         <p>Experienced in Java programming and object-oriented design.</p>
+                    </article>
+
+                    <article class="card">
+                         <h3>Spring Boot</h3>
+                         <p>Proficient in building RESTful APIs using Spring Boot framework.</p>
+                    </article>
+
+                    <article class="card">
+                         <h3>Web Development</h3>
+                         <p>Skilled in HTML, CSS, and JavaScript for front-end development.</p>
+                    </article>
+          </section>
+
+          <section id="Goals">
+               <h2>Goals</h2>
+
+               <ul>
+                    <li>Continue to improve my programming skills and learn new technologies.</li>
+                    <li>Contribute to open-source projects and collaborate with other developers.</li>
+                    <li>Build a portfolio of projects that showcase my abilities and creativity.</li>
+               </ul>
+          </section>
+
+     </main>
+
+     <footer>
+          <p>&copy; Madiba Desree 2026. All rights reserved.</p>
+     </footer>
+
   </body>
 </html>
