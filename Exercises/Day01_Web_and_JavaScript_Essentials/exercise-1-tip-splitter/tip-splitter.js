@@ -3,6 +3,7 @@
 
 function calculateTip(bill, percent) {
   const tip = bill * (percent / 100);
+  return tip; // undefined bug fixed it by adding return statement
 }
 
 function totalWithTip(bill, percent) {
@@ -10,9 +11,9 @@ function totalWithTip(bill, percent) {
 }
 
 function describeLunch(lunch) {
-  const total = totalWithTip(lunch.bill, lunch.percent);
+  const total = totalWithTip(lunch['bill'], lunch['percent']); // used bracket notation coz dot didn't seem to work
 
-  if (lunch.people = 1) {
+  if (lunch.people === 1) { // comparing integers with strict triple equal sign operator
     return lunch.place + ": total R" + total + " (no need to split)";
   }
 
@@ -31,7 +32,7 @@ console.log("Team lunch tip splitter");
 console.log("-----------------------");
 
 let splitCount = 0;
-for (let i = 0; i <= lunches.length; i++) {
+for (let i = 0; i < lunches.length; i++) { // i was incrementing after the length of lunches and fixed by making it less to length
   console.log(describeLunch(lunches[i]));
   if (lunches[i].people > 1) {
     splitCount++;
