@@ -12,17 +12,61 @@ body {
 
 /* TODO (step 4): style .nav with Flexbox: display flex, your name on the left,
    links on the right (justify-content), vertically centred (align-items), and a gap. */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
 
 /* TODO (step 4): style the list of links inside the nav as a row too
    (it is also a Flexbox container), and remove the bullet points. */
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
 
 /* TODO: centre the page content, for example main { max-width: 900px; margin: 0 auto; } */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
 
 /* TODO (step 5): style .cards as a grid of three equal columns with a gap. */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
 
 /* TODO (step 5): give each .card some padding, a light border and rounded corners. */
+.card {
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+}
 
 /* TODO (step 6): style .btn, then add a .btn:hover rule that changes its
    background and text colour. */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+
+.btn:hover {
+  background-color: #2563eb;
+  color: #f9fafb;
+}
 
 /* TODO: style the footer so it stands apart from the main content. */
+footer {
+  padding: 1rem;
+  background-color: #f3f4f6;
+  text-align: center;
+}
