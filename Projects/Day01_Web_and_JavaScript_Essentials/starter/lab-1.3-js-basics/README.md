@@ -34,8 +34,8 @@
 
 ## Done when
 
-- [ ] All functions return values (no `undefined`)
-- [ ] The output lists every student with a grade
-- [ ] The pass count is correct
+- [x] All functions return values (no `undefined`)
+- [x] The output lists every student with a grade
+- [x] The pass count is correct
 
 Hints are in the handbook. The finished example is in `../../solution/lab-1.3-js-basics/`.
