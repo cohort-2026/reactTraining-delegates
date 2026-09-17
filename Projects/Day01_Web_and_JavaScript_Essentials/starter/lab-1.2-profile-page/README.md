@@ -25,8 +25,9 @@ The TODO comments are numbered to match the steps in your Day 1 handbook (**Lab 
 
 ## Done when
 
-- [ ] The page uses semantic tags, not only `div`s
-- [ ] The nav uses Flexbox and the skills use Grid
-- [ ] Your changes are pushed to GitHub
+- [x] The page uses semantic tags, not only `div`s
+- [x] The nav uses Flexbox and the skills use Grid
+- [x] Your changes are pushed to GitHub 
+https://github.com/Rikiflame01/react-course
 
 Hints are in the handbook. The finished example is in `../../solution/lab-1.2-profile-page/`.
