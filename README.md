@@ -2,6 +2,17 @@
 
 This repository holds the delegate-facing materials for the course: delegate handbooks, lab starters, and bug-fix exercises for every day. Course outline: `Training Content/React_Beginner_to_Pro_10Day_TOC.pdf`.
 
+## Getting this on your machine
+
+**Windows and macOS: same commands**
+
+```bash
+git clone https://github.com/cohort-2026/reactTraining-delegates.git
+cd reactTraining-delegates
+```
+
+New solutions and answer keys appear here automatically each morning, so run `git pull` most mornings to get the latest.
+
 ## Structure
 
 - **`Markdown Handbooks/`** — the delegate handbook for each day, in Markdown.
@@ -14,4 +25,4 @@ This repository holds the delegate-facing materials for the course: delegate han
 
 Each day's `Projects/DayNN_.../solution/` and `Answer Keys/DayNN_.../` unlock automatically the morning after that day, so you can check your own work without seeing the answer first. If a day's folder isn't here yet, it isn't due yet.
 
-_Last synced: 2026-09-16T11:19:37.059Z_
+_Last synced: 2026-09-17T07:04:50.264Z_
