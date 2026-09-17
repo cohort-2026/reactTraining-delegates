@@ -34,10 +34,10 @@ function countDone(tasks) {
 }
 
 function getStatus(percent) {
-  if (percent >= 50) {
-    return "On track";
-  } else if (percent >= 80) {
+  if (percent >= 80) { //fixed them to their correct order
     return "Ahead";
+  } else if (percent >= 50) {
+    return "On track";
   } else {
     return "Behind";
   }
@@ -55,7 +55,7 @@ function findTask(tasks, id) {
 }
 
 function describeTask(task) {
-  return task.title + " (" + task.assigne + ")";
+  return task.title + " ("  + task.assignee + ")"; //fixed assigne spelling
 }
 
 function printLookup(tasks, id) {
@@ -68,7 +68,7 @@ function printLookup(tasks, id) {
 }
 
 function totalPoints(tasks) {
-  const total = 0;
+  let total = 0; //changed const to let
   for (let i = 0; i < tasks.length; i++) {
     total = total + tasks[i].points;
   }
