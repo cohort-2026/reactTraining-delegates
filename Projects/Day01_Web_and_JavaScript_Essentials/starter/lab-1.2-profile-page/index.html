@@ -3,25 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Profile</title>
-    <!-- TODO (step 2): link the stylesheet here: <link rel="stylesheet" href="style.css" /> -->
+    <title><index class="html"><style class="css"></style></index></title>
+    <link rel="stylesheet" href="style.css" /> 
   </head>
   <body>
-    <!-- TODO (step 3): add a <header> containing a <nav> with class="nav".
-         Inside the nav: your name on one side, and a list of links
-         to #about, #skills and #goals on the other. -->
+    <header>
+  <nav class="nav">
+    <span>Chelsea Mombo</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#goals">Goals</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <!-- TODO (step 3): add a <main> with three <section>s: About, Skills and Goals.
-         Give each section an id (about, skills, goals) so the nav links jump to it. -->
+    <main>
+  <section id="about">
+    <h2>About</h2>
+    <p>I am a motivated and well-organized aspiring Data Analyst with a strong interest in data analytics, business intelligence, and technology. I am currently studying a Higher Certificate in Data Science, where I have developed skills in Excel, SQL, Power BI, and basic Python. I am a fast learner, a good communicator, and a critical thinker who enjoys solving problems and turning data into meaningful insights. I am eager to gain practical experience, grow my technical skills, and contribute positively to a professional team while building my career in data analytics and business analysis..</p>
+    <button class="btn">email:chelseamombo@gmail.com</button>
+  </section>
 
-    <!-- TODO (step 3): in the About section, add an <h2>, a short paragraph about you,
-         and a <button class="btn">Contact me</button> (step 6). -->
+      <section id="skills">
+    <h2>Skills</h2>
+    <div class="cards">
+      <article class="card">Data Visualisation</article>
+      <article class="card">Data Cleaning</article>
+      <article class="card">Dashboard building</article>
+    </div>
+  </section>
 
-    <!-- TODO (step 5): in the Skills section, add an <h2> and a <div class="cards">
-         containing three <article class="card"> elements, one per skill. -->
+      <section id="goals">
+    <h2>Main Goals</h2>
+    <ul>
+      <li>Improve python skills</li>
+      <li>Build 5 Dashboards</li>
+    </ul>
+  </section>
+</main>
 
-    <!-- TODO (step 3): in the Goals section, add an <h2> and a list of your goals. -->
-
-    <!-- TODO (step 3): add a <footer> with your name and the year. -->
+    <footer>
+  <p>Chelse Mombo</p>
+</footer>
   </body>
 </html>
