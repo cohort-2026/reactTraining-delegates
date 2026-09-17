@@ -25,7 +25,7 @@ const sprints = [
 
 function countDone(tasks) {
   let doneCount = 0;
-  for (let i = 1; i < tasks.length; i++) {
+  for (let i = 0; i < tasks.length; i++) { // tricky bug, had to start the array from 0 instead of 1
     if (tasks[i].done) {
       doneCount++;
     }
@@ -34,10 +34,10 @@ function countDone(tasks) {
 }
 
 function getStatus(percent) {
-  if (percent >= 50) {
-    return "On track";
-  } else if (percent >= 80) {
+  if (percent >= 80) { // fixed order of priority for if statement
     return "Ahead";
+  } else if (percent >= 50) { // this was never reached because of line 37
+    return "On track";
   } else {
     return "Behind";
   }
@@ -47,15 +47,17 @@ function findTask(tasks, id) {
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === id) {
       return tasks[i];
-    } else {
-      return null;
     }
+    // else {
+    //   return null;
+    // }
+    // this else statement was causing the first iteration of the loop to return null and break the code
   }
   return null;
 }
 
 function describeTask(task) {
-  return task.title + " (" + task.assigne + ")";
+  return task.title + " (" + task.assignee + ")"; // typo on assigne to be assignee
 }
 
 function printLookup(tasks, id) {
@@ -68,7 +70,7 @@ function printLookup(tasks, id) {
 }
 
 function totalPoints(tasks) {
-  const total = 0;
+  let total = 0; // let over const for a mutable variable
   for (let i = 0; i < tasks.length; i++) {
     total = total + tasks[i].points;
   }
