@@ -118,7 +118,6 @@ function printLookup(tasks, id) {
     console.log("Task " + id + ": " + describeTask(task));
   }
 }
-
 function totalPoints(tasks) {
   let total = 0;
   for (let i = 0; i < tasks.length; i++) {
