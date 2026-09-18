@@ -1,0 +1,108 @@
+/* Box sizing reset: padding and border are included in an element's width */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1f2937;
+  background: #f9fafb;
+}
+
+/* Header and nav: Flexbox, one direction (a row) */
+header {
+  background: #0f172a;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between; /* name on the left, links on the right */
+  align-items: center;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex; /* the links sit in a row too */
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Centre the page */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+/* Skills: Grid, two dimensions (three equal columns) */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+/* Button and its hover state */
+.btn {
+  padding: 10px 20px;
+  border: 2px solid #0e7490;
+  border-radius: 8px;
+  background: white;
+  color: #0e7490;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0e7490;
+  color: white;
+}
+
+footer {
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  color: #6b7280;
+}
+
+/* Stretch challenge: one column on narrow screens */
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
