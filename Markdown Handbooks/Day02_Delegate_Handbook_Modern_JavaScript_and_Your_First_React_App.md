@@ -782,6 +782,36 @@ This lab builds muscle memory for the patterns you will use in React every day. 
 
 To prove immutability, `console.log` the original `products` array at the end and check that product 2 is still in stock and product 5 is still there.
 
+<details><summary><strong>Hint: expected output</strong> (try on your own first)</summary>
+
+Using the sample products from step 1, your output should have roughly this shape (your own labels and wording can differ):
+
+```text
+Names: Wireless Mouse, USB-C Charger, Noise-Cancelling Headphones, Learning React, A5 Notebook, Clean Code
+In stock under R500 (3):
+  #1 Wireless Mouse: R349 (in stock)
+  #2 USB-C Charger: R299 (in stock)
+  #6 Clean Code: R480 (in stock)
+Product 4: Learning React
+Total price of in-stock items: R4147
+After marking product 2 out of stock:
+  #1 Wireless Mouse: R349 (in stock)
+  #2 USB-C Charger: R299 (out of stock)
+  ...
+After removing product 5 (5 products):
+  ...
+Original products (6 products, unchanged):
+  #1 Wireless Mouse: R349 (in stock)
+  #2 USB-C Charger: R299 (in stock)
+  ...
+  #5 A5 Notebook: R85 (out of stock)
+  ...
+```
+
+The last block is the immutability proof: the original `products` array still has 6 items, product 2 is still `in stock`, and product 5 is still there.
+
+</details>
+
 <details><summary><strong>Hint for step 6</strong> (try on your own first)</summary>
 
 ```js
