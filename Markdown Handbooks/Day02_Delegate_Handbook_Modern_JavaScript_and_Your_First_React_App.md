@@ -115,7 +115,7 @@ const msg = `Hello ${name}, 2 x 4 = ${double(4)}`;
 console.log(msg); // Hello Lerato, 2 x 4 = 8
 ```
 
-- **Arrow functions** are a shorter way to write functions. You drop the word `function` and put an arrow `=>` after the parameters. They are common for callbacks.
+- **Arrow functions** are a shorter way to write functions. You drop the word `function` and put an arrow `=>` after the parameters. They are common for callbacks — a callback is just a function you hand to another piece of code, which runs it for you at the right moment. You'll see the term properly explained in Module 2.2.
 - **Implicit return:** if the body is a single expression, you can drop the braces and the `return` keyword. `double` takes `n` and returns `n * 2`. You will see this everywhere in React, especially inside `map`.
 - **Watch for the trap.** If you keep the braces, you must write `return`. An arrow function with braces and no `return` gives `undefined`. This causes many beginner bugs in React lists.
 - **Template literals** use backticks instead of quotes. Inside them, `${expression}` inserts any JavaScript expression. No more `"Hello " + name + "!"` concatenation.
@@ -157,7 +157,7 @@ Destructuring lets you unpack values from objects and arrays into variables in o
 
 - **Objects: unpack by property name.** Put the property names in curly braces on the left, and JavaScript finds the matching properties. Rename with a colon (`title: label`), and set a default with equals (`priority = "low"`), which is used when the property is missing.
 - **Arrays: unpack by position.** Use square brackets. Position matters rather than names: the first variable gets the first item.
-- **Parameter destructuring is exactly how React components receive props.** `TaskRow` receives one object and immediately unpacks `title` and `done`. Tomorrow, every component you write will look like this, because React passes all the props as one object.
+- **Parameter destructuring is exactly how React components receive props.** A component is a reusable piece of a screen (you'll start building them tomorrow); props are just the data passed into it. `TaskRow` receives one object and immediately unpacks `title` and `done`. Tomorrow, every component you write will look like this, because React passes all the props as one object.
 - **`useState` returns an array you destructure.** On Day 4 you will write `const [count, setCount] = useState(0)`. That is array destructuring, and now you know what it means.
 
 > **Try it:** add `console.log(TaskRow(task));` at the end of the file and run it. It prints `Deploy: open`.
@@ -277,7 +277,7 @@ const task = tasks.find((t) => t.id === 2);
 
 These three methods replace most `for` loops. Each one takes a **callback**, a function that runs once per item.
 
-- **`map` turns data into something else** and returns a new array of the same length. Here we turn task objects into title strings. In React you will use `map` to turn task objects into task components. That is how every list on every website you use is rendered.
+- **`map` turns data into something else** and returns a new array of the same length. Here we turn task objects into title strings. In React you will use `map` to turn task objects into task components (the reusable pieces a screen is built from — you'll meet these properly tomorrow). That is how every list on every website you use is rendered.
 - **`filter` removes items.** It keeps only the items where the callback returns `true`, so it can return a shorter array. In React you delete an item by filtering it out, and build search by filtering on text.
 - **`find` gets one item.** It returns the first matching item, or `undefined` if none match. You use it to look up one task by its id.
 - **None of them change the original array.** They all return new values, which fits perfectly with how React wants data handled.
@@ -303,9 +303,11 @@ These three methods replace most `for` loops. Each one takes a **callback**, a f
 
 ### reduce and chaining
 
-**arrays.js (continued)**
+**arrays.js (continued)** — add this below the code you already have in the same file. It reuses the `tasks` array from above, so if you saved it as a new file instead, add that array back in first.
 
 ```js
+// (tasks is the same array from map, filter and find, above)
+
 // reduce: boil an array down to one value
 const totalPoints = tasks.reduce(
   (sum, t) => sum + t.points,
@@ -501,9 +503,11 @@ loadTodos().then((todos) => {
 
 ### Handling errors properly
 
-**fetch-demo.js (continued)**
+**fetch-demo.js (continued)** — add this below the code you already have in the same file. It reuses the `API` constant from above, so if you saved it as a new file instead, add `const API = "https://jsonplaceholder.typicode.com";` back in first.
 
 ```js
+// (API is the same constant from the top of this file)
+
 async function getTodo(id) {
   try {
     const res = await fetch(`${API}/todos/${id}`);
@@ -751,7 +755,17 @@ This lab builds muscle memory for the patterns you will use in React every day. 
 
 #### Steps
 
-1. In `day2`, create `lab2-1.js` with an array of 6 product objects. Each product has `id`, `name`, `price`, `category` and `inStock`.
+1. In `day2`, create `lab2-1.js` with an array of 6 product objects, each with `id`, `name`, `price`, `category` and `inStock`. You can use your own products, or paste this in to get straight to the array methods:
+   ```js
+   const products = [
+     { id: 1, name: "Wireless Mouse", price: 349, category: "electronics", inStock: true },
+     { id: 2, name: "USB-C Charger", price: 299, category: "electronics", inStock: true },
+     { id: 3, name: "Noise-Cancelling Headphones", price: 2499, category: "electronics", inStock: true },
+     { id: 4, name: "Learning React", price: 520, category: "books", inStock: true },
+     { id: 5, name: "A5 Notebook", price: 85, category: "stationery", inStock: false },
+     { id: 6, name: "Clean Code", price: 480, category: "books", inStock: true },
+   ];
+   ```
 2. Use `map` to create an array of names.
 3. Use `filter` to get the in-stock products under R500.
 4. Use `find` to get the product with id 4.
