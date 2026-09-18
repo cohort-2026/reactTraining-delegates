@@ -21,7 +21,7 @@ Open a **new** terminal (PowerShell on Windows, Terminal on macOS). Same command
 
 ```bash
 node -v
-npm -v
+nmp -v
 git --version
 code --version
 ```

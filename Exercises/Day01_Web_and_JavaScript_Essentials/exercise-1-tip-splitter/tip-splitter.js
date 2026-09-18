@@ -35,7 +35,7 @@ let splitCount = 0;
 for (let i = 0; i < lunches.length; i++) {
   console.log(describeLunch(lunches[i]));
   if (lunches[i].people > 1) {
-    splitCount++;
+    splitCount++; 
   }
 }
 
