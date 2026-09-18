@@ -1,0 +1,30 @@
+function calculateTip(bill, percent) {
+  return bill * percent / 100;
+}
+
+function totalWithTip(bill, percent) {
+  return bill + calculateTip(bill, percent);
+}
+
+function getGrade(score) {
+  if (score >= 80) return "Distinction";
+  if (score >= 50) return "Pass";
+  return "Try again";
+}
+
+const students = [
+  { name: "Ayanda", score: 85 },
+  { name: "Rubby", score: 72 },
+  { name: "Thabo", score: 45 },
+  { name: "Zanele", score: 90 }
+];
+
+console.log("Tip: R" + calculateTip(450, 15));
+console.log("Total with tip: R" + totalWithTip(450, 15));
+
+for (let s of students) {
+  console.log(s.name + ": " + getGrade(s.score));
+}
+
+let passed = students.filter(s => getGrade(s.score) !== "Try again").length;
+console.log("Passed: " + passed + " of " + students.length);
