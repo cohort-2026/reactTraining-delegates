@@ -1,4 +1,6 @@
 # React Course
 
-<!-- TODO (step 6): replace this line with your name. -->
-<!-- TODO (step 6): replace this line with one sentence about what you want to build or be able to do by the end of the course. -->
+Amanda Ntuli
+
+By the end of the course I want to be able to build websites using React
+
