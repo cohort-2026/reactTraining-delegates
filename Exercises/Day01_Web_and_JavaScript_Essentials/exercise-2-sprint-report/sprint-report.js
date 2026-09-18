@@ -25,7 +25,8 @@ const sprints = [
 
 function countDone(tasks) {
   let doneCount = 0;
-  for (let i = 1; i < tasks.length; i++) {
+  //i should always start from 0, because we want to check all the tasks in the array, not just the first one
+  for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].done) {
       doneCount++;
     }
@@ -34,10 +35,11 @@ function countDone(tasks) {
 }
 
 function getStatus(percent) {
-  if (percent >= 50) {
-    return "On track";
-  } else if (percent >= 80) {
+  if (percent >= 80) {
     return "Ahead";
+  
+  } else if (percent >= 50) {
+    return "On track";
   } else {
     return "Behind";
   }
@@ -47,15 +49,14 @@ function findTask(tasks, id) {
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === id) {
       return tasks[i];
-    } else {
-      return null;
-    }
+    } 
+    
   }
   return null;
 }
 
 function describeTask(task) {
-  return task.title + " (" + task.assigne + ")";
+  return task.title + " (" + task.assignee + ")";
 }
 
 function printLookup(tasks, id) {
@@ -68,7 +69,7 @@ function printLookup(tasks, id) {
 }
 
 function totalPoints(tasks) {
-  const total = 0;
+  let total = 0;  //it was declared as const, but it should be let because we are changing its value in the loop
   for (let i = 0; i < tasks.length; i++) {
     total = total + tasks[i].points;
   }
