@@ -25,7 +25,7 @@ const sprints = [
 
 function countDone(tasks) {
   let doneCount = 0;
-  for (let i = 1; i < tasks.length; i++) {
+  for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].done) {
       doneCount++;
     }
@@ -34,9 +34,9 @@ function countDone(tasks) {
 }
 
 function getStatus(percent) {
-  if (percent >= 50) {
-    return "On track";
-  } else if (percent >= 80) {
+  if (percent >= 80) {
+    return "Ahead";
+  } else if (percent >= 50) {
     return "Ahead";
   } else {
     return "Behind";
@@ -47,15 +47,13 @@ function findTask(tasks, id) {
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === id) {
       return tasks[i];
-    } else {
-      return null;
     }
   }
   return null;
 }
 
 function describeTask(task) {
-  return task.title + " (" + task.assigne + ")";
+  return task.title + " (" + task.assignee + ")";
 }
 
 function printLookup(tasks, id) {
@@ -68,7 +66,7 @@ function printLookup(tasks, id) {
 }
 
 function totalPoints(tasks) {
-  const total = 0;
+  let total = 0;
   for (let i = 0; i < tasks.length; i++) {
     total = total + tasks[i].points;
   }
