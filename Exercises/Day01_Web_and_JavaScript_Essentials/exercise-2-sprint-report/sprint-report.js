@@ -24,6 +24,7 @@ const sprints = [
 ];
 
 function countDone(tasks) {
+  // FIXED: inspect every task, including the final task in the array.
   let doneCount = 0;
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].done) {
@@ -34,6 +35,7 @@ function countDone(tasks) {
 }
 
 function getStatus(percent) {
+  // FIXED: test the 80% threshold before the broader 50% threshold.
   if (percent >= 80) {
     return "Ahead";
   } else if (percent >= 50) {
@@ -44,6 +46,7 @@ function getStatus(percent) {
 }
 
 function findTask(tasks, id) {
+  // FIXED: compare each task id and return only after finding a match.
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === id) {
       return tasks[i];
@@ -53,6 +56,7 @@ function findTask(tasks, id) {
 }
 
 function describeTask(task) {
+  // FIXED: use the task's title and assignee properties.
   return task.title + " (" + task.assignee + ")";
 }
 
@@ -66,6 +70,7 @@ function printLookup(tasks, id) {
 }
 
 function totalPoints(tasks) {
+  // FIXED: add points from every task to the running total.
   let total = 0;
   for (let i = 0; i < tasks.length; i++) {
     total = total + tasks[i].points;
