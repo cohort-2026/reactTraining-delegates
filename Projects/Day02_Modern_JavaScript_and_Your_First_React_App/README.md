@@ -1,3 +1,5 @@
+Note from intern: Please note lab 2.3 changes were pushed to https://github.com/Rikiflame01/react-course as part of the task is to create another repository.
+
 # Day 2 projects: Modern JavaScript and Your First React App
 
 This folder holds the starting points and finished solutions for the three Day 2 labs. Follow the lab steps in the Day 2 delegate handbook; use the solution folders to check your work or to catch up.
