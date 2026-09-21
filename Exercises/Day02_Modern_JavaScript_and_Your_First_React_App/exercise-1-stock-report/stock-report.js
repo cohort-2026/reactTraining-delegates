@@ -11,9 +11,9 @@ const products = [
 ];
 
 // 1. All product names
-const names = products.map((p) => {
-  p.name;
-});
+// Change: the map callback used a block body { p.name; } with no return,
+// so every item was undefined. Use an implicit return so names come through.
+const names = products.map((p) => p.name);
 console.log(`Names: ${names.join(", ")}`);
 
 // 2. In-stock products under R500
@@ -27,9 +27,11 @@ const { name, price } = products.find((p) => p.id === 4);
 console.log(`Product 4: ${name} costs R${price}`);
 
 // 4. Value of everything in stock
+// Change: reduce had no starting number, so the first product object became
+// the total. Pass 0 as the initial value so prices add as numbers.
 const stockValue = products
   .filter((p) => p.inStock)
-  .reduce((sum, p) => sum + p.price);
+  .reduce((sum, p) => sum + p.price, 0);
 console.log(`Value of stock on hand: R${stockValue}`);
 
 // 5. Mark product 2 as out of stock, without changing the original
@@ -42,7 +44,9 @@ const remaining = products.filter((p) => p.id !== 5);
 console.log(`Products left after removing 5: ${remaining.length}`);
 
 // 7. Cheapest and most expensive
-const byPrice = products.sort((a, b) => a.price - b.price);
+// Change: products.sort() reorders the original array. Spread into a new
+// array first so the original order stays 1, 2, 3, 4, 5, 6.
+const byPrice = [...products].sort((a, b) => a.price - b.price);
 console.log(`Cheapest: ${byPrice[0].name}`);
 console.log(`Most expensive: ${byPrice[byPrice.length - 1].name}`);
 
