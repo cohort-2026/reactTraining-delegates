@@ -86,9 +86,9 @@ Share your GitHub repository URL or username with the trainer, as they ask.
 
 ## Done when
 
-- [ ] All four version commands print a number
-- [ ] Your README is visible on github.com
-- [ ] You can open the VS Code terminal
+- [x] All four version commands print a number
+- [x] Your README is visible on github.com
+- [x] You can open the VS Code terminal
 
 ## Troubleshooting
 
