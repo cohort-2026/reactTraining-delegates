@@ -3,18 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Profile</title>
+    <title>Fhulufhedzani Nndwamato Profile</title>
     <!-- TODO (step 2): link the stylesheet here: <link rel="stylesheet" href="style.css" /> -->
   </head>
   <body>
     <!-- TODO (step 3): add a <header> containing a <nav> with class="nav".
          Inside the nav: your name on one side, and a list of links
          to #about, #skills and #goals on the other. -->
+         <header>
+           <nav class="nav">
+             <h1>Fhulufhedzani Nndwamato</h1>
+             <ul>
+               <li><a href="#about">About</a></li>
+               <li><a href="#skills">Skills</a></li>
+               <li><a href="#goals">Goals</a></li>
+             </ul>
+           </nav>
+         </header>
 
     <!-- TODO (step 3): add a <main> with three <section>s: About, Skills and Goals.
          Give each section an id (about, skills, goals) so the nav links jump to it. -->
 
-    <!-- TODO (step 3): in the About section, add an <h2>, a short paragraph about you,
+     <!-- TODO (step 3): in the About section, add an <h2>, a short paragraph about you,
          and a <button class="btn">Contact me</button> (step 6). -->
 
     <!-- TODO (step 5): in the Skills section, add an <h2> and a <div class="cards">
@@ -23,5 +33,42 @@
     <!-- TODO (step 3): in the Goals section, add an <h2> and a list of your goals. -->
 
     <!-- TODO (step 3): add a <footer> with your name and the year. -->
+         <main>
+           <section id="about">
+             <h2>About Me</h2>
+             <p>I am a passionate developer with experience in creating web applications. I want to build applications for restaurants and food delivery services.</p>
+             <button class="btn">Contact me</button>
+           </section>
+
+           <section id="skills">
+             <h2>Skills</h2>
+             <div class="cards">
+               <article class="card">
+                 <h3>HTML and CSS</h3>
+                 <p>Proficient in creating responsive layouts and styling web applications.</p>
+               </article>
+               <article class="card">
+                 <h3>JavaScript</h3>
+                 <p>Experienced in building interactive web applications</p>
+               </article>
+               <article class="card">
+                 <h3>SQL</h3>
+                 <p>Familiar with database design and query optimization.</p>
+               </article>
+             </div>
+           </section>
+
+           <section id="goals">
+             <h2>Goals</h2>
+             <ul>
+               <li>Complete my React training</li>
+               <li>Start building apps and websites for my portfolio</li>
+               <li>Apply for jobs as a full-stack developer</li>
+             </ul>
+           </section>
+           </main>
+           <footer>
+             <p>&copy; 2026 Fhulufhedzani Nndwamato</p>
+           </footer>
   </body>
 </html>
