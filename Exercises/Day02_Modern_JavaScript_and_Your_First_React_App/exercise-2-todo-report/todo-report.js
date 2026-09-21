@@ -11,7 +11,9 @@ async function loadTodos(limit) {
     if (!res.ok) {
       throw new Error(`Request failed: ${res.status}`);
     }
-    const todos = res.json();
+    // Change: res.json() returns a Promise. Without await, todos is not an
+    // array, so todos.map throws "todos.map is not a function".
+    const todos = await res.json();
     const lines = todos.map((todo, i) => {
       const { title, completed } = todo;
       return `${i + 1}. [${completed ? "done" : "open"}] ${title}`;
@@ -27,8 +29,15 @@ async function loadTodos(limit) {
 async function getTodo(id) {
   try {
     const res = await fetch(`${API}/todos/${id}`);
+    // Change: fetch does not throw on 404. Without this check, res.json()
+    // succeeds with {}, and the log prints "To-do 99: undefined".
+    if (!res.ok) {
+      throw new Error(`Request failed: ${res.status}`);
+    }
     const todo = await res.json();
-    const points = todo.points || "not estimated";
+    // Change: 0 is falsy, so points || "not estimated" turned 0 into
+    // "not estimated". ?? only replaces null/undefined, so 0 stays 0.
+    const points = todo.points ?? "not estimated";
     console.log(`To-do ${id}: ${todo.title} (points: ${points})`);
   } catch (err) {
     console.error(`Could not load to-do ${id}:`, err.message);
@@ -42,7 +51,9 @@ async function loadUser(id) {
       throw new Error(`Request failed: ${res.status}`);
     }
     const user = await res.json();
-    const city = user.address.city ?? "Unknown";
+    // Change: Kagiso's address is null. user.address.city crashes before
+    // ?? can help. Optional chaining stops the crash so ?? can supply Unknown.
+    const city = user.address?.city ?? "Unknown";
     console.log(`${user.name} lives in ${city}`);
   } catch (err) {
     console.error(`Could not load user ${id}:`, err.message);
@@ -70,7 +81,10 @@ async function main() {
   await loadUser(2);
 
   console.log("=== Progress ===");
-  const { completed, total } = getProgress(6);
+
+  // Change: getProgress is async, so without await this is a Promise.
+  // Destructuring a Promise gives completed: undefined, total: undefined.
+  const { completed, total } = await getProgress(6);
   console.log(`Completed: ${completed} of ${total}`);
 }
 
