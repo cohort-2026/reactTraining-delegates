@@ -93,7 +93,7 @@ Share your GitHub repository URL or username with the trainer, as they ask.
 ## Troubleshooting
 
 | Problem | Fix |
-|---|---|
+| --- | --- |
 | PowerShell script execution disabled | Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, answer **Y**. |
 | Command not recognised after install | Close all terminals and open a new one. |
 | `code: command not found` on macOS | In VS Code press Cmd+Shift+P, type "shell command" and choose **Install 'code' command in PATH**. |
