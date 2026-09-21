@@ -18,21 +18,46 @@ const products = [
 // TODO (step 2): use map to create an array of product names, then log it
 // with a template literal, for example: Names: Wireless Mouse, USB-C Charger, ...
 
-// TODO (step 3): use filter to get the products that are in stock AND cost less than R500.
+const newArray = products.map(p => p.name);
+//console.log("Names: ", productNames);
+//consol.log('Names: ${newArray.join(", ")}');
 
-// TODO (step 4): use find to get the product with id 4, and log its name.
+// TODO (step 3): use filter to create an array of in-stock products, then log it
+const inStock = products.filter(p => p.inStock && p.price < 500);
+const underFive = inStock.map(p => p.name);
+//console.log(`In-stock products under $500: ${underFive.join(", ")}`);
 
-// TODO (step 5): use reduce to total the price of all in-stock items.
-// Remember the starting value.
+//TODO (step 4): use find to get the product with id 4; and log its name
+const uniqueProduct = products.find(p => p.id === 4);
+//console.log(`Product 4: ${uniqueProduct.name}`);
 
-// TODO (step 6): immutably mark product 2 as out of stock, using map and spread.
-// Store the result in a new variable; do not change products.
+// TODO (step 5): use reduce to total the prices of all in-stock iteams.
+// Remember the starting value
+// stores:[58, 41, 76, 33, 99]
+// stores.reduce((total, store) => total + store.price, 0);
 
-// TODO (step 7): immutably remove product 5, using filter.
+const inStockItemsPrice = products.filter(p => p.inStock);
+const allAvailablePrice = inStockItemsPrice.map(p => p.price);
+
+total = allAvailablePrice.reduce((total, allAvailablePrice) => total + allAvailablePrice, 0);
+// console.log(`Total price of all in-stock items: ${total}`);
+
+
+// TODO (step 6): immutably mark products 2 as out of stock, using map and spread.
+// store the result in a new variabe; do not change products.
+const update = productd.map(p => {
+  if (p.id === 2) {
+    return { ...p, inStock: false }
+}
+return p;
+})
+console.log
+console.log(`After marking product 2 out of stock:\n${update.join("\n")}`);
+
+// TODO (step 6) immutaby mark product 2 as out of stock, using nap and spread.
 
 // TODO (step 8): log every result with a label, using template literals.
 // Tip: `${someArray}` prints [object Object] for objects, so map each product
-// to a readable string first.
-
-// TODO: prove immutability. Log the original products array here and check that
+// to a readable string first// TODO: prove immutability. Log the original products array here and check that
 // product 2 is still in stock and product 5 is still there.
+
