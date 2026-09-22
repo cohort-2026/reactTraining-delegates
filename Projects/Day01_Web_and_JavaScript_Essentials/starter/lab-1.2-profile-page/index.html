@@ -4,16 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile</title>
+    <link rel="stylesheet" href="style.css" />
     <!-- TODO (step 2): link the stylesheet here: <link rel="stylesheet" href="style.css" /> -->
   </head>
   <body>
     <!-- TODO (step 3): add a <header> containing a <nav> with class="nav".
          Inside the nav: your name on one side, and a list of links
          to #about, #skills and #goals on the other. -->
+     <header>
+
+     <nav class="nav">
+          <h1>Craig Magagula<h1>
+          
+               <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#goals">Goals</a></li>
+               </ul>
+          
+     </nav>
+     </header>  
 
     <!-- TODO (step 3): add a <main> with three <section>s: About, Skills and Goals.
          Give each section an id (about, skills, goals) so the nav links jump to it. -->
+<main>
 
+     <section id="about">
+          <h2>About Me</h2>
+          <p>
+          I am a passionate technology enthusiast with an interest in
+          IT Support, Networking, Web Development, and Artificial Intelligence.
+          I enjoy learning new technologies and solving technical problems.
+          </p>
+
+          <button class="btn">Contact me</button>
+
+     </section>
+
+     <section id="skills">
+
+          <div class="cards">
+               <article class="card">
+                    <h3>IT Support</h3>
+                    <p>Troubleshoooting hardware, software, and network issues.</p>
+               </article>
+
+               <article class="card">
+                    <h3>Web Development</h3>
+                    <p>Building responsive and user-friendly websites using modern web technologies.</p>
+               </article>
+               
+               <article class="card">
+                    <h3>Artificial Intelligence</h3>
+                    <p>Learning AI tools, automation, and prompt engineering.</p>
+               </article>
+          </div>
+     </section>
+         
+     <section id="goals">
+          <h2>Goals</h2>
+
+          <ul>
+               <li>Become a skilled IT Support Technician.</li>
+               <li>Gain industry certifications such as CompTIA A+ and Network+.</li>
+               <li>Build real-world software projects.</li>
+               <li>Learn more about AI, Machine Learning and automation</li>
+          </ul>
+     </section>
+
+
+</main>
     <!-- TODO (step 3): in the About section, add an <h2>, a short paragraph about you,
          and a <button class="btn">Contact me</button> (step 6). -->
 
@@ -21,7 +81,9 @@
          containing three <article class="card"> elements, one per skill. -->
 
     <!-- TODO (step 3): in the Goals section, add an <h2> and a list of your goals. -->
-
-    <!-- TODO (step 3): add a <footer> with your name and the year. -->
+<footer>
+     <p>Craig Magagula &copy; 2026</p>
+</footer>
+<!-- TODO (step 3): add a <footer> with your name and the year. -->
   </body>
 </html>
