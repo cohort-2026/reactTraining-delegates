@@ -11,9 +11,8 @@ const products = [
 ];
 
 // 1. All product names
-const names = products.map((p) => {
-  p.name;
-});
+const names = products.map((p) => 
+  p.name );
 console.log(`Names: ${names.join(", ")}`);
 
 // 2. In-stock products under R500
@@ -29,7 +28,7 @@ console.log(`Product 4: ${name} costs R${price}`);
 // 4. Value of everything in stock
 const stockValue = products
   .filter((p) => p.inStock)
-  .reduce((sum, p) => sum + p.price);
+  .reduce((sum, p) => sum + p.price, 0);
 console.log(`Value of stock on hand: R${stockValue}`);
 
 // 5. Mark product 2 as out of stock, without changing the original
@@ -42,7 +41,7 @@ const remaining = products.filter((p) => p.id !== 5);
 console.log(`Products left after removing 5: ${remaining.length}`);
 
 // 7. Cheapest and most expensive
-const byPrice = products.sort((a, b) => a.price - b.price);
+const byPrice = [...products].sort((a, b) => a.price - b.price);
 console.log(`Cheapest: ${byPrice[0].name}`);
 console.log(`Most expensive: ${byPrice[byPrice.length - 1].name}`);
 
