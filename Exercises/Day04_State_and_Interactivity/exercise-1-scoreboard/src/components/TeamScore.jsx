@@ -5,7 +5,7 @@ function TeamScore({ label }) {
   const [score, setScore] = useState(0);
 
   function addPoint() {
-    setScore(score + 1);
+    setScore((s) => s + 1);
   }
 
   function handleAddOne() {
@@ -31,14 +31,14 @@ function TeamScore({ label }) {
       <h2>{teamName || label}</h2>
 
       <label htmlFor={`${label}-name`}>Team name</label>
-      <input id={`${label}-name`} value={teamName} />
+      <input id={`${label}-name`} value={teamName} onChange={(e) => setTeamName(e.target.value)}/>
 
       <p className="score">Score: {score}</p>
 
       <button onClick={handleAddOne}>+1</button>
       <button onClick={handleAddThree}>+3</button>
       <button onClick={handleMinusOne}>-1</button>
-      <button onClick={handleReset()}>Reset</button>
+      <button onClick={handleReset}>Reset</button>
     </section>
   );
 }

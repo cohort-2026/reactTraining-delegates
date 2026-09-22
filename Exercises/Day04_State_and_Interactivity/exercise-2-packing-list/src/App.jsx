@@ -10,18 +10,16 @@ function App() {
 
   function handleAdd(name) {
     const id = crypto.randomUUID();
-    items.push({ id, name, packed: false });
-    setItems(items);
+    setItems(prev => [...prev, { id, name, packed: false }]);
   }
 
   function handleToggle(id) {
     setItems((prev) =>
-      prev.map((item) => {
-        if (item.id === id) {
-          item.packed = !item.packed;
-        }
-        return item;
-      })
+      prev.map((item) =>
+        item.id === id
+          ? { ...item, packed: !item.packed }
+          : item
+      )
     );
   }
 
@@ -43,7 +41,7 @@ function App() {
         <input
           type="checkbox"
           checked={hidePacked}
-          onChange={(e) => setHidePacked(e.target.value)}
+          onChange={(e) => setHidePacked(e.target.checked)}
         />
         Hide packed items
       </label>

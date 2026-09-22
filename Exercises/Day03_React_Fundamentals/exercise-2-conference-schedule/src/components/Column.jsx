@@ -7,11 +7,11 @@ function Column({ heading, sessions }) {
         {heading} ({sessions.length})
       </h2>
       {sessions.length === 0 && <p className="empty">Nothing scheduled yet</p>}
-      {sessions.length && (
+      {sessions.length > 0 && (
         <ul>
           {sessions.map((session) => (
-            <li>
-              <SessionCard key={session.id} {...session} />
+            <li key={session.id}>
+              <SessionCard {...session} />
             </li>
           ))}
         </ul>

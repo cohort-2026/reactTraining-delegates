@@ -1,9 +1,9 @@
 function MemberCard({ name, role, openTasks }) {
   return (
-    <article class="member-card">
+    <article className="member-card">
       <h3>{name}</h3>
       <p>{role}</p>
-      {openTasks && <span className="badge">Open tasks: {openTasks}</span>}
+      {openTasks > 0 && (<span className="badge">Open tasks: {openTasks}</span>)}
     </article>
   );
 }

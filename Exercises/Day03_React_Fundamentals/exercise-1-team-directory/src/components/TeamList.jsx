@@ -4,7 +4,7 @@ function TeamList({ members }) {
   return (
     <ul className="team-list">
       {members.map((member) => (
-        <li>
+        <li key={member.id}>
           <MemberCard {...member} />
         </li>
       ))}

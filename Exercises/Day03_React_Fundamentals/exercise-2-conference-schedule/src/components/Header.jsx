@@ -5,7 +5,7 @@ function Header({ sessionCount, rooms }) {
       <p>{sessionCount} sessions today</p>
       <ul className="rooms" aria-label="Rooms">
         {rooms.map((room) => {
-          <li key={room}>{room}</li>;
+          return <li key={room}>{room}</li>;
         })}
       </ul>
     </header>
