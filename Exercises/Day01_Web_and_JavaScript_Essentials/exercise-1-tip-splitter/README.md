@@ -34,7 +34,7 @@ Open a terminal in this folder and run:
 
 ```bash
 node tip-splitter.js
-```
+
 
 Run it again after every fix and compare your output with the expected output above.
 
@@ -66,3 +66,4 @@ Start with the red error at the bottom. Read the whole message: it names the pro
 Even the four-person lunches say "no need to split". Look very closely at how the number of people is compared.
 
 </details>
+```

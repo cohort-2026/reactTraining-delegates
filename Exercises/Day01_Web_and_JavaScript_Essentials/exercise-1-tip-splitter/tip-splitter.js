@@ -1,18 +1,18 @@
 // Team lunch tip splitter
 // Works out the tip and the total for each lunch, and how much each person pays.
 
-function calculateTip(bill, percent) {
+function calculateTip(bill: number, percent: number): number {
   const tip = bill * (percent / 100);
+  return tip;
 }
 
-function totalWithTip(bill, percent) {
+function totalWithTip(bill: number, percent: number): number {
   return bill + calculateTip(bill, percent);
 }
 
-function describeLunch(lunch) {
   const total = totalWithTip(lunch.bill, lunch.percent);
 
-  if (lunch.people = 1) {
+  if (lunch.people === 1) {
     return lunch.place + ": total R" + total + " (no need to split)";
   }
 
@@ -31,7 +31,7 @@ console.log("Team lunch tip splitter");
 console.log("-----------------------");
 
 let splitCount = 0;
-for (let i = 0; i <= lunches.length; i++) {
+for (let i = 0; i < lunches.length; i++) {
   console.log(describeLunch(lunches[i]));
   if (lunches[i].people > 1) {
     splitCount++;
