@@ -1,11 +1,8 @@
 // Lab 2.1: Data Transformation Drills
 // Run with: node lab2-1.js
 // No for loops allowed: use map, filter, find, reduce, spread and destructuring.
-// Run the file after every step.
 
-// Step 1: an array of 6 products, each with id, name, price, category and inStock.
-// The data is provided so you can get straight to the drills. Feel free to change
-// the names and prices, but keep product 2 in stock and keep a product with id 5.
+// Step 1: Products
 const products = [
   { id: 1, name: "Wireless Mouse", price: 349, category: "electronics", inStock: true },
   { id: 2, name: "USB-C Charger", price: 299, category: "electronics", inStock: true },
@@ -15,24 +12,58 @@ const products = [
   { id: 6, name: "Clean Code", price: 480, category: "books", inStock: true },
 ];
 
-// TODO (step 2): use map to create an array of product names, then log it
-// with a template literal, for example: Names: Wireless Mouse, USB-C Charger, ...
+// Step 2: Use map to create an array of product names
+const names = products.map(product => product.name);
 
-// TODO (step 3): use filter to get the products that are in stock AND cost less than R500.
+console.log(`Names: ${names}`);
 
-// TODO (step 4): use find to get the product with id 4, and log its name.
+// Step 3: Get products that are in stock AND cost less than R500
+const affordableInStock = products.filter(
+  product => product.inStock && product.price < 500
+);
 
-// TODO (step 5): use reduce to total the price of all in-stock items.
-// Remember the starting value.
+// Step 4: Find the product with id 4
+const product4 = products.find(product => product.id === 4);
 
-// TODO (step 6): immutably mark product 2 as out of stock, using map and spread.
-// Store the result in a new variable; do not change products.
+console.log(`Product 4: ${product4.name}`);
 
-// TODO (step 7): immutably remove product 5, using filter.
+// Step 5: Use reduce to total the price of all in-stock items
+const inStockTotal = products.reduce(
+  (total, product) => product.inStock ? total + product.price : total,
+  0
+);
 
-// TODO (step 8): log every result with a label, using template literals.
-// Tip: `${someArray}` prints [object Object] for objects, so map each product
-// to a readable string first.
+console.log(`In-stock total: R${inStockTotal}`);
 
-// TODO: prove immutability. Log the original products array here and check that
-// product 2 is still in stock and product 5 is still there.
+// Step 6: Immutably mark product 2 as out of stock
+const product2OutOfStock = products.map(product =>
+  product.id === 2
+    ? { ...product, inStock: false }
+    : product
+);
+
+// Step 7: Immutably remove product 5
+const withoutProduct5 = products.filter(product => product.id !== 5);
+
+// Step 8: Log every result with a label
+
+const affordableNames = affordableInStock.map(
+  product => `${product.name} (R${product.price})`
+);
+
+const product2Names = product2OutOfStock.map(
+  product => `${product.name}: ${product.inStock ? "In stock" : "Out of stock"}`
+);
+
+const remainingNames = withoutProduct5.map(
+  product => `${product.id}: ${product.name}`
+);
+
+console.log(`Affordable in-stock: ${affordableNames}`);
+console.log(`Product 2 updated: ${product2Names}`);
+console.log(`Without product 5: ${remainingNames}`);
+
+// Prove immutability
+console.log("Original products:", products);
+console.log(`Original product 2 in stock: ${products.find(p => p.id === 2).inStock}`);
+console.log(`Original product 5 exists: ${products.some(p => p.id === 5)}`)
