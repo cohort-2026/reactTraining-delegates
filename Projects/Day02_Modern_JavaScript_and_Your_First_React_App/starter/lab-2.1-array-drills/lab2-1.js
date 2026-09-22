@@ -17,9 +17,15 @@ const products = [
 
 // TODO (step 2): use map to create an array of product names, then log it
 // with a template literal, for example: Names: Wireless Mouse, USB-C Charger, ...
+const newProducts = products.map( p => p.name).join(" , ")
+
+console.log(`Names: ${newProducts}`)
+
 
 // TODO (step 3): use filter to get the products that are in stock AND cost less than R500.
+const productsInStock = products.filter( p => p.inStock === true && p.price < 500)
 
+console.log(productsInStock)
 // TODO (step 4): use find to get the product with id 4, and log its name.
 
 // TODO (step 5): use reduce to total the price of all in-stock items.
