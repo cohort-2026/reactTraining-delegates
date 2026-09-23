@@ -12,7 +12,7 @@ const products = [
 
 // 1. All product names
 const names = products.map((p) => {
-  p.name;
+  return p.name; //added return name statement
 });
 console.log(`Names: ${names.join(", ")}`);
 
@@ -29,7 +29,7 @@ console.log(`Product 4: ${name} costs R${price}`);
 // 4. Value of everything in stock
 const stockValue = products
   .filter((p) => p.inStock)
-  .reduce((sum, p) => sum + p.price);
+  .reduce((sum, p) => sum + p.price, 0); // made reduce start from '0'
 console.log(`Value of stock on hand: R${stockValue}`);
 
 // 5. Mark product 2 as out of stock, without changing the original

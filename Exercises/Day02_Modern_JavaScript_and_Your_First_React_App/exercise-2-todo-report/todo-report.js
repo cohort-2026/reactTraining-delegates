@@ -11,7 +11,7 @@ async function loadTodos(limit) {
     if (!res.ok) {
       throw new Error(`Request failed: ${res.status}`);
     }
-    const todos = res.json();
+    const todos = await res.json();
     const lines = todos.map((todo, i) => {
       const { title, completed } = todo;
       return `${i + 1}. [${completed ? "done" : "open"}] ${title}`;
@@ -28,7 +28,10 @@ async function getTodo(id) {
   try {
     const res = await fetch(`${API}/todos/${id}`);
     const todo = await res.json();
-    const points = todo.points || "not estimated";
+    if(!res.ok) {
+      throw new Error(`Request failed: ${res.status}`);
+    }
+    const points = todo.points !== null ? todo.points : "not estimated";
     console.log(`To-do ${id}: ${todo.title} (points: ${points})`);
   } catch (err) {
     console.error(`Could not load to-do ${id}:`, err.message);
@@ -42,7 +45,7 @@ async function loadUser(id) {
       throw new Error(`Request failed: ${res.status}`);
     }
     const user = await res.json();
-    const city = user.address.city ?? "Unknown";
+    const city = user.address === null ? "Unknown": user.address.city;
     console.log(`${user.name} lives in ${city}`);
   } catch (err) {
     console.error(`Could not load user ${id}:`, err.message);
@@ -53,7 +56,8 @@ async function getProgress(limit) {
   const res = await fetch(`${API}/todos?_limit=${limit}`);
   const todos = await res.json();
   const completed = todos.filter((t) => t.completed).length;
-  return { completed, total: todos.length };
+  const total = todos.length;
+  return { completed, total };
 }
 
 async function main() {
@@ -70,7 +74,7 @@ async function main() {
   await loadUser(2);
 
   console.log("=== Progress ===");
-  const { completed, total } = getProgress(6);
+  const { completed, total } = await getProgress(6);
   console.log(`Completed: ${completed} of ${total}`);
 }
 
