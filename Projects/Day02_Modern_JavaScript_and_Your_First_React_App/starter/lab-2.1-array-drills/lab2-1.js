@@ -17,6 +17,8 @@ const products = [
 
 // TODO (step 2): use map to create an array of product names, then log it
 // with a template literal, for example: Names: Wireless Mouse, USB-C Charger, ...
+const productNames = products.map(product => product.name);
+console.log(`Names: ${productNames.join(", ")}`);
 
 // TODO (step 3): use filter to get the products that are in stock AND cost less than R500.
 
