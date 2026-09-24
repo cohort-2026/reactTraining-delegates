@@ -12,7 +12,7 @@ const products = [
 
 // 1. All product names
 const names = products.map((p) => {
-  p.name;
+  return p.name;
 });
 console.log(`Names: ${names.join(", ")}`);
 
@@ -42,7 +42,8 @@ const remaining = products.filter((p) => p.id !== 5);
 console.log(`Products left after removing 5: ${remaining.length}`);
 
 // 7. Cheapest and most expensive
-const byPrice = products.sort((a, b) => a.price - b.price);
+//const byPrice = products.sort((a, b) => a.price - b.price);
+const byPrice = [...products].sort((a, b) => a.price - b.price);
 console.log(`Cheapest: ${byPrice[0].name}`);
 console.log(`Most expensive: ${byPrice[byPrice.length - 1].name}`);
 
