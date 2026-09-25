@@ -5,10 +5,15 @@
 const API = "https://jsonplaceholder.typicode.com";
 
 // TODO (step 2): make this an async function so you can use await inside it.
-function loadTodos(limit) {
+async function loadTodos(limit) {
+
+  
+   
   // TODO (step 5): wrap the code below in try / catch / finally.
   //   catch:   log a friendly message with err.message (no crash)
   //   finally: log "Done loading"
+   
+
 
   // TODO (step 3): fetch `${API}/todos?_limit=10`, using limit in place of the 10.
 
