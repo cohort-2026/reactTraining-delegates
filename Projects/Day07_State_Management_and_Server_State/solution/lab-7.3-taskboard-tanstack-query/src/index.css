@@ -1,0 +1,32 @@
+/* Global styles: a simple starting point for TaskBoard */
+:root {
+  --bg: #f9fafb;
+  --text: #1f2937;
+  --surface: #ffffff;
+  --surface-muted: #eef2f7;
+  --border: #e5e7eb;
+  --accent: #0f766e;
+  --danger: #991b1b;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --surface: #1e293b;
+  --surface-muted: #162032;
+  --border: #334155;
+  --accent: #5eead4;
+  --danger: #fca5a5;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+}
+
+nav a.active { font-weight: bold; }

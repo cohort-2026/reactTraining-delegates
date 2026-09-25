@@ -728,14 +728,26 @@ This lab practises lists and conditionals on a different domain, so you can see 
 
 #### Steps
 
-1. In TaskBoard, create `src/components/catalogue/products.js` exporting an array of 8 products.
-2. Give each product an `id`, `name`, `price`, `category`, `inStock` and `rating`.
-3. Create `ProductCard.jsx` showing the name, price and rating.
-4. Show an **Out of stock** badge only when `inStock` is `false`.
-5. Create `ProductGrid.jsx` that maps products to `ProductCard`s with keys, and render it in `App` for now.
-6. Show a **No products** message when the array is empty. Test it by temporarily passing an empty array (`products={[]}`), then restore the real data.
-7. Style the grid with CSS Grid.
-8. Commit your work. When you move on to Lab 3.3, remove `ProductGrid` from `App`.
+1. In TaskBoard, create `src/components/catalogue/products.js` exporting an array of 8 products, each with an `id`, `name`, `price`, `category`, `inStock` and `rating`. You can use your own, or paste this in to get straight to the rendering:
+   ```js
+   export const products = [
+     { id: 1, name: "Wireless Mouse", price: 349, category: "electronics", inStock: true, rating: 4 },
+     { id: 2, name: "Mechanical Keyboard", price: 1299, category: "electronics", inStock: true, rating: 5 },
+     { id: 3, name: "USB-C Hub", price: 599, category: "electronics", inStock: false, rating: 3 },
+     { id: 4, name: "Learning React", price: 489, category: "books", inStock: true, rating: 5 },
+     { id: 5, name: "JavaScript Pocket Guide", price: 199, category: "books", inStock: true, rating: 0 },
+     { id: 6, name: "Desk Lamp", price: 425, category: "office", inStock: false, rating: 4 },
+     { id: 7, name: "Notebook Set", price: 89, category: "office", inStock: true, rating: 3 },
+     { id: 8, name: "Laptop Stand", price: 749, category: "office", inStock: true, rating: 4 },
+   ];
+   ```
+   Product 5's `rating: 0` is deliberate — keep it, because it surfaces a common bug when you render the rating in step 2 below.
+2. Create `ProductCard.jsx` showing the name, price and rating.
+3. Show an **Out of stock** badge only when `inStock` is `false`.
+4. Create `ProductGrid.jsx` that maps products to `ProductCard`s with keys, and render it in `App` for now.
+5. Show a **No products** message when the array is empty. Test it by temporarily passing an empty array (`products={[]}`), then restore the real data.
+6. Style the grid with CSS Grid.
+7. Commit your work. When you move on to Lab 3.3, remove `ProductGrid` from `App`.
 
 #### Done when
 
