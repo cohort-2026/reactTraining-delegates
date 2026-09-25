@@ -13,7 +13,14 @@ const products = [
 // 1. All product names
 // Change: the map callback used a block body { p.name; } with no return,
 // so every item was undefined. Use an implicit return so names come through.
-const names = products.map((p) => p.name);
+
+//const names = products.map((product) => product.name); Lambda
+
+//Expanded version for improved readability, I showed this to everyone on the meeting:
+const names = products.map(function (item) {
+  return item.name; 
+}); 
+
 console.log(`Names: ${names.join(", ")}`);
 
 // 2. In-stock products under R500
