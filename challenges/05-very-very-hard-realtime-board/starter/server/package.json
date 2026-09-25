@@ -1,0 +1,25 @@
+{
+  "name": "@taskboard/server",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --env-file-if-exists=.env src/index.ts",
+    "start": "tsx src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@taskboard/shared": "*",
+    "jose": "^6.2.12",
+    "tsx": "^4.23.15",
+    "ws": "^8.21.3",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/ws": "^8.18.1",
+    "typescript": "~6.0.2",
+    "vitest": "^5.0.1"
+  }
+}
