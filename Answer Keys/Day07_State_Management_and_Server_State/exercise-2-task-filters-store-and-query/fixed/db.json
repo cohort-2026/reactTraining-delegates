@@ -1,0 +1,7 @@
+{
+  "tasks": [
+    { "id": "1", "title": "Plan sprint", "status": "todo", "points": 3 },
+    { "id": "2", "title": "Write report", "status": "doing", "points": 5 },
+    { "id": "3", "title": "Book room", "status": "done", "points": 1 }
+  ]
+}

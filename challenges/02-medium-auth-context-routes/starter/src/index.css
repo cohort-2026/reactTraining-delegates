@@ -1,0 +1,49 @@
+:root {
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+}
+
+main {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+nav a.active {
+  font-weight: bold;
+}
+
+.nav-user {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+form {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 20rem;
+}
+
+[role="alert"] {
+  color: #c62828;
+}

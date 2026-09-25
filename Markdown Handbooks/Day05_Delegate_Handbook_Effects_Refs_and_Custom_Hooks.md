@@ -376,7 +376,7 @@ Honestly, this is a lot of code to get right every time. That is exactly why tea
 
 ### Rendering every state
 
-**src/components/UserList.jsx (continued)**
+**src/components/UserList.jsx (continued)** — this picks up `UserList` from [Fetching in an effect](#fetching-in-an-effect) above, not the `UserPosts` example you just read. Add it inside the same function, replacing the `// rendering continues...` comment.
 
 ```jsx
   if (loading) return <p>Loading users...</p>;
