@@ -38,6 +38,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
   const [formError, setFormError] = useState("");
   const passwordMinLength = 8;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const hasValidationErrors = !!getEmailError(email) || !!getPasswordError(password);
   
   function getEmailError(email: string) {
     if (!email) {
@@ -52,19 +53,11 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
   function getPasswordError(password: string) {
     if (!password) {
       return "Enter your password.";
-    }else if (password.length < passwordMinLength) {
-      return `Password must be at least ${passwordMinLength} characters.`;
-    } else if (!/[A-Z]/.test(password)) {
-      return "Password must contain at least one uppercase letter.";
-    } else if (!/[a-z]/.test(password)) {
-      return "Password must contain at least one lowercase letter.";
-    } else if (!/[0-9]/.test(password)) {
-      return "Password must contain at least one number.";
-    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-      return "Password must contain at least one special character.";
-    }else { 
-      return "";
     }
+    if (password.length < passwordMinLength) {
+      return `Password must be at least ${passwordMinLength} characters.`;
+    }
+    return "";
   }
 
   function togglePasswordVisibility() {
@@ -93,25 +86,35 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
       <h1>Sign in to TaskBoard</h1>
 
       {/* TODO: Email field and its error message */}
-      <label>Email:</label>
+      <label htmlFor="email">Email</label>
       <input
         type="email"
         name="email"
+        id="email"
         value={email}
+        disabled={isSubmitting}
+        aria-invalid={emailBlurred && !!getEmailError(email)}
+        aria-describedby={emailBlurred && getEmailError(email) ? "email-error" : undefined}
         onChange={(e) => setEmail(e.target.value)}
         onBlur={() => setEmailBlurred(true)}
       />
       {/* Validate the email input field and display error message */}
       {emailBlurred && getEmailError(email) && (
-        <span className="field-error">{getEmailError(email)}</span>
+        <span className="field-error" id="email-error">
+          {getEmailError(email)}
+        </span>
       )}
 
       {/* TODO: Password field, a Show password / Hide password button, and its error message */}
-      <label>Password:</label>
+      <label htmlFor="password">Password</label>
       <input
         type={showPassword ? "text" : "password"}
         name="password"
+        id="password"
         value={password}
+        disabled={isSubmitting}
+        aria-invalid={passwordBlurred && !!getPasswordError(password)}
+        aria-describedby={passwordBlurred && getPasswordError(password) ? "password-error" : undefined}
         onChange={(e) => setPassword(e.target.value)}
         onBlur={() => setPasswordBlurred(true)}
       />
@@ -120,7 +123,9 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
       </button>
       {/* Validate the password input field and display error message */}
       {passwordBlurred && getPasswordError(password) && (
-        <span className="field-error">{getPasswordError(password)}</span>
+        <span className="field-error" id="password-error">
+          {getPasswordError(password)}
+        </span>
       )}
 
       {/* TODO: form-level error */}
@@ -131,7 +136,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
       )}
 
       {/* TODO: disable until the form is valid; show "Signing in…" while pending */}
-      <button type="submit" disabled={isSubmitting}>
+      <button type="submit" disabled={hasValidationErrors || isSubmitting}>
         {isSubmitting ? "Signing in…" : "Sign in"}
       </button>
     </form>
