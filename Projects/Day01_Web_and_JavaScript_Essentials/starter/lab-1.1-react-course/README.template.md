@@ -1,4 +1,5 @@
 # React Course
 
-<!-- TODO (step 6): replace this line with your name. -->
-<!-- TODO (step 6): replace this line with one sentence about what you want to build or be able to do by the end of the course. -->
+Arthur Kulani Baloyi
+
+By the end of this course, I want to be able to build modern, responsive React applications and become a confident frontend developer.

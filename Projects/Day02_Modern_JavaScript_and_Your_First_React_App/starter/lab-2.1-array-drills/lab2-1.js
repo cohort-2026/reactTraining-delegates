@@ -17,22 +17,100 @@ const products = [
 
 // TODO (step 2): use map to create an array of product names, then log it
 // with a template literal, for example: Names: Wireless Mouse, USB-C Charger, ...
+const productNames = products.map(product => product.name);
 
+console.log(`Names: ${productNames}`);
 // TODO (step 3): use filter to get the products that are in stock AND cost less than R500.
-
+const affordableProducts = products.filter(
+  product => product.inStock && product.price < 500
+);
 // TODO (step 4): use find to get the product with id 4, and log its name.
+const product4 = products.find(product => product.id === 4);
 
+console.log(`Product with ID 4: ${product4.name}`);
 // TODO (step 5): use reduce to total the price of all in-stock items.
 // Remember the starting value.
+const totalInStock = products.reduce(
+  (total, product) => {
+    if (product.inStock) {
+      return total + product.price;
+    }
+
+    return total;
+  },
+  0
+);
 
 // TODO (step 6): immutably mark product 2 as out of stock, using map and spread.
 // Store the result in a new variable; do not change products.
+const updatedProducts = products.map(product =>
+  product.id === 2
+    ? { ...product, inStock: false }
+    : { ...product }
+);
 
 // TODO (step 7): immutably remove product 5, using filter.
+const productsWithout5 = products.filter(
+  product => product.id !== 5
+);
 
 // TODO (step 8): log every result with a label, using template literals.
 // Tip: `${someArray}` prints [object Object] for objects, so map each product
 // to a readable string first.
+// Convert affordable products into readable strings
+const affordableProductsText = affordableProducts.map(
+  product => `${product.name} - R${product.price}`
+);
+
+// Convert updated products into readable strings
+const updatedProductsText = updatedProducts.map(
+  product =>
+    `${product.name} - R${product.price} - ${
+      product.inStock ? "In Stock" : "Out of Stock"
+    }`
+);
+
+// Convert products without product 5 into readable strings
+const productsWithout5Text = productsWithout5.map(
+  product => `${product.name} - R${product.price}`
+);
+
+
+console.log(
+  `In-stock products under R500: ${affordableProductsText}`
+);
+
+console.log(
+  `Total price of all in-stock products: R${totalInStock}`
+);
+
+console.log(
+  `Product 2 changed: ${updatedProductsText}`
+);
+
+console.log(
+  `Products after removing product 5: ${productsWithout5Text}`
+);
+
 
 // TODO: prove immutability. Log the original products array here and check that
 // product 2 is still in stock and product 5 is still there.
+
+console.log(`Original products array:`);
+console.log(products);
+
+
+// Check that product 2 is STILL in stock
+const originalProduct2 = products.find(product => product.id === 2);
+
+console.log(
+  `Original product 2 still in stock: ${originalProduct2.inStock}`
+);
+
+
+// Check that product 5 is STILL there
+const originalProduct5 = products.find(product => product.id === 5);
+
+console.log(
+  `Original product 5 still exists: ${originalProduct5 !== undefined}`
+);
