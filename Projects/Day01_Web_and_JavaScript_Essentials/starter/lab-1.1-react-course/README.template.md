@@ -1,4 +1,5 @@
 # React Course
 
-<!-- TODO (step 6): replace this line with your name. -->
-<!-- TODO (step 6): replace this line with one sentence about what you want to build or be able to do by the end of the course. -->
+<!-- TODO (step 6): Craig Magagula. -->
+
+<!-- TODO (step 6):l want to be able to creat a fulling functional website/portfolio-->

@@ -5,17 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile</title>
     <!-- TODO (step 2): link the stylesheet here: <link rel="stylesheet" href="style.css" /> -->
+     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- TODO (step 3): add a <header> containing a <nav> with class="nav".
          Inside the nav: your name on one side, and a list of links
          to #about, #skills and #goals on the other. -->
+     <header>
+          <nav class="nav">
+               <h1>My Profile</h1>
+               <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#goals">Goals</a></li>
+               </ul>
+          </nav>
+    </header>
 
     <!-- TODO (step 3): add a <main> with three <section>s: About, Skills and Goals.
          Give each section an id (about, skills, goals) so the nav links jump to it. -->
-
-    <!-- TODO (step 3): in the About section, add an <h2>, a short paragraph about you,
+         <!-- TODO (step 3): in the About section, add an <h2>, a short paragraph about you,
          and a <button class="btn">Contact me</button> (step 6). -->
+         <main>
+           <section id="about">
+              <h2>Motivated IT Support professional with hands-on experience in technical support, hardware and
+                 software troubleshooting, Microsoft 365, networking fundamentals, and ticketing systems.
+                 Experienced in end-user support, system administration concepts, and Odoo ERP support.
+                 Passionate about technology and committed to delivering excellent customer service while
+                 continuously developing technical skills.
+               </h2>
+               <button class="btn">Contact me</button>
+
+           </section>
+
+          <section id="skills">
+                <h2>Skills</h2>
+                <div class="cards">
+                    <articles class="card">
+                        <h3>Technical Support</h3>
+                        <p>Providing assistance and troubleshooting for hardware and software issues.</p>
+                    </articles>
+                    <articles class="card">
+                        <h3>Hardware Maintenance</h3>
+                        <p>Performing routine maintenance and repairs on computer hardware.</p>
+                    </articles>
+                    <articles class="card">
+                        <h3>Software Installation</h3>
+                        <p>Installing and configuring software applications for end-users.</p>
+                    </articles>
+                </div>
+          </section>
+          <section id="goals">
+                    <h2>Goals</h2>
+                    <ul>
+                         <li>Enhance technical skills through continuous learning and certifications.</li>
+                         <li>Gain experience in system administration and network management.</li>
+                         <li>Contribute to innovative IT solutions that improve user experience.</li>
+                    </ul>
+          </section>
+<footer>
+     <p>Craig Magagula 2026</p>
+</footer>
+
+         </main>
+
 
     <!-- TODO (step 5): in the Skills section, add an <h2> and a <div class="cards">
          containing three <article class="card"> elements, one per skill. -->
