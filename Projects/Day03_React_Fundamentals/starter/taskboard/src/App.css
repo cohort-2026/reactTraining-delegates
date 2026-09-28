@@ -1,5 +1,7 @@
 /* Styles for App: empty for now. You add component styles here from Day 3. */
 /* TODO (Lab 3.1 step 5): add .btn-primary, .btn-secondary and .card. */
+@import "tailwindcss";
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -60,14 +62,13 @@
   cursor: not-allowed;
 }
 
-/* ---------- Card ---------- */
-
 .card {
   border: 1px solid #e5e7eb;        /* gray-200 */
   border-radius: 0.75rem;           /* rounded-xl */
   background-color: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  padding: 1.25rem;                 /* p-5 */
+  padding: 1.25rem; 
+                  /* p-5 */
 }
 Line-by-Line — Wha
 /* TODO (Lab 3.2 step 7): style the product grid with CSS Grid. */
