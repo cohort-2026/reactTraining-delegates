@@ -1,0 +1,68 @@
+const products = [
+  {
+    id: 1,
+    name: "Laptop",
+    price: 15000,
+    category: "Electronics",
+    inStock: true,
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Wireless Headphones",
+    price: 1200,
+    category: "Electronics",
+    inStock: true,
+    rating: 4,
+  },
+  {
+    id: 3,
+    name: "Mechanical Keyboard",
+    price: 1800,
+    category: "Accessories",
+    inStock: false,
+    rating: 4,
+  },
+  {
+    id: 4,
+    name: "Wireless Mouse",
+    price: 750,
+    category: "Accessories",
+    inStock: true,
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: "Monitor",
+    price: 4500,
+    category: "Electronics",
+    inStock: true,
+    rating: 4,
+  },
+  {
+    id: 6,
+    name: "USB-C Hub",
+    price: 900,
+    category: "Accessories",
+    inStock: false,
+    rating: 3,
+  },
+  {
+    id: 7,
+    name: "Webcam",
+    price: 1600,
+    category: "Electronics",
+    inStock: true,
+    rating: 4,
+  },
+  {
+    id: 8,
+    name: "Laptop Stand",
+    price: 650,
+    category: "Accessories",
+    inStock: false,
+    rating: 5,
+  },
+];
+
+export default products;

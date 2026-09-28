@@ -17,4 +17,9 @@
   margin: 20px;
 }
 /* TODO (Lab 3.2 step 7): style the product grid with CSS Grid. */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
 /* TODO (Lab 3.3 step 8): style .board as three columns. */
