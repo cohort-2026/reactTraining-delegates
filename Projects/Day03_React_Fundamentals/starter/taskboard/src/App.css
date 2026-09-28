@@ -1,4 +1,139 @@
-/* Styles for App: empty for now. You add component styles here from Day 3. */
-/* TODO (Lab 3.1 step 5): add .btn-primary, .btn-secondary and .card. */
-/* TODO (Lab 3.2 step 7): style the product grid with CSS Grid. */
-/* TODO (Lab 3.3 step 8): style .board as three columns. */
+.app {
+	max-width: 1080px;
+	margin: 0 auto;
+	padding: 32px 24px;
+}
+
+.btn {
+	font: inherit;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.btn-sm {
+	padding: 4px 8px;
+	font-size: 0.875rem;
+}
+
+.btn-md {
+	padding: 8px 16px;
+}
+
+.btn-lg {
+	padding: 12px 20px;
+	font-size: 1.125rem;
+}
+
+.btn-primary {
+	background: #0f766e;
+	color: #ffffff;
+}
+
+.btn-secondary {
+	background: #ffffff;
+	color: #0f766e;
+	border-color: #0f766e;
+}
+
+.card {
+	background: #ffffff;
+	border: 1px solid #d8e0e4;
+	border-radius: 6px;
+	padding: 16px;
+}
+
+.card h2 {
+	margin-top: 0;
+}
+
+.card-highlight {
+	border-color: #0f766e;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 16px;
+}
+
+.product-card h3 {
+	margin-top: 0;
+}
+
+.badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 999px;
+	background: #fee2e2;
+	color: #991b1b;
+	font-size: 0.75rem;
+	font-weight: 600;
+}
+
+.header {
+	margin-bottom: 24px;
+}
+
+.header h1 {
+	margin: 0;
+	color: #164e63;
+}
+
+.header p {
+	margin: 4px 0 0;
+	color: #52616b;
+}
+
+.board {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px;
+	align-items: start;
+}
+
+.column {
+	min-width: 0;
+	padding: 14px;
+	border: 1px solid #d8e0e4;
+	border-radius: 6px;
+	background: #edf3f3;
+}
+
+.column h2 {
+	margin: 0 0 14px;
+	font-size: 1.125rem;
+}
+
+.column ul {
+	display: grid;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.column .card h3 {
+	margin: 0 0 4px;
+	font-size: 1rem;
+}
+
+.column .card p {
+	margin: 0 0 4px;
+}
+
+.points {
+	color: #0f766e;
+	font-size: 0.875rem;
+	font-weight: 600;
+}
+
+@media (max-width: 720px) {
+	.app {
+		padding: 24px 16px;
+	}
+
+	.board {
+		grid-template-columns: 1fr;
+	}
+}
