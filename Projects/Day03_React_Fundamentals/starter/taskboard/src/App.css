@@ -23,3 +23,8 @@
   gap: 20px;
 }
 /* TODO (Lab 3.3 step 8): style .board as three columns. */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
