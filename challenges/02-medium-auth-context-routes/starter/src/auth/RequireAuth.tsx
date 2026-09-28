@@ -1,5 +1,5 @@
-import { Outlet } from "react-router";
-
+import { Navigate, Outlet, useLocation } from "react-router";
+import { useAuth } from "./useAuth";
 // TODO 3: Guard the private pages. This is a layout route (see src/routes.tsx):
 // every route nested under it should only render for a logged-in user.
 //
@@ -11,5 +11,16 @@ import { Outlet } from "react-router";
 //
 // Right now it lets everybody in.
 export default function RequireAuth() {
+  const { status } = useAuth();
+  const location = useLocation();
+
+  if (status === "loading") {
+    return <p role="status">Checking your session…</p>;
+  }
+
+  if (status === "anonymous") {
+    const redirect = `${location.pathname}${location.search}`;
+    return <Navigate to={`/login?${new URLSearchParams({ redirect })}`} replace />;
+  }
   return <Outlet />;
 }

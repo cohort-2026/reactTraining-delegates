@@ -1,9 +1,13 @@
 import { useState } from "react";
 import type { SubmitEvent } from "react";
+import { useNavigate, useSearchParams } from "react-router";
 import { useAuth } from "../auth/useAuth";
+import { getSafeRedirect } from "../auth/safeRedirect";
 
 export default function Login() {
   const { login } = useAuth();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -13,14 +17,14 @@ export default function Login() {
     e.preventDefault();
     setError(null);
     setPending(true);
+
     try {
       await login(email, password);
-      // TODO 5: The user is logged in. Send them to the page in the ?redirect=
-      // query parameter, passed through getSafeRedirect() from ../auth/safeRedirect.
-      // Replace the /login entry in history, so Back does not return here.
-      setPending(false);
+      const redirect = getSafeRedirect(searchParams.get("redirect"));
+      navigate(redirect, { replace: true });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
       setPending(false);
     }
   }
