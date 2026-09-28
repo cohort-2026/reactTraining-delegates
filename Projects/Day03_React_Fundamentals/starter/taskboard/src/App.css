@@ -2,3 +2,7 @@
 /* TODO (Lab 3.1 step 5): add .btn-primary, .btn-secondary and .card. */
 /* TODO (Lab 3.2 step 7): style the product grid with CSS Grid. */
 /* TODO (Lab 3.3 step 8): style .board as three columns. */
+.button-row {
+  display: flex;
+  gap: 8px;
+}
