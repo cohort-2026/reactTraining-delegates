@@ -2,3 +2,44 @@
 /* TODO (Lab 3.1 step 5): add .btn-primary, .btn-secondary and .card. */
 /* TODO (Lab 3.2 step 7): style the product grid with CSS Grid. */
 /* TODO (Lab 3.3 step 8): style .board as three columns. */
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* TODO (Lab 3.1 step 5): add .btn-primary, .btn-secondary and .card. */
+.btn {
+  font: inherit;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.btn-primary {
+  background: #e3edf6;
+  color: #4f72a7;
+}
+
+.btn-secondary {
+  background: #a0c7e7;
+  color: #87a5b6;
+  border-color: #e5ebed;
+}
+
+.card {
+  background: #4ae0e8;
+  border: 2px solid #7bdade;
+  border-radius: 7px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card-highlight {
+  border-color: #0f766e;
+}
