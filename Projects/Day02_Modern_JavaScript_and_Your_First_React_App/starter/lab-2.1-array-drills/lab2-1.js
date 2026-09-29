@@ -14,25 +14,50 @@ const products = [
   { id: 5, name: "A5 Notebook", price: 85, category: "stationery", inStock: false },
   { id: 6, name: "Clean Code", price: 480, category: "books", inStock: true },
 ];
+const describe = (p) =>
+  `${p.name} (R${p.price}, ${p.inStock ? "in stock" : "out of stock"})`;
 
 // TODO (step 2): use map to create an array of product names, then log it
+const names = products.map((p) => p.name);
+console.log(`Names: ${names.join(", ")}`);
 // with a template literal, for example: Names: Wireless Mouse, USB-C Charger, ...
+
 
 // TODO (step 3): use filter to get the products that are in stock AND cost less than R500.
 
+const affordableInStock = products.filter((p) => p.inStock && p.price < 500);
+console.log(`In stock under R500: ${affordableInStock.map(describe).join("; ")}`);
+
 // TODO (step 4): use find to get the product with id 4, and log its name.
+
+const product4 = products.find((p) => p.id === 4);
+console.log(`Product 4: ${product4.name}`);
 
 // TODO (step 5): use reduce to total the price of all in-stock items.
 // Remember the starting value.
 
+const inStockTotal = products.reduce(
+  (total, p) => (p.inStock ? total + p.price : total),
+  0
+);
+console.log(`Total of in-stock items: R${inStockTotal}`);
+
 // TODO (step 6): immutably mark product 2 as out of stock, using map and spread.
 // Store the result in a new variable; do not change products.
+const withProduct2OutOfStock = products.map((p) =>
+  p.id === 2 ? { ...p, inStock: false } : p
+);
+console.log(`After marking product 2 out of stock: ${withProduct2OutOfStock.map(describe).join("; ")}`);
 
 // TODO (step 7): immutably remove product 5, using filter.
+const withoutProduct5 = products.filter((p) => p.id !== 5);
+console.log(`After removing product 5: ${withoutProduct5.map(describe).join("; ")}`);
 
 // TODO (step 8): log every result with a label, using template literals.
 // Tip: `${someArray}` prints [object Object] for objects, so map each product
 // to a readable string first.
-
+console.log(`Original products: ${products.map(describe).join("; ")}`);
+console.log(`Product 2 still in stock? ${products.find((p) => p.id === 2).inStock}`); // true
+console.log(`Product 5 still there? ${products.some((p) => p.id === 5)}`); 
 // TODO: prove immutability. Log the original products array here and check that
 // product 2 is still in stock and product 5 is still there.
