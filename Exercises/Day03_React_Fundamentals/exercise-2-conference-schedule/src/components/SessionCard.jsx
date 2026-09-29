@@ -1,8 +1,7 @@
 import Card from "./ui/Card.jsx";
 
 function SessionCard({ title, startTime, room, speaker, seatsLeft }) {
-  if (!speaker) return null;
-
+  // no speaker hides the line below, not the whole card
   return (
     <Card title={title}>
       <p>
