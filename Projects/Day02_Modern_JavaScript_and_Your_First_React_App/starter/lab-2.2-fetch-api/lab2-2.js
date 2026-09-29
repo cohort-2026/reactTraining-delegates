@@ -9,8 +9,51 @@ function loadTodos(limit) {
   // TODO (step 5): wrap the code below in try / catch / finally.
   //   catch:   log a friendly message with err.message (no crash)
   //   finally: log "Done loading"
+  
+const API = "https://jsonplaceholder.typicode.com";
+
+// Step 2: Make the function async
+async function loadTodos(limit) {
+  try {
+    // Step 3: Fetch todos using the limit
+    const res = await fetch(`${API}/todos?_limit=${limit}`);
+
+    // Step 4: Check if the request was successful
+    if (!res.ok) {
+      throw new Error(`HTTP error: ${res.status}`);
+    }
+
+    // Step 5: Convert the response into JavaScript data
+    const todos = await res.json();
+
+    // Step 6: Display a numbered list of todos
+    const titles = todos.map((todo, index) => {
+      const status = todo.completed ? "[done]" : "[open]";
+      return `${index + 1}. ${status} ${todo.title}`;
+    });
+
+    titles.forEach(title => console.log(title));
+
+    // Step 7: Count completed todos
+    const completedTodos = todos.filter(todo => todo.completed);
+
+    console.log(`Completed: ${completedTodos.length} of ${todos.length}`);
+
+  } catch (err) {
+    // Handle errors without crashing
+    console.log(`Something went wrong: ${err.message}`);
+
+  } finally {
+    // Always runs at the end
+    console.log("Done loading");
+  }
+}
+
+// Call the function
+loadTodos(10);
 
   // TODO (step 3): fetch `${API}/todos?_limit=10`, using limit in place of the 10.
+  const res = await fetch(`${API}/todos?_limit=${limit}`);
 
   // TODO (step 4): if res.ok is false, throw a new Error that includes res.status.
 
@@ -22,6 +65,7 @@ function loadTodos(limit) {
   // Hint: map gives you the index as the second callback argument.
 
   // TODO (step 7): use filter to count the completed to-dos and log
+  const completedTodos = todos.filter(todo => todo.completed);
   //   Completed: 3 of 10
 }
 
