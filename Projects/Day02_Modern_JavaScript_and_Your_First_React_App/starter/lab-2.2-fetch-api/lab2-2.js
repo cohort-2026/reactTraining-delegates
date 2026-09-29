@@ -9,7 +9,7 @@ function loadTodos(limit) {
   // TODO (step 5): wrap the code below in try / catch / finally.
   //   catch:   log a friendly message with err.message (no crash)
   //   finally: log "Done loading"
-
+  
   // TODO (step 3): fetch `${API}/todos?_limit=10`, using limit in place of the 10.
 
   // TODO (step 4): if res.ok is false, throw a new Error that includes res.status.
@@ -23,6 +23,26 @@ function loadTodos(limit) {
 
   // TODO (step 7): use filter to count the completed to-dos and log
   //   Completed: 3 of 10
+   try {
+    const res = await fetch(`${API}/todos?_limit=${limit}`);
+
+    if (!res.ok) {
+      throw new Error(`Request failed with status ${res.status}`);
+    }
+
+    const todos = await res.json();
+
+    todos
+      .map((todo, index) => `${index + 1}. [${todo.completed ? "done" : "open"}] ${todo.title}`)
+      .forEach((line) => console.log(line));
+
+    const completedCount = todos.filter((todo) => todo.completed).length;
+    console.log(`Completed: ${completedCount} of ${todos.length}`);
+  } catch (err) {
+    console.log(`Could not load to-dos: ${err.message}`);
+  } finally {
+    console.log("Done loading");
+  }
 }
 
 loadTodos(10);

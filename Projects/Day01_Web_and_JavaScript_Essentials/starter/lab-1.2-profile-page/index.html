@@ -4,24 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile</title>
-    <!-- TODO (step 2): link the stylesheet here: <link rel="stylesheet" href="style.css" /> -->
+    <!-- TODO (step 2): link the stylesheet here: -->
+      <link rel="stylesheet" href="style.css" /> 
   </head>
   <body>
     <!-- TODO (step 3): add a <header> containing a <nav> with class="nav".
          Inside the nav: your name on one side, and a list of links
          to #about, #skills and #goals on the other. -->
+    <header> 
+      <nav class="nav"> 
+        <a class="nav-name" href="#about">Mduduzi Nyathi</a> 
+        <ul class="nav-links"> 
+          <li><a href="#about">About</a></li> 
+          <li><a href="#skills">Skills</a></li> 
+          <li><a href="#goals">Goals</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <!-- TODO (step 3): add a <main> with three <section>s: About, Skills and Goals.
          Give each section an id (about, skills, goals) so the nav links jump to it. -->
-
+      <main>
+      <section id="about">
+        <h2>About me</h2> <
+        <p>
+         This is a short paragraph about me, will edit later.
+        </p> 
+        <button class="btn" type="button">Contact me</button> 
+      </section>
     <!-- TODO (step 3): in the About section, add an <h2>, a short paragraph about you,
          and a <button class="btn">Contact me</button> (step 6). -->
-
+  <section id="skills"> 
+        <h2>Skills</h2> 
+        <div class="cards"> 
+          <article class="card"> 
+            <h3>Skill one</h3>
+            <p>WIil put skill descrpt .</p>
+          </article>
+          <article class="card"> 
+            <h3>Skill two</h3>
+            <p>WIil put skill descrpWIil put skill descrp.</p>
+          </article>
+          <article class="card"> 
+            <h3>Skill three</h3>
+            <p>WIil put skill descrp.</p>
+          </article>
+        </div>
+      </section>
     <!-- TODO (step 5): in the Skills section, add an <h2> and a <div class="cards">
          containing three <article class="card"> elements, one per skill. -->
 
     <!-- TODO (step 3): in the Goals section, add an <h2> and a list of your goals. -->
-
+<section id="goals">
+        <h2>Goals</h2> 
+        <ul> 
+          <li>Short term goal</li>
+          <li>Long term goal</li>
+          <li>Personal goal</li>
+        </ul>
+      </section>
     <!-- TODO (step 3): add a <footer> with your name and the year. -->
+      <footer> 
+      <p>&copy; 2026 Mduduzi Nyathi</p>
+    </footer>
   </body>
 </html>

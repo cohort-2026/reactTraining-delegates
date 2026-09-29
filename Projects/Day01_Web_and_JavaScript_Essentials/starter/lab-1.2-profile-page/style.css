@@ -12,17 +12,98 @@ body {
 
 /* TODO (step 4): style .nav with Flexbox: display flex, your name on the left,
    links on the right (justify-content), vertically centred (align-items), and a gap. */
-
+header {
+  background: #0f172a;
+}
 /* TODO (step 4): style the list of links inside the nav as a row too
    (it is also a Flexbox container), and remove the bullet points. */
 
 /* TODO: centre the page content, for example main { max-width: 900px; margin: 0 auto; } */
+.nav {
+  display: flex; /* ADDED (step 4): Flexbox row */
+  justify-content: space-between; /* ADDED (step 4): name left, links right */
+  align-items: center; /* ADDED (step 4): vertically centred */
+  gap: 16px; /* ADDED (step 4): gap between name and links */
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
 
+.nav a {
+  color: white; /* ADDED (step 4): readable against the dark header */
+  text-decoration: none;
+}
+
+.nav-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* ADDED (step 4): the link list is also a Flexbox row, with bullets removed */
+.nav-links {
+  display: flex; /* ADDED (step 4): row layout */
+  gap: 16px; /* ADDED (step 4): gap between links */
+  margin: 0;
+  padding: 0;
+  list-style: none; /* ADDED (step 4): removes the bullet points */
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* ADDED: centre the page content */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+section {
+  margin-bottom: 40px;
+}
 /* TODO (step 5): style .cards as a grid of three equal columns with a gap. */
 
 /* TODO (step 5): give each .card some padding, a light border and rounded corners. */
+cards {
+  display: grid; /* ADDED (step 5) */
+  grid-template-columns: repeat(3, 1fr); /* ADDED (step 5): three equal columns */
+  gap: 24px; /* ADDED (step 5) */
+}
 
+/* ADDED (step 5): padding, light border and rounded corners for each card */
+.card {
+  padding: 16px; /* ADDED (step 5) */
+  border: 1px solid #ddd; /* ADDED (step 5): light border */
+  border-radius: 8px; /* ADDED (step 5): rounded corners */
+  background: white;
+}
+
+.card h3 {
+  margin-top: 0;
+}
 /* TODO (step 6): style .btn, then add a .btn:hover rule that changes its
    background and text colour. */
+   .btn {
+  padding: 10px 20px;
+  border: 2px solid #0e7490;
+  border-radius: 8px;
+  background: white;
+  color: #0e7490;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* ADDED (step 6): hover swaps background and text colour */
+.btn:hover {
+  background: #0e7490;
+  color: white;
+}
 
 /* TODO: style the footer so it stands apart from the main content. */
+footer {
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  color: #6b7280;
+}
