@@ -13,8 +13,6 @@ const products = [
 // 1. All product names
 const names = products.map((p) => p.name); 
 console.log(`Names: ${names.join(", ")}`); 
-  
-console.log(`Names: ${names.join(", ")}`);
 
 // 2. In-stock products under R500
 const bargains = products
