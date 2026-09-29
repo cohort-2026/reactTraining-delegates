@@ -11,6 +11,7 @@ A small online shop keeps its products in an array of objects. A developer rewro
 `stock-report.js` should:
 
 1. List every product name.
+
 2. List the in-stock products under R500.
 3. Destructure the name and price of product 4.
 4. Add up the price of every in-stock product.
