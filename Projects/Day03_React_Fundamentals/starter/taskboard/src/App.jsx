@@ -5,10 +5,19 @@
 import "./App.css";
 import Button from "./components/ui/Button.jsx";
 import Card from "./components/ui/Card.jsx";
+import ProductGrid from "./components/catalogue/ProductGrid.jsx";
+import { products } from "./components/catalogue/products.js";
+import Header from "./components/Header.jsx";
+import Board from "./components/Board.jsx";
+import { tasks } from "./data/tasks.js";
 
 function App() {
   return (
     <main>
+    <>
+      <Header tasks={tasks} />
+      <Board tasks={tasks} />
+    </>
       <Card title="Welcome to TaskBoard!">
         <Button label="Save" />
         <Button label="Cancel" variant="secondary" />
@@ -17,6 +26,8 @@ function App() {
         <Card>
           <p>My first React app.</p>
         </Card>
+        <h2>Product catalogue</h2>
+      <ProductGrid products={products} />
     </main>
   );
 }

@@ -18,14 +18,14 @@
 }
 
 .btn-primary {
-  background: #e3edf6;
-  color: #4f72a7;
+  background: #a8bacb;
+  color: #2b3d55;
 }
 
 .btn-secondary {
-  background: #a0c7e7;
-  color: #87a5b6;
-  border-color: #e5ebed;
+  background: #6593b9;
+  color: #2e566d;
+  border-color: #b0d1dc;
 }
 
 .card {
@@ -42,4 +42,78 @@
 
 .card-highlight {
   border-color: #0f766e;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  margin-bottom: 0;
+}
+
+.product-card h3 {
+  margin-top: 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 7px;
+  background: #be8f8f;
+  color: #bf1313;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.header {
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  margin-bottom: 0;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.column {
+  background: #eef2f7;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.column h2 {
+  margin-top: 0;
+  font-size: 1.125rem;
+}
+
+.column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.column .card {
+  margin-bottom: 12px;
+}
+
+.column .card h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.column .card p {
+  margin: 0 0 4px;
+}
+
+.points {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f766e;
 }
