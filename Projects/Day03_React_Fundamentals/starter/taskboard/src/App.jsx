@@ -26,4 +26,17 @@ function App() {
   );
 }
 
+import products from "./Components/Catalogue/products";
+import ProductGrid from "./Components/Catalogue/ProductGrid";
+import "./App.css";
+
+function App() {
+  return (
+    <main>
+      <h1>Product Catalogue</h1>
+      <ProductGrid products={products} />
+    </main>
+  );
+}
+
 export default App;
