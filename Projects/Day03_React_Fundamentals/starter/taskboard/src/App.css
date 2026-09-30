@@ -1,75 +1,132 @@
-/* Styles for App: empty for now. You add component styles here from Day 3. */
-/* TODO (Lab 3.1 step 5): add .btn-primary, .btn-secondary and .card. */
-@import "tailwindcss";
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* Lab 3.1: Button */
+.btn {
+  font: inherit;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 0.875rem;
+}
+
+.btn-md {
+  padding: 8px 16px;
+}
+
+.btn-lg {
+  padding: 12px 20px;
+  font-size: 1.125rem;
+}
 
 .btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;             /* 8px 16px */
-  border-radius: 0.5rem;            /* rounded-lg */
-  border: 1px solid transparent;
-  background-color: #000;
-  color: #fff;
-  font-size: 0.875rem;              /* text-sm */
-  font-weight: 600;                 /* font-semibold */
-  line-height: 1.25rem;
-  cursor: pointer;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.btn-primary:hover {
-  background-color: #1f2937;        /* gray-800 */
-}
-
-.btn-primary:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.4);
-}
-
-.btn-primary:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  background: #0f766e;
+  color: #ffffff;
 }
 
 .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid #d1d5db;        /* gray-300 */
-  background-color: #fff;
-  color: #111827;                   /* gray-900 */
+  background: #ffffff;
+  color: #0f766e;
+  border-color: #0f766e;
+}
+
+/* Lab 3.1: Card */
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card-highlight {
+  border-color: #0f766e;
+}
+
+/* Lab 3.2: product catalogue */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  margin-bottom: 0;
+}
+
+.product-card h3 {
+  margin-top: 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Lab 3.3: TaskBoard */
+.header {
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  margin-bottom: 0;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.column {
+  background: #eef2f7;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.column h2 {
+  margin-top: 0;
+  font-size: 1.125rem;
+}
+
+.column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.column .card {
+  margin-bottom: 12px;
+}
+
+.column .card h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.column .card p {
+  margin: 0 0 4px;
+}
+
+.points {
   font-size: 0.875rem;
   font-weight: 600;
-  line-height: 1.25rem;
-  cursor: pointer;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  color: #0f766e;
 }
-
-.btn-secondary:hover {
-  background-color: #f9fafb;        /* gray-50 */
-}
-
-.btn-secondary:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.35);
-}
-
-.btn-secondary:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.card {
-  border: 1px solid #e5e7eb;        /* gray-200 */
-  border-radius: 0.75rem;           /* rounded-xl */
-  background-color: #fff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  padding: 1.25rem; 
-                  /* p-5 */
-}
-Line-by-Line — Wha
-/* TODO (Lab 3.2 step 7): style the product grid with CSS Grid. */
-/* TODO (Lab 3.3 step 8): style .board as three columns. */
