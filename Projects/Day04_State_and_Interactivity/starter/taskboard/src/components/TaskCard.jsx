@@ -10,4 +10,4 @@ function TaskCard({ title, assignee, points }) {
     </article>
   );
 }
-export default TaskCard;
+export default TaskCard
