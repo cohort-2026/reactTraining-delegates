@@ -277,12 +277,94 @@
   font-weight: 700;
 }
 
+/* Lab 4.3: task creation, editing, and status controls. */
+.task-form {
+  margin: 20px 0;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.task-form h2 {
+  margin: 0 0 12px;
+  font-size: 1.125rem;
+}
+
+.task-form-fields {
+  display: grid;
+  grid-template-columns: minmax(160px, 2fr) minmax(140px, 1fr) 100px auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.task-form-fields > div,
+.task-edit {
+  display: grid;
+  gap: 4px;
+}
+
+.task-form input,
+.task-edit input,
+.column select {
+  min-width: 0;
+  min-height: 36px;
+  padding: 6px 8px;
+  border: 1px solid #9ca3af;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.task-form button,
+.column .card button {
+  min-height: 36px;
+  padding: 6px 10px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.task-form [role="alert"] {
+  margin: 8px 0 0;
+  color: #b91c1c;
+}
+
+.task-edit {
+  margin-bottom: 10px;
+}
+
+.task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.task-status-label {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.875rem;
+}
+
+.column select {
+  display: block;
+  width: 100%;
+  margin: 4px 0 8px;
+  background: #ffffff;
+}
+
+.task-delete {
+  color: #991b1b;
+}
+
 @media (max-width: 640px) {
   .board {
     grid-template-columns: 1fr;
   }
 
   .shop {
+    grid-template-columns: 1fr;
+  }
+
+  .task-form-fields {
     grid-template-columns: 1fr;
   }
 
