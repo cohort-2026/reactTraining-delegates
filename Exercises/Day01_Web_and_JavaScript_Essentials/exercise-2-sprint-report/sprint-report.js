@@ -1,4 +1,7 @@
+// Team lunch tip splitter
+
 // Sprint report
+
 // Prints the progress of each sprint, looks up tasks by id and totals the points.
 
 const sprints = [
@@ -25,19 +28,21 @@ const sprints = [
 
 function countDone(tasks) {
   let doneCount = 0;
-  for (let i = 1; i < tasks.length; i++) {
+
+  for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].done) {
       doneCount++;
     }
   }
+
   return doneCount;
 }
 
 function getStatus(percent) {
-  if (percent >= 50) {
-    return "On track";
-  } else if (percent >= 80) {
+  if (percent >= 80) {
     return "Ahead";
+  } else if (percent >= 50) {
+    return "On track";
   } else {
     return "Behind";
   }
@@ -47,19 +52,19 @@ function findTask(tasks, id) {
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === id) {
       return tasks[i];
-    } else {
-      return null;
     }
   }
+
   return null;
 }
 
 function describeTask(task) {
-  return task.title + " (" + task.assigne + ")";
+  return task.title + " (" + task.assignee + ")";
 }
 
 function printLookup(tasks, id) {
   const task = findTask(tasks, id);
+
   if (task === null) {
     console.log("Task " + id + ": not found");
   } else {
@@ -68,10 +73,12 @@ function printLookup(tasks, id) {
 }
 
 function totalPoints(tasks) {
-  const total = 0;
+  let total = 0;
+
   for (let i = 0; i < tasks.length; i++) {
     total = total + tasks[i].points;
   }
+
   return total;
 }
 
@@ -80,8 +87,10 @@ console.log("=============");
 
 for (let s = 0; s < sprints.length; s++) {
   const sprint = sprints[s];
+
   const done = countDone(sprint.tasks);
   const percent = (done / sprint.tasks.length) * 100;
+
   console.log(
     sprint.name + ": " + done + " of " + sprint.tasks.length +
       " tasks done (" + percent + "%) - " + getStatus(percent)
@@ -92,7 +101,10 @@ printLookup(sprints[0].tasks, 3);
 printLookup(sprints[1].tasks, 6);
 
 let grandTotal = 0;
+
 for (let s = 0; s < sprints.length; s++) {
   grandTotal = grandTotal + totalPoints(sprints[s].tasks);
 }
+
 console.log("Total points across all sprints: " + grandTotal);
+

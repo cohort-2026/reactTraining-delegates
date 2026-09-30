@@ -6,7 +6,7 @@
 .app {
   min-height: 100vh;
   padding: 30px;
-  background: #f5f5f5;
+  background: lightskyblue;
 }
 
 .task-header {
@@ -15,6 +15,7 @@
 
 .task-header h1 {
   margin-bottom: 5px;
+  color: grey;
 }
 
 .task-header p {
@@ -30,7 +31,7 @@
 
 .column {
   padding: 20px;
-  background: #ffffff;
+  background: lightsteelblue;
   border-radius: 10px;
   min-height: 300px;
 }
@@ -45,14 +46,16 @@
   margin-bottom: 15px;
   background: #f5f5f5;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid lightsteelblue;
 }
 
 .task-card h3 {
   margin-top: 0;
   margin-bottom: 10px;
+  color: black;
 }
 
 .task-card p {
   margin: 5px 0;
+  color: lightskyblue;
 }

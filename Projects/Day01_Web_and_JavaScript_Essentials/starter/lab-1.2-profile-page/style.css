@@ -10,19 +10,64 @@ body {
   color: #1f2937;
 }
 
-/* TODO (step 4): style .nav with Flexbox: display flex, your name on the left,
-   links on the right (justify-content), vertically centred (align-items), and a gap. */
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
 
-/* TODO (step 4): style the list of links inside the nav as a row too
-   (it is also a Flexbox container), and remove the bullet points. */
+/* Navigation links */
+.nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-/* TODO: centre the page content, for example main { max-width: 900px; margin: 0 auto; } */
+/* Centre the page content */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-/* TODO (step 5): style .cards as a grid of three equal columns with a gap. */
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
 
-/* TODO (step 5): give each .card some padding, a light border and rounded corners. */
+/* Individual card */
+.card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
 
-/* TODO (step 6): style .btn, then add a .btn:hover rule that changes its
-   background and text colour. */
+/* Button */
+.btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #1f2937;
+  color: white;
+  cursor: pointer;
+}
 
-/* TODO: style the footer so it stands apart from the main content. */
+/* Button hover */
+.btn:hover {
+  background: #374151;
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
