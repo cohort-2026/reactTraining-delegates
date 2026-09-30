@@ -3,39 +3,17 @@
 // TODO (Lab 3.2 step 5): render ProductGrid here for now (remove it again when you start Lab 3.3).
 // TODO (Lab 3.3): App.jsx ends up rendering only Header and Board, with the tasks from src/data/tasks.js.
 
-import "./App.css";
-import Card from "./Components/ui/Card";
-import Button from "./Components/ui/Button";
+import tasks from "./data/tasks";
+import Header from "./components/Header";
+import Board from "./Components/Board";
 import "./App.css";
 
 function App() {
   return (
-    <div>
-      <h1>My UI Components</h1>
-
-      <Card title="Task Actions">
-        <Button variant="primary" size="medium">
-          Add Task
-        </Button>
-
-        <Button variant="secondary" size="medium">
-          Cancel
-        </Button>
-      </Card>
+    <div className="app">
+      <Header />
+      <Board />
     </div>
-  );
-}
-
-import products from "./Components/Catalogue/products";
-import ProductGrid from "./Components/Catalogue/ProductGrid";
-import "./App.css";
-
-function App() {
-  return (
-    <main>
-      <h1>Product Catalogue</h1>
-      <ProductGrid products={products} />
-    </main>
   );
 }
 

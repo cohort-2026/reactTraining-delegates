@@ -3,104 +3,94 @@
 /* TODO (Lab 3.2 step 7): style the product grid with CSS Grid. */
 /* TODO (Lab 3.3 step 8): style .board as three columns. */
 
-.btn-primary,
-.btn-secondary {
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-right: 10px;
-  font-size: 14px;
+
+* {
+  box-sizing: border-box;
 }
 
-.btn-primary {
-  background-color: #2563eb;
-  color: white;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #222222;
 }
 
-.btn-secondary {
-  background-color: #e5e7eb;
-  color: #111827;
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
 }
 
-.btn-small {
-  padding: 6px 10px;
-  font-size: 12px;
-}
-
-.btn-medium {
-  padding: 10px 16px;
-  font-size: 14px;
-}
-
-.btn-large {
-  padding: 14px 22px;
-  font-size: 18px;
-}
-
-.card {
-  padding: 20px;
-  margin: 20px 0;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.card h2 {
-  margin-top: 0;
-}
-
-.card-content {
+.header {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  padding: 20px;
+  margin-bottom: 24px;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 
+.header h1 {
+  margin: 0;
+}
 
-.product-grid {
+.board {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
-  padding: 20px 0;
+  align-items: start;
 }
 
-.product-card {
-  padding: 20px;
-  border: 1px solid #ddd;
+/* To Do: light blue */
+.column:nth-child(1) {
+  background-color: #e0eaff;
+}
+
+/* Doing: light yellow */
+.column:nth-child(2) {
+  background-color: #fef0d5;
+}
+
+/* Done: light green */
+.column:nth-child(3) {
+  background-color: #ddf7e5;
+}
+
+.column {
+  min-height: 220px;
+  padding: 16px;
   border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.product-card h2 {
+.column h2 {
   margin-top: 0;
   font-size: 20px;
 }
 
-.product-card p {
-  margin: 10px 0;
+.task-card {
+  margin-bottom: 12px;
+  padding: 14px;
+  background-color: #ffffff;
+  color: #222222;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px #00000010;
+  overflow-wrap: anywhere;
 }
 
-.out-of-stock {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  background-color: #fee2e2;
-  color: #b91c1c;
-  font-size: 13px;
-  font-weight: bold;
+.task-card h3 {
+  margin-top: 0;
+  font-size: 16px;
 }
 
-@media (max-width: 900px) {
-  .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.task-card p {
+  margin-bottom: 0;
+  color: #555555;
 }
 
-@media (max-width: 600px) {
-  .product-grid {
+@media (max-width: 700px) {
+  .board {
     grid-template-columns: 1fr;
   }
 }
