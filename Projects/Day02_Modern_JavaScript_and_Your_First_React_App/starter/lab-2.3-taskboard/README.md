@@ -14,6 +14,7 @@ npm install
 npm run dev
 ```
 
+
 - If npm asks `Need to install the following packages: create-vite ... Ok to proceed?`, type `y` and press Enter.
 - If it asks **Which linter to use?**, you left out `--eslint`. Choose **ESLint**.
 - Open the **Local** URL Vite prints (usually `http://localhost:5173`).
