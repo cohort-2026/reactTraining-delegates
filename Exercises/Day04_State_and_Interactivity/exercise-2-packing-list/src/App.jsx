@@ -10,18 +10,19 @@ function App() {
 
   function handleAdd(name) {
     const id = crypto.randomUUID();
-    items.push({ id, name, packed: false });
-    setItems(items);
+    // Create a new array so React detects the added item.
+    setItems((previousItems) => [
+      ...previousItems,
+      { id, name, packed: false },
+    ]);
   }
 
   function handleToggle(id) {
+    // Copy the changed item instead of mutating existing state.
     setItems((prev) =>
-      prev.map((item) => {
-        if (item.id === id) {
-          item.packed = !item.packed;
-        }
-        return item;
-      })
+      prev.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
     );
   }
 
@@ -40,10 +41,11 @@ function App() {
       <AddItemForm onAdd={handleAdd} />
 
       <label>
+        {/* Checkbox state is its checked boolean, not its value string. */}
         <input
           type="checkbox"
           checked={hidePacked}
-          onChange={(e) => setHidePacked(e.target.value)}
+          onChange={(event) => setHidePacked(event.target.checked)}
         />
         Hide packed items
       </label>
