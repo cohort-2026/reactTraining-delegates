@@ -1,7 +1,6 @@
 import TaskCard from "./TaskCard.jsx";
 
-// TODO (Lab 4.3 step 6): receive the handlers, and pass task={task} plus the handlers instead of {...task}.
-function Column({ heading, tasks }) {
+function Column({ heading, tasks, onStatusChange, onRename, onDelete }) {
   return (
     <section className="column">
       <h2>{heading} ({tasks.length})</h2>
@@ -11,7 +10,12 @@ function Column({ heading, tasks }) {
         <ul>
           {tasks.map((task) => (
             <li key={task.id}>
-              <TaskCard {...task} />
+              <TaskCard
+                task={task}
+                onStatusChange={onStatusChange}
+                onRename={onRename}
+                onDelete={onDelete}
+              />
             </li>
           ))}
         </ul>

@@ -1,13 +1,50 @@
-// TODO (Lab 4.3 steps 3-6): receive { task, onStatusChange, onRename, onDelete }, and add a status
-//   dropdown, Delete with confirm(), and inline Edit (isEditing and draft are local state here).
-function TaskCard({ title, assignee, points }) {
-  if (!title) return null;
+import { useState } from "react";
+
+function TaskCard({ task, onStatusChange, onRename, onDelete }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [draft, setDraft] = useState(task.title);
+
+  function handleSave() {
+    const title = draft.trim();
+    if (title === "") return;
+    onRename(task.id, title);
+    setIsEditing(false);
+  }
+
+  function handleDeleteClick() {
+    if (window.confirm(`Delete "${task.title}"?`)) {
+      onDelete(task.id);
+    }
+  }
+
   return (
     <article className="card">
-      <h3>{title}</h3>
-      {assignee && <p>Assigned to {assignee}</p>}
-      {points > 0 && <span className="points">{points} pts</span>}
+      {isEditing ? (
+        <>
+          <input aria-label="Task title" value={draft}
+            onChange={(event) => setDraft(event.target.value)} />
+          <button onClick={handleSave}>Save</button>
+        </>
+      ) : (
+        <>
+          <h3>{task.title}</h3>
+          <button onClick={() => setIsEditing(true)}>Edit</button>
+        </>
+      )}
+
+      {task.assignee && <p>Assigned to {task.assignee}</p>}
+      {task.points > 0 && <span>{task.points} pts</span>}
+
+      <select aria-label="Status" value={task.status}
+        onChange={(event) => onStatusChange(task.id, event.target.value)}>
+        <option value="todo">To do</option>
+        <option value="doing">In progress</option>
+        <option value="done">Done</option>
+      </select>
+
+      <button onClick={handleDeleteClick}>Delete</button>
     </article>
   );
 }
+
 export default TaskCard;

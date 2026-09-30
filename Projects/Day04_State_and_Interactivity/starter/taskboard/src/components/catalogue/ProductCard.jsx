@@ -1,6 +1,5 @@
 import { formatPrice } from "./formatPrice.js";
 
-// TODO (Lab 4.2 steps 2 and 8): add an "Add to cart" button that calls onAddToCart(id); disable it when out of stock.
 function ProductCard({ name, price, rating, inStock }) {
   return (
     <article className="card product-card">

@@ -130,3 +130,45 @@
   font-weight: 600;
   color: #0f766e;
 }
+
+/* Lab 4.3: interactive TaskBoard */
+.add-task-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.add-task-form input {
+  font: inherit;
+  padding: 4px 8px;
+}
+
+.add-task-form input[type="number"] {
+  width: 64px;
+}
+
+.add-task-form p[role="alert"] {
+  flex-basis: 100%;
+  margin: 0;
+  color: #991b1b;
+}
+
+.add-task-form button,
+.column .card button,
+.column .card select {
+  font: inherit;
+}
+
+.column .card button,
+.column .card select {
+  margin: 4px 6px 0 0;
+}
+
+.column .card > span {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f766e;
+}
