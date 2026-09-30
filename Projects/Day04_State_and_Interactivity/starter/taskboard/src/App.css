@@ -130,3 +130,163 @@
   font-weight: 600;
   color: #0f766e;
 }
+
+/* Lab 4.1: counter, theme toggle, and accordion styles. */
+.practice {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.practice h2 {
+  margin: 0;
+}
+
+.counter,
+.theme-toggle,
+.accordion {
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.counter p,
+.theme-toggle p {
+  margin: 0 0 12px;
+}
+
+.counter button,
+.theme-toggle button,
+.accordion button {
+  min-height: 36px;
+  margin: 0 8px 8px 0;
+  padding: 6px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.theme-toggle.light {
+  color: #1f2937;
+  background: #f8fafc;
+}
+
+.theme-toggle.dark {
+  color: #f8fafc;
+  background: #1f2937;
+}
+
+.accordion-item {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 8px;
+}
+
+.accordion-item button {
+  width: 100%;
+  text-align: left;
+}
+
+.accordion-item p {
+  margin: 0 0 8px;
+}
+
+/* Lab 4.2: product catalogue and shopping cart styles. */
+.shop {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+  gap: 16px;
+  align-items: start;
+}
+
+.shop .grid {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.product-card p,
+.product-card h3 {
+  margin: 0;
+}
+
+.product-card button,
+.cart button {
+  min-height: 36px;
+  padding: 6px 10px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.product-card button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.cart {
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.cart h3 {
+  margin: 0 0 12px;
+}
+
+.cart ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cart-item {
+  display: grid;
+  gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.cart-item > div:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+.cart-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cart-item-actions button {
+  margin: 0;
+}
+
+.cart-total {
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+
+  .shop {
+    grid-template-columns: 1fr;
+  }
+
+  .counter button {
+    margin-right: 4px;
+  }
+}
