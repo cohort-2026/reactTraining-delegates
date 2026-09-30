@@ -5,7 +5,8 @@ function TeamScore({ label }) {
   const [score, setScore] = useState(0);
 
   function addPoint() {
-    setScore(score + 1);
+    // Use the latest queued score so +3 applies all three increments.
+    setScore((currentScore) => currentScore + 1);
   }
 
   function handleAddOne() {
@@ -31,14 +32,19 @@ function TeamScore({ label }) {
       <h2>{teamName || label}</h2>
 
       <label htmlFor={`${label}-name`}>Team name</label>
-      <input id={`${label}-name`} value={teamName} />
+      {/* Keep the controlled input editable and the heading in sync. */}
+      <input id={`${label}-name`} 
+      value={teamName} 
+      onChange={(event) => setTeamName(event.target.value)}
+      />
 
       <p className="score">Score: {score}</p>
 
       <button onClick={handleAddOne}>+1</button>
       <button onClick={handleAddThree}>+3</button>
       <button onClick={handleMinusOne}>-1</button>
-      <button onClick={handleReset()}>Reset</button>
+      {/* Pass the handler; invoking it here would update state during render. */}
+      <button onClick={handleReset}>Reset</button>
     </section>
   );
 }
