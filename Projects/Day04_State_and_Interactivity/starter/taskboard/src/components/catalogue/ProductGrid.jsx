@@ -1,14 +1,14 @@
-import ProductCard from "./ProductCard.jsx";
-
 // TODO (Lab 4.2): receive onAddToCart and pass it to each ProductCard.
-function ProductGrid({ products }) {
-  if (products.length === 0) return <p>No products</p>;
+import ProductCard from "./ProductCard.jsx"
+
+export default function ProductGrid({ products, onAddToCart }) {
+  if (!products || products.length === 0) return <p>No products found</p>
+
   return (
-    <div className="grid">
-      {products.map((product) => (
-        <ProductCard key={product.id} {...product} />
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+      {products.map(p => (
+        <ProductCard key={p.id} product={p} onAddToCart={onAddToCart} />
       ))}
     </div>
-  );
+  )
 }
-export default ProductGrid;
