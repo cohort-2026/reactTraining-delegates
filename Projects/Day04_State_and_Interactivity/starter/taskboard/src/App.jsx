@@ -3,7 +3,7 @@ import "./App.css";
 
 import Header from "./components/Header.jsx";
 import Board from "./components/Board.jsx";
-import { tasks } from "./data/tasks.js";
+import { tasks as initialTasks } from "./data/tasks.js";
 import ThemeToggle from "./components/ThemeToggle";
 import Counter from "./components/Counter.jsx";
 import Accordion from "./components/Accordion.jsx";
@@ -12,6 +12,7 @@ import Cart from "./components/catalogue/Cart.jsx";
 import ProductGrid from "./components/catalogue/ProductGrid.jsx";
 
 import { products } from "./components/catalogue/products.js";
+import AddTaskForm from "./components/AddTaskForm.jsx";
 
 // TODO (Lab 4.1): render Counter, ThemeToggle and Accordion here while you work on the lab.
 // TODO (Lab 4.2): render <Shop /> here while you work on the lab.
@@ -21,6 +22,37 @@ import { products } from "./components/catalogue/products.js";
 function App() {
   const [openIds, setOpenIds] = useState([]);
   const [cart, setCart] = useState([]);
+  const [tasks, setTasks] = useState(initialTasks);
+
+  const addTask = (values) => {
+    const newTask = {
+      ...values,
+      id: crypto.randomUUID(),
+      status: "todo",
+    };
+
+    setTasks((currentTasks) => [...currentTasks, newTask]);
+  };
+
+  const handleStatusChange = (id, status) => {
+    setTasks((currentTasks) =>
+      currentTasks.map((task) => (task.id === id ? { ...task, status } : task)),
+    );
+  };
+
+  const handleDelete = (id) => {
+    const confirmed = confirm("Are you sure you want to delete this task?");
+
+    if (!confirmed) return;
+
+    setTasks((currentTasks) => currentTasks.filter((task) => task.id !== id));
+  };
+
+  const handleRename = (id, title) => {
+    setTasks((currentTasks) =>
+      currentTasks.map((task) => (task.id === id ? { ...task, title } : task)),
+    );
+  };
 
   const addToCart = (productId) => {
     setCart((currentCart) => {
@@ -87,7 +119,14 @@ function App() {
   return (
     <>
       <Header tasks={tasks} />
-      <Board tasks={tasks} />
+      <AddTaskForm onAdd={addTask} />
+
+      <Board
+        tasks={tasks}
+        onStatusChange={handleStatusChange}
+        onRename={handleRename}
+        onDelete={handleDelete}
+      />
 
       <ThemeToggle />
       <Counter />
