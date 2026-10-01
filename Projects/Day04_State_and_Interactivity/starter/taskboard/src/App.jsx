@@ -1,19 +1,26 @@
-import "./App.css";
-import Header from "./components/Header.jsx";
-import Board from "./components/Board.jsx";
-import { tasks } from "./data/tasks.js";
+import { useState } from "react";
+import Counter from "./components/Counter";
+import ThemeToggle from "./components/ThemeToggle";
+import Accordion from "./components/Accordion";
+// ...your existing imports
 
-// TODO (Lab 4.1): render Counter, ThemeToggle and Accordion here while you work on the lab.
-// TODO (Lab 4.2): render <Shop /> here while you work on the lab.
-// TODO (Lab 4.3 step 1): move tasks into useState, importing the data as { tasks as initialTasks }.
-// TODO (Lab 4.3 steps 2-6): add the add, status change, rename and delete handlers, render AddTaskForm,
-//   and pass the handlers down to Board.
-function App() {
+const faqItems = [
+  { title: "What is state?", content: "Data a component remembers between renders." },
+  { title: "Why use an updater function?", content: "It always receives the latest queued value." },
+  { title: "What is lifting state up?", content: "Moving state to the closest common parent." },
+];
+
+export default function App() {
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => setTheme(t => (t === "light" ? "dark" : "light"));
+
   return (
-    <>
-      <Header tasks={tasks} />
-      <Board tasks={tasks} />
-    </>
+    <div className={`app ${theme}`}>
+      {/* ...your existing board / header here */}
+
+      <Counter />
+      <ThemeToggle theme={theme} onToggle={toggleTheme} />
+      <Accordion items={faqItems} />
+    </div>
   );
 }
-export default App;
