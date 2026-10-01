@@ -1,9 +1,7 @@
 import Card from "./ui/Card.jsx";
 
 function SessionCard({ title, startTime, room, speaker, seatsLeft }) {
-  if (!speaker) return null;
-
-  return (
+   return (
     <Card title={title}>
       <p>
         {startTime} in {room}

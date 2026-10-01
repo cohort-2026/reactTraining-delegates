@@ -31,6 +31,7 @@ export const sessions = [
     track: "morning",
     startTime: "10:30",
     room: "Room 2",
+    speaker: "Zanele Dube",
     seatsLeft: 12,
   },
   {
