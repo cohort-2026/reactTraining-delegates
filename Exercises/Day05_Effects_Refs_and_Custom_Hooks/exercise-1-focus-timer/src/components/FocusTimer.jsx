@@ -12,20 +12,21 @@ function FocusTimer({ minutes }) {
   const [taskName, setTaskName] = useState("");
   const taskInputRef = useRef(null);
 
-  if (taskInputRef.current) {
-    taskInputRef.current.focus();
-  }
+  useEffect(() => {
+    taskInputRef.current?.focus();
+  }, []);
 
   useEffect(() => {
-    if (!isRunning) return;
-    setInterval(() => {
+    if (!isRunning || secondsLeft === 0) return;
+    const intervalId = setInterval(() => {
       setSecondsLeft((s) => (s > 0 ? s - 1 : 0));
     }, 1000);
-  }, [isRunning]);
+    return () => clearInterval(intervalId);
+  }, [isRunning, secondsLeft]);
 
   useEffect(() => {
     document.title = `${formatTime(secondsLeft)} - Focus Timer`;
-  }, []);
+  }, [secondsLeft]);
 
   function handleReset() {
     setIsRunning(false);
