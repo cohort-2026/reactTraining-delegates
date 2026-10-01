@@ -1,7 +1,5 @@
-import { useState } from "react";
-
 function Summary({ items }) {
-  const [total] = useState(items.length);
+  const total = items.length;
   const packedCount = items.filter((item) => item.packed).length;
 
   return (

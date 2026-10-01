@@ -4,22 +4,16 @@ function TeamScore({ label }) {
   const [teamName, setTeamName] = useState("");
   const [score, setScore] = useState(0);
 
-  function addPoint() {
-    setScore(score + 1);
-  }
-
   function handleAddOne() {
-    addPoint();
+    setScore((currentScore) => currentScore + 1);
   }
 
   function handleAddThree() {
-    addPoint();
-    addPoint();
-    addPoint();
+    setScore((currentScore) => currentScore + 3);
   }
 
   function handleMinusOne() {
-    setScore((s) => Math.max(0, s - 1));
+    setScore((currentScore) => Math.max(0, currentScore - 1));
   }
 
   function handleReset() {
@@ -31,14 +25,18 @@ function TeamScore({ label }) {
       <h2>{teamName || label}</h2>
 
       <label htmlFor={`${label}-name`}>Team name</label>
-      <input id={`${label}-name`} value={teamName} />
+      <input
+        id={`${label}-name`}
+        value={teamName}
+        onChange={(event) => setTeamName(event.target.value)}
+      />
 
       <p className="score">Score: {score}</p>
 
       <button onClick={handleAddOne}>+1</button>
       <button onClick={handleAddThree}>+3</button>
       <button onClick={handleMinusOne}>-1</button>
-      <button onClick={handleReset()}>Reset</button>
+      <button onClick={handleReset}>Reset</button>
     </section>
   );
 }
