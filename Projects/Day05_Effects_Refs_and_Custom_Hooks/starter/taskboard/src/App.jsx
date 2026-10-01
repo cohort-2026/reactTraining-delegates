@@ -1,42 +1,88 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";
 import AddTaskForm from "./components/AddTaskForm.jsx";
 import Board from "./components/Board.jsx";
-import { tasks as initialTasks } from "./data/tasks.js";
+import { useLocalStorage } from "./hooks/useLocalStorage.js";
 
-// TODO (Lab 5.1): render ProductSearch here while you work on the lab.
-// TODO (Lab 5.2): render WeatherDashboard here while you work on the lab.
-// TODO (Lab 5.3 steps 2-5): replace useState with useLocalStorage("tasks", null), seed the board from
-//   JSONPlaceholder when tasks is null, and show a loading message while seeding.
-// TODO (Lab 5.3 step 8): add a Reset board button.
 function App() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useLocalStorage("taskboard-tasks", []);
+  const [seeded, setSeeded] = useLocalStorage("taskboard-seeded", false);
+  const [seedError, setSeedError] = useState("");
+
+  // Seed from JSONPlaceholder on first run (or after a reset)
+  useEffect(() => {
+    if (seeded) return;
+    const controller = new AbortController();
+
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=8", {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Request failed (${response.status})`);
+        return response.json();
+      })
+      .then((todos) => {
+        setTasks(
+          todos.map((todo) => ({
+            id: crypto.randomUUID(),
+            title: todo.title,
+            assignee: "",
+            points: 1,
+            status: todo.completed ? "done" : "todo",
+          }))
+        );
+        setSeeded(true);
+        setSeedError("");
+      })
+      .catch((error) => {
+        if (error.name === "AbortError") return;
+        setSeedError("Could not load starter tasks.");
+      });
+
+    return () => controller.abort();
+  }, [seeded, setTasks, setSeeded]);
+
+  function handleReset() {
+    if (window.confirm("Reset the board to the starter tasks?")) {
+      setTasks([]);
+      setSeeded(false); // triggers the seed effect again
+    }
+  }
 
   function handleAdd(newTask) {
-    const id = crypto.randomUUID();
-    setTasks((prev) => [...prev, { ...newTask, id, status: "todo" }]);
+    setTasks((previousTasks) => [
+      ...previousTasks,
+      { ...newTask, id: crypto.randomUUID(), status: "todo" },
+    ]);
   }
 
   function handleStatusChange(id, status) {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, status } : t))
+    setTasks((previousTasks) =>
+      previousTasks.map((task) =>
+        task.id === id ? { ...task, status } : task
+      )
     );
   }
 
   function handleRename(id, title) {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, title } : t))
+    setTasks((previousTasks) =>
+      previousTasks.map((task) =>
+        task.id === id ? { ...task, title } : task
+      )
     );
   }
 
   function handleDelete(id) {
-    setTasks((prev) => prev.filter((t) => t.id !== id));
+    setTasks((previousTasks) =>
+      previousTasks.filter((task) => task.id !== id)
+    );
   }
 
   return (
     <>
-      <Header tasks={tasks} />
+      <Header tasks={tasks} onReset={handleReset} />
+      {seedError && <p role="alert">{seedError}</p>}
       <AddTaskForm onAdd={handleAdd} />
       <Board
         tasks={tasks}
@@ -47,5 +93,6 @@ function App() {
     </>
   );
 }
+
 
 export default App;
