@@ -5,6 +5,7 @@ import AddTaskForm from "./components/AddTaskForm.jsx";
 import Board from "./components/Board.jsx";
 import { tasks as initialTasks } from "./data/tasks.js";
 import ProductSearch from "./components/ProductSearch";
+import WeatherDashboard from "./components/WeatherDashboard";
 
 // TODO (Lab 5.1): render ProductSearch here while you work on the lab.
 // TODO (Lab 5.2): render WeatherDashboard here while you work on the lab.
@@ -34,6 +35,7 @@ function App() {
   return (
     <>
       <ProductSearch />
+      <WeatherDashboard />
       <Header tasks={tasks} />
       <AddTaskForm onAdd={handleAdd} />
 
