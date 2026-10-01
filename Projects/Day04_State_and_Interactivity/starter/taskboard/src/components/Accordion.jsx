@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function Accordion({ id, title, content, isOpen, onToggle }) {
   return (
     <div className="accordion-item">
