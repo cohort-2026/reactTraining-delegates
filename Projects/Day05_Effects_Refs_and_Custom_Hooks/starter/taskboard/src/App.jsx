@@ -4,6 +4,7 @@ import Header from "./components/Header.jsx";
 import AddTaskForm from "./components/AddTaskForm.jsx";
 import Board from "./components/Board.jsx";
 import { tasks as initialTasks } from "./data/tasks.js";
+import ProductSearch from "./components/ProductSearch";
 
 // TODO (Lab 5.1): render ProductSearch here while you work on the lab.
 // TODO (Lab 5.2): render WeatherDashboard here while you work on the lab.
@@ -19,15 +20,11 @@ function App() {
   }
 
   function handleStatusChange(id, status) {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, status } : t))
-    );
+    setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, status } : t)));
   }
 
   function handleRename(id, title) {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, title } : t))
-    );
+    setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, title } : t)));
   }
 
   function handleDelete(id) {
@@ -36,8 +33,10 @@ function App() {
 
   return (
     <>
+      <ProductSearch />
       <Header tasks={tasks} />
       <AddTaskForm onAdd={handleAdd} />
+
       <Board
         tasks={tasks}
         onStatusChange={handleStatusChange}
