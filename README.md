@@ -1,6 +1,6 @@
 # React Development: Beginner to Professional — delegate materials
 
-This repository holds the delegate-facing materials for the course: delegate handbooks, lab starters, and bug-fix exercises for every day. Course outline: `Training Content/React_Beginner_to_Pro_10Day_TOC.pdf`.
+This repository holds the delegate-facing materials for the course: delegate handbooks, slides, lab starters, and bug-fix exercises. Course outline: `Training Content/React_Beginner_to_Pro_10Day_TOC.pdf`.
 
 ## Getting this on your machine
 
@@ -11,18 +11,20 @@ git clone https://github.com/cohort-2026/reactTraining-delegates.git
 cd reactTraining-delegates
 ```
 
-New solutions and answer keys appear here automatically each morning, so run `git pull` most mornings to get the latest.
+Slides, solutions and answer keys are added here after each day has been taught, so run `git pull` to get the latest.
 
 ## Structure
 
 - **`Markdown Handbooks/`** — the delegate handbook for each day, in Markdown.
-- **`Training Content/`** — the same handbooks as Word documents, plus the course outline PDF.
-- **`Projects/DayNN_.../`** — that day's lab code. `starter/` is where you begin each lab; `solution/` (once it unlocks) is the finished, verified result.
+- **`Training Content/`** — the same handbooks as Word documents, the course outline PDF, and the slide deck for each day covered so far. Each slide's speaker notes hold a short summary of what was said, shown and asked.
+- **`Projects/DayNN_.../`** — that day's lab code. `starter/` is where you begin each lab; `solution/` (once it is released) is the finished, verified result.
 - **`Exercises/DayNN_.../`** — two small bug-fix exercises per day, based on that day's topics. See `Exercises/README.md` for how they work.
-- **`Answer Keys/DayNN_.../`** — once it unlocks, the fixed version of each exercise plus an explanation of every bug.
+- **`Answer Keys/DayNN_.../`** — once it is released, the fixed version of each exercise plus an explanation of every bug.
 
-## Solutions and answer keys
+## Slides, solutions and answer keys
 
-Each day's `Projects/DayNN_.../solution/` and `Answer Keys/DayNN_.../` unlock automatically the morning after that day, so you can check your own work without seeing the answer first. If a day's folder isn't here yet, it isn't due yet.
+Each day's slide deck, `Projects/DayNN_.../solution/` and `Answer Keys/DayNN_.../` are released after that day has been taught, so you can check your own work without seeing the answer first. If a day's folder isn't here yet, it hasn't been released yet.
 
-_Last synced: 2026-09-30T13:10:18.644Z_
+**Released so far: Days 1 to 4.**
+
+_Last updated: 2026-10-01_

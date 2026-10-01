@@ -1,0 +1,36 @@
+:root {
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+}
+
+main {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  margin: 0.25rem;
+}
+
+.summary {
+  font-weight: bold;
+}
+
+.packing-list {
+  list-style: none;
+  padding: 0;
+}
+
+.item.packed label {
+  text-decoration: line-through;
+  opacity: 0.6;
+}

@@ -1,0 +1,8 @@
+{
+  "name": "day02-exercise-2-todo-report",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node todo-report.js"
+  }
+}

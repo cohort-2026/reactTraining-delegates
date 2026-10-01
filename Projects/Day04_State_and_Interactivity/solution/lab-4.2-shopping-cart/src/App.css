@@ -1,0 +1,202 @@
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* Lab 3.1: Button */
+.btn {
+  font: inherit;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 0.875rem;
+}
+
+.btn-md {
+  padding: 8px 16px;
+}
+
+.btn-lg {
+  padding: 12px 20px;
+  font-size: 1.125rem;
+}
+
+.btn-primary {
+  background: #0f766e;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #0f766e;
+  border-color: #0f766e;
+}
+
+/* Lab 3.1: Card */
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card-highlight {
+  border-color: #0f766e;
+}
+
+/* Lab 3.2: product catalogue */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  margin-bottom: 0;
+}
+
+.product-card h3 {
+  margin-top: 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Lab 3.3: TaskBoard */
+.header {
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  margin-bottom: 0;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.column {
+  background: #eef2f7;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.column h2 {
+  margin-top: 0;
+  font-size: 1.125rem;
+}
+
+.column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.column .card {
+  margin-bottom: 12px;
+}
+
+.column .card h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.column .card p {
+  margin: 0 0 4px;
+}
+
+.points {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f766e;
+}
+
+/* Lab 4.1: counter, theme toggle and accordion */
+.practice {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.practice button {
+  font: inherit;
+  margin: 0 8px 8px 0;
+}
+
+.light,
+.dark {
+  padding: 12px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.light {
+  background: #ffffff;
+  color: #1f2937;
+}
+
+.dark {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+.accordion-item {
+  margin-top: 8px;
+}
+
+.accordion-item p {
+  margin: 4px 0 0;
+}
+
+/* Lab 4.2: shopping cart */
+.shop {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.product-card button {
+  display: block;
+  margin-top: 8px;
+}
+
+.cart {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.cart h2 {
+  margin-top: 0;
+  font-size: 1.125rem;
+}
+
+.cart ul {
+  padding-left: 16px;
+}
+
+.cart li button {
+  margin: 0 0 4px 6px;
+}
