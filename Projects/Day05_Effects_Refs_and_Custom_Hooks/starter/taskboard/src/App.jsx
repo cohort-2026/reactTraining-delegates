@@ -4,6 +4,7 @@ import Header from "./components/Header.jsx";
 import AddTaskForm from "./components/AddTaskForm.jsx";
 import Board from "./components/Board.jsx";
 import { tasks as initialTasks } from "./data/tasks.js";
+import WeatherDashboard from "./components/weather/WeatherDashboard.jsx";
 
 // TODO (Lab 5.1): render ProductSearch here while you work on the lab.
 // TODO (Lab 5.2): render WeatherDashboard here while you work on the lab.
@@ -35,7 +36,8 @@ function App() {
   }
 
   return (
-    <>
+    <div>
+      <WeatherDashboard />
       <Header tasks={tasks} />
       <AddTaskForm onAdd={handleAdd} />
       <Board
@@ -44,7 +46,7 @@ function App() {
         onRename={handleRename}
         onDelete={handleDelete}
       />
-    </>
+    </div>
   );
 }
 

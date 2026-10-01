@@ -1,3 +1,4 @@
+import ProductSearch from "./ProductSearch.jsx";
 import { useState } from "react";
 import { products } from "./products.js";
 import ProductGrid from "./ProductGrid.jsx";
