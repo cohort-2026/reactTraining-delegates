@@ -1,11 +1,17 @@
 import { useState } from "react";
 import "./App.css";
+
 import Header from "./components/Header.jsx";
 import Board from "./components/Board.jsx";
 import { tasks } from "./data/tasks.js";
 import ThemeToggle from "./components/ThemeToggle";
 import Counter from "./components/Counter.jsx";
 import Accordion from "./components/Accordion.jsx";
+
+import Cart from "./components/catalogue/Cart.jsx";
+import ProductGrid from "./components/catalogue/ProductGrid.jsx";
+
+import { products } from "./components/catalogue/products.js";
 
 // TODO (Lab 4.1): render Counter, ThemeToggle and Accordion here while you work on the lab.
 // TODO (Lab 4.2): render <Shop /> here while you work on the lab.
@@ -14,6 +20,53 @@ import Accordion from "./components/Accordion.jsx";
 //   and pass the handlers down to Board.
 function App() {
   const [openIds, setOpenIds] = useState([]);
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (productId) => {
+    setCart((currentCart) => {
+      const existingItem = currentCart.find(
+        (item) => item.productId === productId,
+      );
+
+      if (existingItem) {
+        return currentCart.map((item) =>
+          item.productId === productId
+            ? { ...item, quantity: item.quantity + 1 }
+            : item,
+        );
+      }
+
+      return [...currentCart, { productId, quantity: 1 }];
+    });
+  };
+
+  const increaseQuantity = (productId) => {
+    setCart((currentCart) =>
+      currentCart.map((item) =>
+        item.productId === productId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item,
+      ),
+    );
+  };
+
+  const decreaseQuantity = (productId) => {
+    setCart((currentCart) =>
+      currentCart
+        .map((item) =>
+          item.productId === productId
+            ? { ...item, quantity: item.quantity - 1 }
+            : item,
+        )
+        .filter((item) => item.quantity > 0),
+    );
+  };
+
+  const removeFromCart = (productId) => {
+    setCart((currentCart) =>
+      currentCart.filter((item) => item.productId !== productId),
+    );
+  };
 
   const toggleAccordion = (id) => {
     setOpenIds((currentIds) =>
@@ -38,6 +91,16 @@ function App() {
 
       <ThemeToggle />
       <Counter />
+
+      <ProductGrid products={products} onAddToCart={addToCart} />
+
+      <Cart
+        cart={cart}
+        products={products}
+        onIncrease={increaseQuantity}
+        onDecrease={decreaseQuantity}
+        onRemove={removeFromCart}
+      />
 
       <h2>Accordion</h2>
 
