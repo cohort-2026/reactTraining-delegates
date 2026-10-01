@@ -1,10 +1,16 @@
-function MemberCard({ name, role, openTasks }) {
+function MemberCard({ member }) {
   return (
-    <article class="member-card">
-      <h3>{name}</h3>
-      <p>{role}</p>
-      {openTasks && <span className="badge">Open tasks: {openTasks}</span>}
-    </article>
+    <div className="member-card">
+      <h2>{member.name}</h2>
+      <p>{member.role}</p>
+
+      {member.openTasks > 0 && (
+        <span className="badge">
+          Open tasks: {member.openTasks}
+        </span>
+      )}
+    </div>
   );
 }
+
 export default MemberCard;

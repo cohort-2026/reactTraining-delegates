@@ -4,3 +4,4 @@ export const team = [
   { id: "m3", name: "Naledi Khumalo", role: "Designer", openTasks: 1 },
   { id: "m4", name: "Thabo Molefe", role: "Tester", openTasks: 0 },
 ];
+
