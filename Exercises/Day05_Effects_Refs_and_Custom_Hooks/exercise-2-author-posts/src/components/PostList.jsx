@@ -3,15 +3,19 @@ import { API } from "../data/authors.js";
 import { useFetch } from "../hooks/useFetch.js";
 
 function PostList({ authorId }) {
-  const { data: posts, loading, error } = useFetch(`${API}/posts?userId=${authorId}`);
+  const {
+    data: posts,
+    loading,
+    error,
+  } = useFetch(`${API}/posts?userId=${authorId}`);
+
+  const [search, setSearch] = useState("");
 
   if (loading) return <p>Loading posts...</p>;
   if (error) return <p role="alert">Could not load posts: {error}</p>;
 
-  const [search, setSearch] = useState("");
-
   const visiblePosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(search.toLowerCase())
+    post.title.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
