@@ -1,10 +1,10 @@
 import { useState } from "react";
 import AddTaskForm from "./components/AddTaskForm";
 import TaskItem from "./components/TaskItem";
-import { Status, Task } from "./types";
+import type { Status, Task } from "./types";
 
 export default function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   function handleAdd(title: string, assignee: string) {
     const newTask: Task = {
