@@ -12,20 +12,28 @@ function FocusTimer({ minutes }) {
   const [taskName, setTaskName] = useState("");
   const taskInputRef = useRef(null);
 
-  if (taskInputRef.current) {
+  // Bug 1: the input does not exist during the first render, so reading
+  // taskInputRef.current in the component body skipped focus on load and
+  // then stole focus on every later render. Focus after mount instead.
+  useEffect(() => {
     taskInputRef.current.focus();
-  }
+  }, []);
 
+  // Bug 2: starting an interval without cleanup left the old timer running
+  // when Pause/Reset flipped isRunning, so Start stacked extra intervals.
   useEffect(() => {
     if (!isRunning) return;
-    setInterval(() => {
+    const id = setInterval(() => {
       setSecondsLeft((s) => (s > 0 ? s - 1 : 0));
     }, 1000);
+    return () => clearInterval(id);
   }, [isRunning]);
 
+  // Bug 3: an empty dependency array ran this only once, so the tab title
+  // stayed at 25:00. List secondsLeft so the title tracks the countdown.
   useEffect(() => {
     document.title = `${formatTime(secondsLeft)} - Focus Timer`;
-  }, []);
+  }, [secondsLeft]);
 
   function handleReset() {
     setIsRunning(false);
