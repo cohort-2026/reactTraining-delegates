@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 export function useLocalStorage(key, initialValue) {
   const [value, setValue] = useState(() => {
     const stored = localStorage.getItem(key);
-    return stored !== null ? stored : initialValue;
+    // Bug 4: parse the JSON that stringify wrote.
+    return stored !== null ? JSON.parse(stored) : initialValue;
   });
 
   useEffect(() => {

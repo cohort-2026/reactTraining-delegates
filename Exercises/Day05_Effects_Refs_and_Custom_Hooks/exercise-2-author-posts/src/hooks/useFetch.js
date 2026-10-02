@@ -5,16 +5,19 @@ export function useFetch(url) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Bug 2: re-fetch when url changes. Bug 3: abort the previous request.
   useEffect(() => {
-    fetch(url)
+    const ctrl = new AbortController();
+    fetch(url, { signal: ctrl.signal })
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       })
       .then((d) => { setData(d); setError(null); })
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-  }, []);
+      .catch((e) => e.name !== "AbortError" && setError(e.message))
+      .finally(() => !ctrl.signal.aborted && setLoading(false));
+    return () => { ctrl.abort(); setLoading(true); };
+  }, [url]);
 
   return { data, error, loading };
 }
