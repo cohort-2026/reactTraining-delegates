@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const emptyForm = { title: "", assignee: "", points: 1 };
 
-// TODO (Lab 5.3 step 6): auto-focus the title input with a ref.
 function AddTaskForm({ onAdd }) {
   const [form, setForm] = useState(emptyForm);
   const [error, setError] = useState("");
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    titleRef.current.focus();
+  }, []);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -31,7 +35,7 @@ function AddTaskForm({ onAdd }) {
   return (
     <form className="add-task-form" onSubmit={handleSubmit}>
       <label htmlFor="title">Title</label>
-      <input id="title" name="title" value={form.title}
+      <input id="title" name="title" value={form.title} ref={titleRef}
         aria-invalid={Boolean(error)} onChange={handleChange} />
 
       <label htmlFor="assignee">Assignee</label>

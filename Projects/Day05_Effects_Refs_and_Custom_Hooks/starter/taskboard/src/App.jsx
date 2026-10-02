@@ -1,17 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";
 import AddTaskForm from "./components/AddTaskForm.jsx";
 import Board from "./components/Board.jsx";
-import { tasks as initialTasks } from "./data/tasks.js";
+import ProductSearch from "./components/ProductSearch.jsx";
+import WeatherDashboard from "./components/WeatherDashboard.jsx";
+import useLocalStorage from "./hooks/useLocalStorage.js";
 
-// TODO (Lab 5.1): render ProductSearch here while you work on the lab.
-// TODO (Lab 5.2): render WeatherDashboard here while you work on the lab.
-// TODO (Lab 5.3 steps 2-5): replace useState with useLocalStorage("tasks", null), seed the board from
-//   JSONPlaceholder when tasks is null, and show a loading message while seeding.
-// TODO (Lab 5.3 step 8): add a Reset board button.
+const SEED_URL = "https://jsonplaceholder.typicode.com/todos?_limit=8";
+
+function toTask(todo) {
+  return {
+    id: String(todo.id),
+    title: todo.title,
+    assignee: `User ${todo.userId}`,
+    points: (todo.id % 5) + 1,
+    status: todo.completed ? "done" : "todo",
+  };
+}
+
 function App() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useLocalStorage("tasks", null);
+  const [seedError, setSeedError] = useState(false);
+
+  useEffect(() => {
+    if (tasks !== null) return;
+
+    const controller = new AbortController();
+    fetch(SEED_URL, { signal: controller.signal })
+      .then((res) => {
+        if (!res.ok) throw new Error("Request failed");
+        return res.json();
+      })
+      .then((todos) => setTasks(todos.map(toTask)))
+      .catch((err) => {
+        if (err.name === "AbortError") return;
+        setSeedError(true);
+      });
+
+    return () => controller.abort();
+  }, [tasks, setTasks]);
 
   function handleAdd(newTask) {
     const id = crypto.randomUUID();
@@ -34,16 +62,27 @@ function App() {
     setTasks((prev) => prev.filter((t) => t.id !== id));
   }
 
+  function handleReset() {
+    setSeedError(false);
+    setTasks(null);
+  }
+
+  if (seedError) return <p>Could not load starter tasks. Refresh to try again.</p>;
+  if (tasks === null) return <p>Loading tasks...</p>;
+
   return (
     <>
       <Header tasks={tasks} />
       <AddTaskForm onAdd={handleAdd} />
+      <button onClick={handleReset}>Reset board</button>
       <Board
         tasks={tasks}
         onStatusChange={handleStatusChange}
         onRename={handleRename}
         onDelete={handleDelete}
       />
+      <ProductSearch />
+      <WeatherDashboard />
     </>
   );
 }
