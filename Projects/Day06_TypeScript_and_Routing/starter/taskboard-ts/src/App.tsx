@@ -8,7 +8,7 @@ import "./App.css";
 import Header from "./components/Header.js";
 import AddTaskForm from "./components/AddTaskForm.js";
 import Board from "./components/Board.js";
-import useLocalStorage from "./hooks/useLocalStorage.js";
+import useLocalStorage from "./hooks/useLocalStorage.ts";
 import type { Task } from "./types";
 
 const SEED_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";
