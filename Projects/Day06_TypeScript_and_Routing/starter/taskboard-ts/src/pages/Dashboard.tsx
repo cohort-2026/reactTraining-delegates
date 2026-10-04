@@ -1,4 +1,4 @@
-import { useOutletContext, useSearchParams } from "react-router";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import Board from "../components/Board";
 import AddTaskForm from "../components/AddTaskForm";
 import Header from "../components/Header";

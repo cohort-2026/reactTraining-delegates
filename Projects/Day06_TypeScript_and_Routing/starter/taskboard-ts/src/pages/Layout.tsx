@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import type { Task, Status } from "../types";
