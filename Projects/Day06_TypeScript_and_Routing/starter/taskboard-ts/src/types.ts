@@ -6,4 +6,5 @@ export type Task = {
   assignee: string;
   points: number;
   status: Status;
+  projectId?: string;
 };
