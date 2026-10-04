@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { SubmitEvent } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 export default function Login() {
@@ -8,7 +8,7 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as { returnTo?: string } | null)?.returnTo ?? "/";
+  const from = (location.state as { from?: string } | null)?.from ?? "/";
 
   function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();

@@ -1,9 +1,9 @@
-import { Link, useParams } from "react-router";
+import { Link, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
 
 export default function Project() {
-  const { projectId } = useParams();
-  const project = projects.find((p) => p.id === Number(projectId));
+  const { projectId } = useParams<{ projectId: string }>();
+  const project = projects.find((p) => String(p.id) === (projectId));
 
   if (!project) {
     return (
