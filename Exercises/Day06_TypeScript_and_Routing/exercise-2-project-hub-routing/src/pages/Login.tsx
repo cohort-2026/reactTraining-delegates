@@ -8,7 +8,9 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as { returnTo?: string } | null)?.returnTo ?? "/";
+
+  const from =
+    (location.state as { returnTo?: string } | null)?.returnTo ?? "/";
 
   function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -19,8 +21,11 @@ export default function Login() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Log in</h1>
+
       <label htmlFor="name">Your name</label>
+
       <input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+
       <button type="submit">Log in</button>
     </form>
   );

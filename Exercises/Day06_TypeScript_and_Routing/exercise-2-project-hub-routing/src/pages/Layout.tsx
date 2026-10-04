@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router";
 import { projects } from "../data/projects";
 
 export default function Layout() {
@@ -13,7 +13,7 @@ export default function Layout() {
             {project.name}
           </NavLink>
         ))}
-        <a href="/settings">Settings</a>
+        <NavLink to="/settings">Settings</NavLink>{" "}
       </nav>
       <main>
         <Outlet />
