@@ -1,0 +1,167 @@
+﻿
+> author-posts@0.0.0 test
+> vitest --run --reporter=verbose
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.1 [39m[90mC:/Users/AMANDA/OneDrive/Documents/GitHub/reactTraining-delegates/Exercises/Day05_Effects_Refs_and_Custom_Hooks/exercise-2-author-posts[39m
+
+ [32mΓ£ô[39m src/App.test.jsx[2m > [22mAuthor posts[2m > [22mshows a loading message, then the first author's posts[32m 89[2mms[22m[39m
+ [32mΓ£ô[39m src/App.test.jsx[2m > [22mAuthor posts[2m > [22mfilters the posts by title[33m 416[2mms[22m[39m
+ [32mΓ£ô[39m src/App.test.jsx[2m > [22mAuthor posts[2m > [22mshows an error message when the posts cannot be loaded[32m 35[2mms[22m[39m
+ [31m├ù[39m src/App.test.jsx[2m > [22mAuthor posts[2m > [22mloads the posts for a newly selected author[32m 104[2mms[22m[39m
+[31m   ΓåÆ Unable to find an element with the text: Loading posts.... This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main>[31m
+      [36m<h1>[31m
+        [0mAuthor Posts[0m
+      [36m</h1>[31m
+      [36m<label[31m
+        [33mfor[31m=[32m"author"[31m
+      [36m>[31m
+        [0mAuthor[0m
+      [36m</label>[31m
+      [36m<select[31m
+        [33mid[31m=[32m"author"[31m
+      [36m>[31m
+        [36m<option[31m
+          [33mvalue[31m=[32m"1"[31m
+        [36m>[31m
+          [0mLeanne Graham[0m
+        [36m</option>[31m
+        [36m<option[31m
+          [33mvalue[31m=[32m"2"[31m
+        [36m>[31m
+          [0mErvin Howell[0m
+        [36m</option>[31m
+        [36m<option[31m
+          [33mvalue[31m=[32m"3"[31m
+        [36m>[31m
+          [0mClementine Bauch[0m
+        [36m</option>[31m
+      [36m</select>[31m
+      [36m<button>[31m
+        [0mLike this blog ([0m
+        [0m0[0m
+        [0m)[0m
+      [36m</button>[31m
+      [36m<section>[31m
+        [36m<label[31m
+          [33mfor[31m=[32m"search"[31m
+        [36m>[31m
+          [0mFilter by title[0m
+        [36m</label>[31m
+        [36m<input[31m
+          [33mid[31m=[32m"search"[31m
+          [33mvalue[31m=[32m""[31m
+        [36m/>[31m
+        [36m<ul>[31m
+          [36m<li>[31m
+            [0mSunt aut facere[0m
+          [36m</li>[31m
+          [36m<li>[31m
+            [0mQui est esse[0m
+          [36m</li>[31m
+        [36m</ul>[31m
+      [36m</section>[31m
+    [36m</main>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+ [32mΓ£ô[39m src/App.test.jsx[2m > [22mAuthor posts[2m > [22mnever shows a slow, older response for a different author[32m 122[2mms[22m[39m
+ [32mΓ£ô[39m src/App.test.jsx[2m > [22mAuthor posts[2m > [22mremembers the chosen author the next time the page opens[32m 125[2mms[22m[39m
+ [32mΓ£ô[39m src/App.test.jsx[2m > [22mAuthor posts[2m > [22mcounts every click on the Like button[32m 155[2mms[22m[39m
+npm.cmd : 
+At line:1 char:1
++ npm.cmd test -- --run --reporter=verbose 2>&1 | Out-File -Encoding ut ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m[1m[41m Failed Tests 1 [49m[22m[31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m
+
+[41m[1m FAIL [22m[49m src/App.test.jsx[2m > [22mAuthor posts[2m > [22mloads the posts for a newly selected 
+author
+[31m[1mTestingLibraryElementError[22m: Unable to find an element with the text: Loading posts.... This could be 
+because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher 
+to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[31m
+  [36m<div>[31m
+    [36m<main>[31m
+      [36m<h1>[31m
+        [0mAuthor Posts[0m
+      [36m</h1>[31m
+      [36m<label[31m
+        [33mfor[31m=[32m"author"[31m
+      [36m>[31m
+        [0mAuthor[0m
+      [36m</label>[31m
+      [36m<select[31m
+        [33mid[31m=[32m"author"[31m
+      [36m>[31m
+        [36m<option[31m
+          [33mvalue[31m=[32m"1"[31m
+        [36m>[31m
+          [0mLeanne Graham[0m
+        [36m</option>[31m
+        [36m<option[31m
+          [33mvalue[31m=[32m"2"[31m
+        [36m>[31m
+          [0mErvin Howell[0m
+        [36m</option>[31m
+        [36m<option[31m
+          [33mvalue[31m=[32m"3"[31m
+        [36m>[31m
+          [0mClementine Bauch[0m
+        [36m</option>[31m
+      [36m</select>[31m
+      [36m<button>[31m
+        [0mLike this blog ([0m
+        [0m0[0m
+        [0m)[0m
+      [36m</button>[31m
+      [36m<section>[31m
+        [36m<label[31m
+          [33mfor[31m=[32m"search"[31m
+        [36m>[31m
+          [0mFilter by title[0m
+        [36m</label>[31m
+        [36m<input[31m
+          [33mid[31m=[32m"search"[31m
+          [33mvalue[31m=[32m""[31m
+        [36m/>[31m
+        [36m<ul>[31m
+          [36m<li>[31m
+            [0mSunt aut facere[0m
+          [36m</li>[31m
+          [36m<li>[31m
+            [0mQui est esse[0m
+          [36m</li>[31m
+        [36m</ul>[31m
+      [36m</section>[31m
+    [36m</main>[31m
+  [36m</div>[31m
+[36m</body>[31m[39m
+[90m [2mΓ¥»[22m Object.getElementError node_modules/@testing-library/dom/dist/config.js:[2m37:19[22m[39m
+[90m [2mΓ¥»[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m76:38[22m[39m
+[90m [2mΓ¥»[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m52:17[22m[39m
+[90m [2mΓ¥»[22m node_modules/@testing-library/dom/dist/query-helpers.js:[2m95:19[22m[39m
+[36m [2mΓ¥»[22m src/App.test.jsx:[2m98:19[22m[39m
+    [90m 96|[39m
+    [90m 97|[39m     await user.selectOptions(screen.getByLabelText("Author"), "Ervin HΓÇª
+    [90m 98|[39m     expect(screen.getByText("Loading posts...")).toBeInTheDocument();
+    [90m   |[39m                   [31m^[39m
+    [90m 99|[39m     await server.respond(2, postsByAuthor[2]);
+    [90m100|[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/1]ΓÄ»[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m6 passed[39m[22m[90m (7)[39m
+[2m   Start at [22m 03:17:45
+[2m   Duration [22m 5.93s[2m (environment 41%, tests 19%, setup 16%, transform 15%, import 10%)[22m
+

@@ -14,7 +14,7 @@ function App() {
       <select
         id="author"
         value={authorId}
-        onChange={(e) => setAuthorId(e.target.value)}
+        onChange={(e) => setAuthorId(Number(e.target.value))}
       >
         {authors.map((author) => (
           <option key={author.id} value={author.id}>
