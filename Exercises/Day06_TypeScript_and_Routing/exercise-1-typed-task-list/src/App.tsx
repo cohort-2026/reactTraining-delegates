@@ -1,10 +1,12 @@
 import { useState } from "react";
 import AddTaskForm from "./components/AddTaskForm";
 import TaskItem from "./components/TaskItem";
-import { Status, Task } from "./types";
+// Bug 1: types are erased at runtime, so they need a type-only import.
+import type { Status, Task } from "./types";
 
 export default function App() {
-  const [tasks, setTasks] = useState([]);
+  // Bug 2: useState([]) infers never[], so tell TS this holds Task items.
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   function handleAdd(title: string, assignee: string) {
     const newTask: Task = {
