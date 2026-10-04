@@ -3,6 +3,7 @@ import type { Dispatch, SetStateAction } from "react";
 import { useEffect } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import type { Task } from "../types";
+import useAuth from "../hooks/useAuth";
 
 export type BoardContext = {
   tasks: Task[];
@@ -49,6 +50,8 @@ function Layout() {
 
   const navigate = useNavigate();
 
+  const { user, logout } = useAuth();
+
   useEffect(() => {
     if (tasks.length === 0) {
       setTasks(sampleTasks);
@@ -65,6 +68,16 @@ function Layout() {
     <>
       <header>
         <h1>TaskBoard</h1>
+
+        {user && (
+          <div>
+            <span>Welcome, {user.name}</span>
+
+            <button type="button" onClick={logout}>
+              Log out
+            </button>
+          </div>
+        )}
 
         <nav>
           <NavLink

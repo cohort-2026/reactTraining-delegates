@@ -9,6 +9,9 @@ import Project from "./pages/Project";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
+import Login from "./pages/Login";
+import RequireAuth from "./pages/RequireAuth";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,8 +26,17 @@ const router = createBrowserRouter([
         Component: Project,
       },
       {
-        path: "settings",
-        Component: Settings,
+        path: "login",
+        Component: Login,
+      },
+      {
+        Component: RequireAuth,
+        children: [
+          {
+            path: "settings",
+            Component: Settings,
+          },
+        ],
       },
       {
         path: "*",
