@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
-import type { SubmitEvent } from "react";
+import type { FormEvent } from "react";
 
 type AddTaskFormProps = {
-  onAdd: (title: string, assignee: string) => void;
+  onAdd: (title: string, assignee?: string) => void;
 };
 
 export default function AddTaskForm({ onAdd }: AddTaskFormProps) {
@@ -10,10 +10,10 @@ export default function AddTaskForm({ onAdd }: AddTaskFormProps) {
   const [assignee, setAssignee] = useState("");
   const titleRef = useRef<HTMLInputElement>(null);
 
-  function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (title.trim() === "") return;
-    onAdd(title.trim(), assignee.trim());
+    onAdd(title.trim(), assignee.trim() || undefined);
     setTitle("");
     setAssignee("");
     titleRef.current?.focus();

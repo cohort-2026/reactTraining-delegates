@@ -7,7 +7,7 @@ type TaskItemProps = {
 };
 
 export default function TaskItem({ task, onStatusChange }: TaskItemProps) {
-  const owner = task.assignee.split(" ")[0];
+  const owner = task.assignee?.split(" ")[0]?? "Unassigned";
 
   function handleChange(e: ChangeEvent<HTMLSelectElement>) {
     onStatusChange(task.id, e.target.value as Status);
