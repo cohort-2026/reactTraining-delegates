@@ -1,8 +1,3 @@
-// TODO (Lab 6.1 steps 2 and 5): in taskboard-ts this becomes App.tsx. Type every handler parameter
-// (id: string, status: Status) and pass the type to the Hook: useLocalStorage<Task[] | null>("tasks", null).
-// TODO (Lab 6.2 steps 2-5): move the tasks state, the seeding effect and the handlers into src/pages/Layout.tsx,
-// share tasks with the pages through Outlet context, and add a projectId to every seeded and new task.
-// TODO (Lab 6.3 step 6): show the user's name and a Log out button in Layout.
 import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";

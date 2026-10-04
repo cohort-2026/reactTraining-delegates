@@ -1,4 +1,3 @@
-// TODO (Lab 6.1): practice code from an earlier lab that App no longer renders. Leave it out of taskboard-ts.
 export const products = [
   { id: 1, name: "Wireless Mouse", price: 349, category: "electronics", inStock: true, rating: 4 },
   { id: 2, name: "Mechanical Keyboard", price: 1299, category: "electronics", inStock: true, rating: 5 },

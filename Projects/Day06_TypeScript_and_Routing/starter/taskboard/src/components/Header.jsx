@@ -1,5 +1,3 @@
-// TODO (Lab 6.1 step 4): add a HeaderProps type.
-// TODO (Lab 6.2): render the header in Layout, above the navigation.
 import { useEffect } from "react";
 
 function Header({ tasks }) {

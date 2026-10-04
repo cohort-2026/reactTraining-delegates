@@ -1,4 +1,3 @@
-// TODO (Lab 6.1): practice code from an earlier lab that App no longer renders. Leave it out of taskboard-ts.
 import { useState } from "react";
 import { useFetch } from "../hooks/useFetch.js";
 

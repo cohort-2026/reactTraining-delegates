@@ -1,5 +1,3 @@
-// TODO (Lab 6.1 steps 4 and 6): add a Props type, type the ref with useRef<HTMLInputElement>(null),
-// and type the ChangeEvent and SubmitEvent handlers.
 import { useEffect, useRef, useState } from "react";
 
 const emptyForm = { title: "", assignee: "", points: 1 };

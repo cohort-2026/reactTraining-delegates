@@ -1,4 +1,3 @@
-// TODO (Lab 6.1 step 5): make this Hook generic: useFetch<T>(url: string): FetchState<T>.
 import { useEffect, useState } from "react";
 
 export function useFetch(url) {

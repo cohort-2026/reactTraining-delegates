@@ -1,4 +1,3 @@
-// TODO (Lab 6.1 step 4): add a BoardProps type.
 import Column from "./Column.jsx";
 
 const columns = [["todo", "To do"], ["doing", "In progress"], ["done", "Done"]];

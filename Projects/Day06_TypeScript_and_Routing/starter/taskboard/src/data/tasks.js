@@ -1,4 +1,3 @@
-// TODO (Lab 6.1): not used since Lab 5.3 (the board is seeded from JSONPlaceholder). Leave it out of taskboard-ts.
 export const tasks = [
   { id: "1", title: "Set up project", assignee: "Zanele", points: 2, status: "done" },
   { id: "2", title: "Build task list", assignee: "Sipho", points: 5, status: "doing" },
