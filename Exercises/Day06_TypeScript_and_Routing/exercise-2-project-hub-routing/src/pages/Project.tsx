@@ -3,7 +3,8 @@ import { projects } from "../data/projects";
 
 export default function Project() {
   const { projectId } = useParams();
-  const project = projects.find((p) => p.id === Number(projectId));
+  // Bug 5: URL params and project ids are both strings; Number() never matches.
+  const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
     return (

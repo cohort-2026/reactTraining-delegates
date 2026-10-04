@@ -14,7 +14,8 @@ export const routes: RouteObject[] = [
     errorElement: <NotFound />,
     children: [
       { index: true, element: <Dashboard /> },
-      { path: "projects/projectId", element: <Project /> },
+      // Bug 2: :projectId is a URL param; without the colon this path is literal.
+      { path: "projects/:projectId", element: <Project /> },
       {
         path: "settings",
         element: (

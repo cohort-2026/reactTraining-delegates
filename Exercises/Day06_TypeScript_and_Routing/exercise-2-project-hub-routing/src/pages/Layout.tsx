@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from "react-router-dom";
+// Bug 1: React Router 8 ships as "react-router", not "react-router-dom".
+import { NavLink, Outlet } from "react-router";
 import { projects } from "../data/projects";
 
 export default function Layout() {
@@ -13,7 +14,8 @@ export default function Layout() {
             {project.name}
           </NavLink>
         ))}
-        <a href="/settings">Settings</a>
+        {/* Bug 3: a plain <a> reloads the page; NavLink stays in the SPA. */}
+        <NavLink to="/settings">Settings</NavLink>
       </nav>
       <main>
         <Outlet />

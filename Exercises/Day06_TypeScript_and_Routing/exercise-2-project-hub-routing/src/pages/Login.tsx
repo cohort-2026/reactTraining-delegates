@@ -8,7 +8,8 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as { returnTo?: string } | null)?.returnTo ?? "/";
+  // Bug 4: RequireAuth stores the path as `from`, so read that name here.
+  const from = (location.state as { from?: string } | null)?.from ?? "/";
 
   function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
