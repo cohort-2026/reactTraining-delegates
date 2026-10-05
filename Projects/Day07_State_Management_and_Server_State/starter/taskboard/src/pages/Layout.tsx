@@ -11,6 +11,7 @@ import { projects } from "../data/projects";
 import { SEED_URL, toTasks } from "../data/seed";
 import type { Todo } from "../data/seed";
 import type { Task } from "../types";
+import { ThemeButton } from "../components/ThemeButton";
 
 export type BoardContext = {
   tasks: Task[];
@@ -56,6 +57,7 @@ export default function Layout() {
             <Link to="/login">Log in</Link>
           )}
         </span>
+        <ThemeButton />
       </nav>
       <main>
         {tasks === null ? (

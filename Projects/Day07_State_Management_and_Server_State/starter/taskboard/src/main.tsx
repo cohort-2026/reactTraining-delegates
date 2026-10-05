@@ -12,6 +12,8 @@ import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import RequireAuth from "./components/RequireAuth";
+import { ThemeProvider } from "./context/ThemeContext";
+import { AuthProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <AuthProvider>
+    <ThemeProvider>
     <RouterProvider router={router} />
+    </ThemeProvider>
+    </AuthProvider>
   </StrictMode>
 );

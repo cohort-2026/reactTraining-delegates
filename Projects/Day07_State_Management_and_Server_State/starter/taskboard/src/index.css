@@ -1,11 +1,33 @@
 /* TODO (Lab 7.1 step 3): define colours as CSS variables in :root and override them in [data-theme="dark"]. */
 /* Global styles: a simple starting point for TaskBoard */
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #e421a6;
+}
+
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
   line-height: 1.5;
-  color: #1f2937;
-  background: #f9fafb;
+
+  background: var(--bg);
+  color: var(--text);
 }
 
-nav a.active { font-weight: bold; }
+nav a.active {
+  font-weight: bold;
+}
+
+button {
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
