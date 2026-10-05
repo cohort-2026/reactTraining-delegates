@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
-import { useEffect, useRef, useState } from "react";
-import useLocalStorage from "./hooks/useLocalStorage";
 
-export default function useLocalStorage(key, initialValue) {
+function useLocalStorage(key, initialValue) {
   const [value, setValue] = useState(() => {
-    const stored = localStorage.getItem(key);
+    const storedValue = localStorage.getItem(key);
 
-    if (stored) {
-      return JSON.parse(stored);
-    }
-
-    return initialValue;
+    return storedValue ? JSON.parse(storedValue) : initialValue;
   });
 
   useEffect(() => {
@@ -19,3 +13,7 @@ export default function useLocalStorage(key, initialValue) {
 
   return [value, setValue];
 }
+
+export default useLocalStorage;
+
+//export default uselocalStorage;
