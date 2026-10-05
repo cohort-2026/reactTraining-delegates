@@ -1,0 +1,112 @@
+/* FINAL App.css - Light theme, high contrast */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #090909;
+  color: #121212;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+  background: #77d5e8;
+}
+
+h1, h2, h3 {
+  color: #0f172a !important;
+}
+
+section {
+  background: rgb(2, 51, 118) !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  margin: 20px 0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Inputs */
+input, select {
+  background: rgb(6, 219, 234) !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  padding: 8px 10px !important;
+  border-radius: 6px !important;
+}
+
+input::placeholder {
+  color: #64748b !important;
+}
+
+/* Buttons */
+button {
+  background: #06a9f4 !important;
+  color: black !important;
+  border: none !important;
+  padding: 8px 14px !important;
+  border-radius: 6px !important;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1e293b !important;
+}
+
+/* TaskBoard specific */
+.board {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+}
+
+/* Columns - light gray, title BLACK */
+.column {
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.column h3 {
+  background: white !important;
+  color: black !important;
+  border: 1px solid #cbd5e1 !important;
+  padding: 10px !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+}
+
+/* Task cards - indigo but text white, always visible */
+.column_card, .task-card {
+  background: #4f46e5 !important;
+  color: white !important;
+  border-radius: 10px !important;
+}
+
+.column_card p, .column_card span,
+.task-card p, .task-card span {
+  color: white !important;
+}
+
+.column_card select, .column_card button {
+  background: white !important;
+  color: black !important;
+}
+
+/* Shop */
+.product-card {
+  background: white !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}

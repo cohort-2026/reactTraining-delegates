@@ -1,0 +1,8 @@
+/* Global styles: a simple starting point for TaskBoard */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #eceff4;
+  background: #130537;
+}
