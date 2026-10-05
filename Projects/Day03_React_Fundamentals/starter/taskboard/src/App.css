@@ -3,11 +3,48 @@
 /* TODO (Lab 3.2 step 7): style the product grid with CSS Grid. */
 /* TODO (Lab 3.3 step 8): style .board as three columns. */
 
+<<<<<<< HEAD
 /* Board layout: three columns */
+=======
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #222222;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin-bottom: 24px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+>>>>>>> 8adf31635c51f7a6f26f0d99c61cd4a34f2b1c07
 .board {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+<<<<<<< HEAD
   padding: 20px;
   align-items: start;
 }
@@ -35,6 +72,45 @@
   border-radius: 8px;
   border: 1px solid #e5e7eb;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+=======
+  align-items: start;
+}
+
+/* To Do: light blue */
+.column:nth-child(1) {
+  background-color: #e0eaff;
+}
+
+/* Doing: light yellow */
+.column:nth-child(2) {
+  background-color: #fef0d5;
+}
+
+/* Done: light green */
+.column:nth-child(3) {
+  background-color: #ddf7e5;
+}
+
+.column {
+  min-height: 220px;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.column h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.task-card {
+  margin-bottom: 12px;
+  padding: 14px;
+  background-color: #ffffff;
+  color: #222222;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px #00000010;
+  overflow-wrap: anywhere;
+>>>>>>> 8adf31635c51f7a6f26f0d99c61cd4a34f2b1c07
 }
 
 .task-card h3 {
@@ -42,8 +118,17 @@
   font-size: 16px;
 }
 
+<<<<<<< HEAD
 /* Responsive layout for smaller screens */
 @media (max-width: 768px) {
+=======
+.task-card p {
+  margin-bottom: 0;
+  color: #555555;
+}
+
+@media (max-width: 700px) {
+>>>>>>> 8adf31635c51f7a6f26f0d99c61cd4a34f2b1c07
   .board {
     grid-template-columns: 1fr;
   }

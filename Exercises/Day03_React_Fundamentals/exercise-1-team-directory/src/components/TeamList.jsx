@@ -1,14 +1,13 @@
-import MemberCard from "./MemberCard.jsx";
+import MemberCard from "./MemberCard";
 
-function TeamList({ members }) {
+function TeamList({ team }) {
   return (
-    <ul className="team-list">
-      {members.map((member) => (
-        <li>
-          <MemberCard {...member} />
-        </li>
+    <div className="team-list">
+      {team.map((member) => (
+        <MemberCard key={member.id} member={member} />
       ))}
-    </ul>
+    </div>
   );
 }
+
 export default TeamList;
