@@ -2,3 +2,49 @@
 /* TODO (Lab 3.1 step 5): add .btn-primary, .btn-secondary and .card. */
 /* TODO (Lab 3.2 step 7): style the product grid with CSS Grid. */
 /* TODO (Lab 3.3 step 8): style .board as three columns. */
+
+/* Board layout: three columns */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 20px;
+  align-items: start;
+}
+
+/* Each column */
+.column {
+  background-color: #f3f4f6;
+  padding: 16px;
+  border-radius: 10px;
+  min-height: 250px;
+}
+
+/* Column headings */
+.column h2 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* Individual task cards */
+.task-card {
+  background-color: white;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.task-card h3 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
