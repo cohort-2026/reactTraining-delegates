@@ -1,7 +1,6 @@
-// TODO (Lab 7.2 step 6): call the store's addTask (generate the id here, not in the reducer).
-// TODO (Lab 7.3 steps 6-7): call useAddTask().mutate instead, and disable the button while it is pending.
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
+import { useTaskStore } from "../state/useTaskStore";
 
 export type NewTaskFields = {
   title: string;
@@ -10,7 +9,7 @@ export type NewTaskFields = {
 };
 
 type AddTaskFormProps = {
-  onAdd: (task: NewTaskFields) => void;
+  projectId: string;
 };
 
 type FormState = {
@@ -19,12 +18,18 @@ type FormState = {
   points: string;
 };
 
-const emptyForm: FormState = { title: "", assignee: "", points: "1" };
+const emptyForm: FormState = {
+  title: "",
+  assignee: "",
+  points: "1",
+};
 
-function AddTaskForm({ onAdd }: AddTaskFormProps) {
+function AddTaskForm({ projectId }: AddTaskFormProps) {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const addTask = useTaskStore((state) => state.addTask);
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -37,35 +42,60 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
 
   function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
+
     const title = form.title.trim();
+
     if (title.length < 3) {
       setError("Title needs 3+ characters.");
       return;
     }
+
     setError("");
-    onAdd({
+
+    addTask({
+      id: crypto.randomUUID(),
       title,
       assignee: form.assignee.trim(),
       points: Number(form.points),
+      status: "todo",
+      projectId,
     });
+
     setForm(emptyForm);
   }
 
   return (
     <form className="add-task-form" onSubmit={handleSubmit}>
       <label htmlFor="title">Title</label>
-      <input id="title" name="title" ref={inputRef} value={form.title}
-        aria-invalid={Boolean(error)} onChange={handleChange} />
+      <input
+        id="title"
+        name="title"
+        ref={inputRef}
+        value={form.title}
+        aria-invalid={Boolean(error)}
+        onChange={handleChange}
+      />
 
       <label htmlFor="assignee">Assignee</label>
-      <input id="assignee" name="assignee" value={form.assignee}
-        onChange={handleChange} />
+      <input
+        id="assignee"
+        name="assignee"
+        value={form.assignee}
+        onChange={handleChange}
+      />
 
       <label htmlFor="points">Points</label>
-      <input id="points" name="points" type="number" min="1"
-        value={form.points} onChange={handleChange} />
+      <input
+        id="points"
+        name="points"
+        type="number"
+        min="1"
+        value={form.points}
+        onChange={handleChange}
+      />
 
       {error && <p role="alert">{error}</p>}
+
       <button type="submit">Add task</button>
     </form>
   );
