@@ -11,6 +11,7 @@ import { projects } from "../data/projects";
 import { SEED_URL, toTasks } from "../data/seed";
 import type { Todo } from "../data/seed";
 import type { Task } from "../types";
+import { useTheme } from "../context/ThemeContext";
 
 export type BoardContext = {
   tasks: Task[];
@@ -20,6 +21,7 @@ export type BoardContext = {
 export default function Layout() {
   const [tasks, setTasks] = useLocalStorage<Task[] | null>("tasks", null);
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const needsSeed = tasks === null;
 
   useEffect(() => {
@@ -41,16 +43,24 @@ export default function Layout() {
     <div className="app">
       <Header tasks={tasks ?? []} />
       <nav>
-        <NavLink to="/" end>Dashboard</NavLink>
+        <NavLink to="/" end>
+          Dashboard
+        </NavLink>
         {projects.map((p) => (
-          <NavLink key={p.id} to={`/projects/${p.id}`}>{p.name}</NavLink>
+          <NavLink key={p.id} to={`/projects/${p.id}`}>
+            {p.name}
+          </NavLink>
         ))}
         <NavLink to="/settings">Settings</NavLink>
+
+        <button type="button" onClick={toggleTheme}>
+          {theme === "light" ? "Dark mode" : "Light mode"}
+        </button>
+
         <span className="user">
           {user ? (
             <>
-              Signed in as {user.name}{" "}
-              <button onClick={logout}>Log out</button>
+              Signed in as {user.name} <button onClick={logout}>Log out</button>
             </>
           ) : (
             <Link to="/login">Log in</Link>
