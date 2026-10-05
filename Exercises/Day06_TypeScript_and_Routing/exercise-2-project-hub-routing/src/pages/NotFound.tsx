@@ -4,7 +4,9 @@ export default function NotFound() {
   const error = useRouteError();
   const title = isRouteErrorResponse(error)
     ? `${error.status} ${error.statusText}`
-    : "Something went wrong";
+    : error
+      ? "Something went wrong"
+      : "404 Not Found";
 
   return (
     <section>

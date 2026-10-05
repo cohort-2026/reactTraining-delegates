@@ -14,7 +14,7 @@ export const routes: RouteObject[] = [
     errorElement: <NotFound />,
     children: [
       { index: true, element: <Dashboard /> },
-      { path: "projects/projectId", element: <Project /> },
+      { path: "projects/:projectId", element: <Project /> },
       {
         path: "settings",
         element: (
@@ -24,6 +24,7 @@ export const routes: RouteObject[] = [
         ),
       },
       { path: "login", element: <Login /> },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ];
