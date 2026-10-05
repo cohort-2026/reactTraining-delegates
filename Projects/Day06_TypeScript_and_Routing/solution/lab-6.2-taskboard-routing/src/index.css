@@ -1,0 +1,10 @@
+/* Global styles: a simple starting point for TaskBoard */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1f2937;
+  background: #f9fafb;
+}
+
+nav a.active { font-weight: bold; }

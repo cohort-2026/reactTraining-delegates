@@ -790,7 +790,11 @@ Show a whole-number rating as stars:
 | **Goal** | Render the TaskBoard board from mock data using a clean component tree. |
 | **Suggested time** | 45 min |
 
-This is your capstone for today. Notice that `done` has changed to **`status`** with three values, so the board can have three columns. Update the data, and any component that still reads `done`: `Board` now filters on `status`, and `TaskCard` no longer needs a Done or Open label because the column shows it. Use string ids such as `"1"`; they match the ids `crypto.randomUUID()` creates tomorrow and the `Task` type on Day 6.
+This is your capstone for today. A few things change from what you built earlier — read these before you start:
+
+- `done` becomes **`status`**, with three values (`"todo"`, `"doing"`, `"done"`), so the board can have three columns instead of two.
+- Update every component that still reads `done`: `Board` now filters on `status` instead, and `TaskCard` no longer needs a Done/Open label, because the column it sits in already shows that.
+- Use string ids such as `"1"`, not numbers — they match the ids `crypto.randomUUID()` creates tomorrow, and the `Task` type on Day 6.
 
 Keep `App.jsx` tiny. All logic belongs in the components.
 

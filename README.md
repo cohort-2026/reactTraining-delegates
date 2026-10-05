@@ -25,6 +25,6 @@ Slides, solutions and answer keys are added here after each day has been taught,
 
 Each day's slide deck, `Projects/DayNN_.../solution/` and `Answer Keys/DayNN_.../` are released after that day has been taught, so you can check your own work without seeing the answer first. If a day's folder isn't here yet, it hasn't been released yet.
 
-**Released so far: Days 1 to 4.**
+**Released so far: Days 1 to 6.**
 
-_Last updated: 2026-10-01_
+_Last updated: 2026-10-05_

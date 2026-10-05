@@ -789,9 +789,9 @@ Using the sample products from step 1, your output should have roughly this shap
 ```text
 Names: Wireless Mouse, USB-C Charger, Noise-Cancelling Headphones, Learning React, A5 Notebook, Clean Code
 In stock under R500 (3):
-  #1 Wireless Mouse: R349 (in stock)
-  #2 USB-C Charger: R299 (in stock)
-  #6 Clean Code: R480 (in stock)
+   Wireless Mouse: R349 (in stock)
+   USB-C Charger: R299 (in stock)
+   Clean Code: R480 (in stock)
 Product 4: Learning React
 Total price of in-stock items: R4147
 After marking product 2 out of stock:

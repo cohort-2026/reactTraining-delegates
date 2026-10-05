@@ -1,0 +1,28 @@
+:root {
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+}
+
+main {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  margin: 0.25rem;
+}
+
+.time {
+  font-size: 4rem;
+  font-variant-numeric: tabular-nums;
+  margin: 1rem 0;
+}

@@ -1,0 +1,210 @@
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* Lab 3.1: Button */
+.btn {
+  font: inherit;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 0.875rem;
+}
+
+.btn-md {
+  padding: 8px 16px;
+}
+
+.btn-lg {
+  padding: 12px 20px;
+  font-size: 1.125rem;
+}
+
+.btn-primary {
+  background: #0f766e;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #0f766e;
+  border-color: #0f766e;
+}
+
+/* Lab 3.1: Card */
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card-highlight {
+  border-color: #0f766e;
+}
+
+/* Lab 3.3: TaskBoard */
+.header {
+  margin-bottom: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.header p {
+  margin: 0;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.column {
+  background: #eef2f7;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.column h2 {
+  margin-top: 0;
+  font-size: 1.125rem;
+}
+
+.column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.column .card {
+  margin-bottom: 12px;
+}
+
+.column .card h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.column .card p {
+  margin: 0 0 4px;
+}
+
+/* Lab 4.3: interactive TaskBoard */
+.add-task-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.add-task-form input {
+  font: inherit;
+  padding: 4px 8px;
+}
+
+.add-task-form input[type="number"] {
+  width: 64px;
+}
+
+.add-task-form p[role="alert"] {
+  flex-basis: 100%;
+  margin: 0;
+  color: #991b1b;
+}
+
+.add-task-form button,
+.column .card button,
+.column .card select {
+  font: inherit;
+}
+
+.column .card button,
+.column .card select {
+  margin: 4px 6px 0 0;
+}
+
+.column .card > span {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f766e;
+}
+
+/* Lab 6.2: layout, navigation and search */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+nav a {
+  color: #0f766e;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search input {
+  font: inherit;
+  padding: 4px 8px;
+}
+
+.hint {
+  font-size: 0.875rem;
+}
+
+/* Lab 6.3: mock login */
+nav .user {
+  margin-left: auto;
+}
+
+nav .user button {
+  font: inherit;
+}
+
+.login-form {
+  display: grid;
+  gap: 8px;
+  max-width: 320px;
+}
+
+.login-form input,
+.login-form button {
+  font: inherit;
+  padding: 4px 8px;
+}
+
+/* Lab 5.3: persistence and seed data */
+.reset-button {
+  font: inherit;
+  margin-bottom: 16px;
+}
