@@ -1,3 +1,4 @@
+
 const tasks = [
   {
     id: 1,
@@ -26,6 +27,7 @@ const tasks = [
     assignee: "Jan",
     points: 4,
     status: "todo",
+    projectId: 1,
   },
   {
     id: 5,
@@ -54,6 +56,7 @@ const tasks = [
     assignee: "Lerato",
     points: 2,
     status: "doing",
+
   },
 ];
 
