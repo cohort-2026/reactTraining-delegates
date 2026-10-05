@@ -3,6 +3,8 @@ import "./App.css";
 import Header from "./components/Header.jsx";
 import AddTaskForm from "./components/AddTaskForm.jsx";
 import Board from "./components/Board.jsx";
+import ProductSearch from "./components/ProductSearch.jsx";
+import WeatherDashboard from "./components/WeatherDashboard.jsx";
 import { tasks as initialTasks } from "./data/tasks.js";
 
 // TODO (Lab 5.1): render ProductSearch here while you work on the lab.

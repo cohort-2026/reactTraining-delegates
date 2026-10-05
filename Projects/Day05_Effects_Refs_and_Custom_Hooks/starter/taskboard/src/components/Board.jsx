@@ -1,4 +1,7 @@
+import { useEffect, useRef, useState } from "react";
 import Column from "./Column.jsx";
+import useLocalStorage from "../hooks/useLocalStorage.js";
+import seedTasks from "../data/seedTasks.js";
 
 const columns = [["todo", "To do"], ["doing", "In progress"], ["done", "Done"]];
 

@@ -1,5 +1,3 @@
-// TODO (Lab 6.1 steps 4 and 6): add a TaskCardProps type and type the status change handler
-// (e.target.value as Status).
 import { useState } from "react";
 
 function TaskCard({ task, onStatusChange, onRename, onDelete }) {
