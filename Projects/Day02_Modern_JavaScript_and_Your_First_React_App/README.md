@@ -2,11 +2,11 @@
 
 This folder holds the starting points and finished solutions for the three Day 2 labs. Follow the lab steps in the Day 2 delegate handbook; use the solution folders to check your work or to catch up.
 
-| Lab | Start from | Solution | How to run |
-|---|---|---|---|
-| 2.1 Data Transformation Drills | `starter/lab-2.1-array-drills/` | `solution/lab-2.1-array-drills/` | `node lab2-1.js` (see that folder's README) |
-| 2.2 Fetch and Display Data from a Public API | `starter/lab-2.2-fetch-api/` | `solution/lab-2.2-fetch-api/` | `node lab2-2.js` (see that folder's README) |
-| 2.3 Scaffold the TaskBoard Capstone | `starter/lab-2.3-taskboard/` (a README with the commands) | `solution/lab-2.3-taskboard/` | `npm install`, then `npm run dev` |
+| Lab                                          | Start from                                                | Solution                         | How to run                                  |
+| -------------------------------------------- | --------------------------------------------------------- | -------------------------------- | ------------------------------------------- |
+| 2.1 Data Transformation Drills               | `starter/lab-2.1-array-drills/`                           | `solution/lab-2.1-array-drills/` | `node lab2-1.js` (see that folder's README) |
+| 2.2 Fetch and Display Data from a Public API | `starter/lab-2.2-fetch-api/`                              | `solution/lab-2.2-fetch-api/`    | `node lab2-2.js` (see that folder's README) |
+| 2.3 Scaffold the TaskBoard Capstone          | `starter/lab-2.3-taskboard/` (a README with the commands) | `solution/lab-2.3-taskboard/`    | `npm install`, then `npm run dev`           |
 
 ## Lab 2.1: Data Transformation Drills
 

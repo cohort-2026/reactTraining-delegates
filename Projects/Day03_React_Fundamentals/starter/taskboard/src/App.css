@@ -1,4 +1,30 @@
 /* Styles for App: empty for now. You add component styles here from Day 3. */
 /* TODO (Lab 3.1 step 5): add .btn-primary, .btn-secondary and .card. */
+
+.btn-primary {
+  background-color: blue;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: gray;
+  color: white;
+}
+
+.card {
+  border: 1px solid black;
+  padding: 20px;
+  margin: 20px;
+}
 /* TODO (Lab 3.2 step 7): style the product grid with CSS Grid. */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
 /* TODO (Lab 3.3 step 8): style .board as three columns. */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}

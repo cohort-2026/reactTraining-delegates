@@ -5,24 +5,40 @@
 const API = "https://jsonplaceholder.typicode.com";
 
 // TODO (step 2): make this an async function so you can use await inside it.
-function loadTodos(limit) {
+async function loadTodos(limit) {
   // TODO (step 5): wrap the code below in try / catch / finally.
   //   catch:   log a friendly message with err.message (no crash)
   //   finally: log "Done loading"
+  try {
+    const res = await fetch(`${API}/todos?_limit=${limit}`);
 
-  // TODO (step 3): fetch `${API}/todos?_limit=10`, using limit in place of the 10.
+    // TODO (step 3): fetch `${API}/todos?_limit=10`, using limit in place of the 10.
 
-  // TODO (step 4): if res.ok is false, throw a new Error that includes res.status.
+    // TODO (step 4): if res.ok is false, throw a new Error that includes res.status.
+    if (!res.ok) {
+      throw new Error(`Failed to fetch todos: ${res.status}`);
+    }
 
-  // TODO: parse the body with res.json() (it needs its own await).
+    // TODO: parse the body with res.json() (it needs its own await).
+    const todos = await res.json();
+    // TODO (step 6): log a numbered list of titles with a [done] or [open] marker,
+    // using each to-do's completed and title properties, for example:
+    //   1. [open] delectus aut autem
+    // Hint: map gives you the index as the second callback argument.
+    todos.forEach((todo, index) => {
+      const status = todo.completed ? "[done]" : "[open]";
+      console.log(`${index + 1}. ${status} ${todo.title}`);
+    });
 
-  // TODO (step 6): log a numbered list of titles with a [done] or [open] marker,
-  // using each to-do's completed and title properties, for example:
-  //   1. [open] delectus aut autem
-  // Hint: map gives you the index as the second callback argument.
-
-  // TODO (step 7): use filter to count the completed to-dos and log
-  //   Completed: 3 of 10
+    // TODO (step 7): use filter to count the completed to-dos and log
+    //   Completed: 3 of 10
+    const completedTodos = todos.filter((todo) => todo.completed).length;
+    console.log(`Completed: ${completedTodos} of ${todos.length}`);
+  } catch (err) {
+    console.error(`Error loading todos: ${err.message}`);
+  } finally {
+    console.log("Done loading");
+  }
 }
 
 loadTodos(10);

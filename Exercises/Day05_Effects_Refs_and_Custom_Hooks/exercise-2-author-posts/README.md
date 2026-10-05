@@ -27,13 +27,14 @@ npm install
 
 Then use any of these:
 
-| Command | What it does |
-|---|---|
-| `npm run dev` | Starts the app. Open the address it prints (usually http://localhost:5173). It needs an internet connection to reach `jsonplaceholder.typicode.com`. |
-| `npm test` | Runs the automated checks. They do **not** use the internet: they replace `fetch` with a pretend server, so they can make one response arrive later than another. They re-run every time you save; press `q` to quit. All 7 tests pass when the app is fixed. |
-| `npm run lint` | Runs ESLint with the React Hooks rules. It reports no problems when the app is fixed. |
+| Command        | What it does                                                                                                                                                                                                                                                  |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`  | Starts the app. Open the address it prints (usually http://localhost:5173). It needs an internet connection to reach `jsonplaceholder.typicode.com`.                                                                                                          |
+| `npm test`     | Runs the automated checks. They do **not** use the internet: they replace `fetch` with a pretend server, so they can make one response arrive later than another. They re-run every time you save; press `q` to quit. All 7 tests pass when the app is fixed. |
+| `npm run lint` | Runs ESLint with the React Hooks rules. It reports no problems when the app is fixed.                                                                                                                                                                         |
 
 > **Tips for the browser**
+>
 > - In DevTools, open the **Network** tab and set throttling to **Slow 4G** (or **3G**). Then switch authors quickly and watch which requests finish, and in which order.
 > - Open the **Application** tab, then **Local Storage**, to see exactly what is saved under the `authorId` key. Refresh a few times and look again.
 

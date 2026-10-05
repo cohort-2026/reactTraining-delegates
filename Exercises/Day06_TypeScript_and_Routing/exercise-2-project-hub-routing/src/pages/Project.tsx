@@ -3,7 +3,7 @@ import { projects } from "../data/projects";
 
 export default function Project() {
   const { projectId } = useParams();
-  const project = projects.find((p) => p.id === Number(projectId));
+  const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
     return (

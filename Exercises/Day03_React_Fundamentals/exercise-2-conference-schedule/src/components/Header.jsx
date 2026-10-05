@@ -4,9 +4,9 @@ function Header({ sessionCount, rooms }) {
       <h1>DevDay schedule</h1>
       <p>{sessionCount} sessions today</p>
       <ul className="rooms" aria-label="Rooms">
-        {rooms.map((room) => {
-          <li key={room}>{room}</li>;
-        })}
+        {rooms.map((room) => (
+          <li key={room}>{room}</li>
+        ))}
       </ul>
     </header>
   );
