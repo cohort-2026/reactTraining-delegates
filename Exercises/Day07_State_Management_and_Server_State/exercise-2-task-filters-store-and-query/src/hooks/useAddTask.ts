@@ -6,7 +6,8 @@ export function useAddTask() {
   return useMutation({
     mutationFn: createTask,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["task"] });
+      // Bug 3: invalidate ["tasks"] so it matches the query-key prefix.
+      queryClient.invalidateQueries({ queryKey: ["tasks"] });
     },
   });
 }

@@ -19,5 +19,7 @@ export async function createTask(task: NewTask): Promise<Task> {
     headers,
     body: JSON.stringify(task),
   });
+  // Bug 4: fetch does not throw on HTTP errors; check res.ok.
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }

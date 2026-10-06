@@ -23,7 +23,8 @@ export function AddTaskForm() {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <button type="submit" disabled={addTask.isLoading}>
+      {/* Bug 5: TanStack Query v5 uses isPending, not isLoading. */}
+      <button type="submit" disabled={addTask.isPending}>
         Add
       </button>
       {addTask.isError && (

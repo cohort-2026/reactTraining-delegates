@@ -5,7 +5,8 @@ import { useFilterStore } from "../state/useFilterStore";
 export function useTasks() {
   const status = useFilterStore((s) => s.status);
   return useQuery({
-    queryKey: ["tasks"],
+    // Bug 2: the key must include status so a new filter refetches.
+    queryKey: ["tasks", { status }],
     queryFn: () => fetchTasks(status),
   });
 }
