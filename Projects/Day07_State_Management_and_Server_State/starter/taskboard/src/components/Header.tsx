@@ -1,11 +1,15 @@
-// TODO (Lab 7.3 step 5): read them with useQuery.
 import { useEffect } from "react";
-import { useTaskStore } from "../state/useTaskStore";
+import { useQuery } from "@tanstack/react-query";
+import { fetchTasks } from "../api/tasks";
 
 function Header() {
-  const tasks = useTaskStore((state) => state.tasks);
+  const { data: tasks = [] } = useQuery({
+    queryKey: ["tasks"],
+    queryFn: fetchTasks,
+  });
 
   const doneCount = tasks.filter((task) => task.status === "done").length;
+
   const openCount = tasks.filter((task) => task.status !== "done").length;
 
   useEffect(() => {
@@ -15,6 +19,7 @@ function Header() {
   return (
     <header className="header">
       <p className="brand">TaskBoard</p>
+
       <p>
         {doneCount} of {tasks.length} done
       </p>

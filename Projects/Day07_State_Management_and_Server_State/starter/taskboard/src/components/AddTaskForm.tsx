@@ -1,12 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
-import { useTaskStore } from "../state/useTaskStore";
-
-export type NewTaskFields = {
-  title: string;
-  assignee: string;
-  points: number;
-};
+import { useAddTask } from "../hooks/useAddTask";
 
 type AddTaskFormProps = {
   projectId: string;
@@ -29,7 +23,7 @@ function AddTaskForm({ projectId }: AddTaskFormProps) {
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const addTask = useTaskStore((state) => state.addTask);
+  const addTask = useAddTask();
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -52,7 +46,7 @@ function AddTaskForm({ projectId }: AddTaskFormProps) {
 
     setError("");
 
-    addTask({
+    addTask.mutate({
       id: crypto.randomUUID(),
       title,
       assignee: form.assignee.trim(),
@@ -75,7 +69,6 @@ function AddTaskForm({ projectId }: AddTaskFormProps) {
         aria-invalid={Boolean(error)}
         onChange={handleChange}
       />
-
       <label htmlFor="assignee">Assignee</label>
       <input
         id="assignee"
@@ -83,7 +76,6 @@ function AddTaskForm({ projectId }: AddTaskFormProps) {
         value={form.assignee}
         onChange={handleChange}
       />
-
       <label htmlFor="points">Points</label>
       <input
         id="points"
@@ -93,10 +85,10 @@ function AddTaskForm({ projectId }: AddTaskFormProps) {
         value={form.points}
         onChange={handleChange}
       />
-
       {error && <p role="alert">{error}</p>}
-
-      <button type="submit">Add task</button>
+      <button type="submit" disabled={addTask.isPending}>
+        {addTask.isPending ? "Adding..." : "Add task"}
+      </button>{" "}
     </form>
   );
 }

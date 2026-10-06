@@ -1,6 +1,6 @@
-// TODO (Lab 7.3 step 7): show loading and error states from useQuery.
+import { useQuery } from "@tanstack/react-query";
 import Column from "./Column";
-import { useTaskStore } from "../state/useTaskStore";
+import { fetchTasks } from "../api/tasks";
 import { useFilterStore } from "../state/useFilterStore";
 import type { Status } from "../types";
 
@@ -11,10 +11,25 @@ const columns: [Status, string][] = [
 ];
 
 function Board() {
-  const tasks = useTaskStore((state) => state.tasks);
+  const {
+    data: tasks = [],
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["tasks"],
+    queryFn: fetchTasks,
+  });
 
   const search = useFilterStore((state) => state.search);
   const assignee = useFilterStore((state) => state.assignee);
+
+  if (isLoading) {
+    return <p>Loading tasks...</p>;
+  }
+
+  if (isError) {
+    return <p>Failed to load tasks.</p>;
+  }
 
   const filteredTasks = tasks.filter((task) => {
     const matchesSearch = task.title

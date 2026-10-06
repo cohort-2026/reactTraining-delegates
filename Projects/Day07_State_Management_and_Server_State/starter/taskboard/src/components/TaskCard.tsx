@@ -1,7 +1,9 @@
 import { useState } from "react";
 import type { ChangeEvent } from "react";
 import type { Status, Task } from "../types";
-import { useTaskStore } from "../state/useTaskStore";
+
+import { useMoveTask } from "../hooks/useMoveTask";
+import { useDeleteTask } from "../hooks/useDeleteTask";
 
 type TaskCardProps = {
   task: Task;
@@ -11,26 +13,28 @@ function TaskCard({ task }: TaskCardProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [draft, setDraft] = useState(task.title);
 
-  const moveTask = useTaskStore((state) => state.moveTask);
-  const renameTask = useTaskStore((state) => state.renameTask);
-  const deleteTask = useTaskStore((state) => state.deleteTask);
+  const moveTask = useMoveTask();
+  const deleteTask = useDeleteTask();
 
   function handleSave() {
     const title = draft.trim();
     if (title === "") return;
 
-    renameTask(task.id, title);
+    // Rename mutation will be added separately.
     setIsEditing(false);
   }
 
   function handleDeleteClick() {
     if (window.confirm(`Delete "${task.title}"?`)) {
-      deleteTask(task.id);
+      deleteTask.mutate(task.id);
     }
   }
 
   function handleStatusChange(e: ChangeEvent<HTMLSelectElement>) {
-    moveTask(task.id, e.target.value as Status);
+    moveTask.mutate({
+      taskId: task.id,
+      status: e.target.value as Status,
+    });
   }
 
   return (
@@ -50,21 +54,21 @@ function TaskCard({ task }: TaskCardProps) {
           <button onClick={() => setIsEditing(true)}>Edit</button>
         </>
       )}
-
       {task.assignee && <p>Assigned to {task.assignee}</p>}
       {task.points > 0 && <span>{task.points} pts</span>}
-
       <select
         aria-label="Status"
         value={task.status}
         onChange={handleStatusChange}
+        disabled={moveTask.isPending}
       >
         <option value="todo">To do</option>
         <option value="doing">In progress</option>
         <option value="done">Done</option>
       </select>
-
-      <button onClick={handleDeleteClick}>Delete</button>
+      <button onClick={handleDeleteClick} disabled={deleteTask.isPending}>
+        {deleteTask.isPending ? "Deleting..." : "Delete"}
+      </button>{" "}
     </article>
   );
 }

@@ -19,6 +19,9 @@ import RequireAuth from "./components/RequireAuth";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AuthProvider } from "./context/AuthContext";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -55,12 +58,18 @@ if (!rootElement) {
   throw new Error("Root element not found");
 }
 
+const queryClient = new QueryClient();
+
 createRoot(rootElement).render(
   <StrictMode>
-    <ThemeProvider>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </ThemeProvider>
+
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   </StrictMode>,
 );

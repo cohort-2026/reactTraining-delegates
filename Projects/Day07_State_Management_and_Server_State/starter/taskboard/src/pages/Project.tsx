@@ -1,12 +1,16 @@
-// TODO (Lab 7.3 step 5): read tasks with useQuery instead.
+import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router";
 import ProjectBoard from "../components/ProjectBoard";
 import { projects } from "../data/projects";
-import { useTaskStore } from "../state/useTaskStore";
+import { fetchTasks } from "../api/tasks";
 
 export default function Project() {
   const { projectId } = useParams();
-  const tasks = useTaskStore((state) => state.tasks);
+
+  const { data: tasks = [] } = useQuery({
+    queryKey: ["tasks"],
+    queryFn: fetchTasks,
+  });
 
   const project = projects.find((p) => p.id === projectId);
 
@@ -25,6 +29,7 @@ export default function Project() {
     <section>
       <h1>{project.name}</h1>
       <p>{projectTasks.length} tasks</p>
+
       <ProjectBoard projectId={project.id} />
     </section>
   );
