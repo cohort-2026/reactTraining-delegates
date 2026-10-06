@@ -236,3 +236,14 @@
   font-weight: 600;
   color: #0f766e;
 }
+
+/* Lab 5.1 */
+.practice label {
+  margin-right: 8px;
+}
+
+.practice input,
+.practice select {
+  font: inherit;
+  padding: 4px 8px;
+}
