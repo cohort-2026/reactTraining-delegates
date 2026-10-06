@@ -1,4 +1,4 @@
-# Day 3, Exercise 1 (warm-up): Team Directory
+n# Day 3, Exercise 1 (warm-up): Team Directory
 
 ## The scenario
 

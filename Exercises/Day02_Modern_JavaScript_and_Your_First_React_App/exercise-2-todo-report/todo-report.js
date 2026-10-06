@@ -5,17 +5,20 @@ import { fetch } from "./fake-api.js";
 
 const API = "https://jsonplaceholder.typicode.com";
 
+async function fetchJson(path) {
+  const res = await fetch(`${API}${path}`);
+  if (!res.ok) {
+    throw new Error(`Request failed: ${res.status}`);
+  }
+  return res.json();
+}
+
 async function loadTodos(limit) {
   try {
-    const res = await fetch(`${API}/todos?_limit=${limit}`);
-    if (!res.ok) {
-      throw new Error(`Request failed: ${res.status}`);
-    }
-    const todos = res.json();
-    const lines = todos.map((todo, i) => {
-      const { title, completed } = todo;
-      return `${i + 1}. [${completed ? "done" : "open"}] ${title}`;
-    });
+    const todos = await fetchJson(`/todos?_limit=${limit}`);
+    const lines = todos.map(({ title, completed }, i) =>
+      `${i + 1}. [${completed ? "done" : "open"}] ${title}`
+    );
     console.log(lines.join("\n"));
   } catch (err) {
     console.error("Could not load to-dos:", err.message);
@@ -26,9 +29,8 @@ async function loadTodos(limit) {
 
 async function getTodo(id) {
   try {
-    const res = await fetch(`${API}/todos/${id}`);
-    const todo = await res.json();
-    const points = todo.points || "not estimated";
+    const todo = await fetchJson(`/todos/${id}`);
+    const points = todo.points ?? "not estimated";
     console.log(`To-do ${id}: ${todo.title} (points: ${points})`);
   } catch (err) {
     console.error(`Could not load to-do ${id}:`, err.message);
@@ -37,12 +39,8 @@ async function getTodo(id) {
 
 async function loadUser(id) {
   try {
-    const res = await fetch(`${API}/users/${id}`);
-    if (!res.ok) {
-      throw new Error(`Request failed: ${res.status}`);
-    }
-    const user = await res.json();
-    const city = user.address.city ?? "Unknown";
+    const user = await fetchJson(`/users/${id}`);
+    const city = user.address?.city ?? "Unknown";
     console.log(`${user.name} lives in ${city}`);
   } catch (err) {
     console.error(`Could not load user ${id}:`, err.message);
@@ -50,8 +48,7 @@ async function loadUser(id) {
 }
 
 async function getProgress(limit) {
-  const res = await fetch(`${API}/todos?_limit=${limit}`);
-  const todos = await res.json();
+  const todos = await fetchJson(`/todos?_limit=${limit}`);
   const completed = todos.filter((t) => t.completed).length;
   return { completed, total: todos.length };
 }
@@ -70,8 +67,12 @@ async function main() {
   await loadUser(2);
 
   console.log("=== Progress ===");
-  const { completed, total } = getProgress(6);
-  console.log(`Completed: ${completed} of ${total}`);
+  try {
+    const { completed, total } = await getProgress(6);
+    console.log(`Completed: ${completed} of ${total}`);
+  } catch (err) {
+    console.error("Could not load progress:", err.message);
+  }
 }
 
-main();
+main().catch((err) => console.error("Unexpected error:", err));
