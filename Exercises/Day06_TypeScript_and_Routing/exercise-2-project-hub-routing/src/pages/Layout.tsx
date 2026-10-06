@@ -13,7 +13,7 @@ export default function Layout() {
             {project.name}
           </NavLink>
         ))}
-        <a href="/settings">Settings</a>
+        <NavLink to="/settings">Settings</NavLink>
       </nav>
       <main>
         <Outlet />

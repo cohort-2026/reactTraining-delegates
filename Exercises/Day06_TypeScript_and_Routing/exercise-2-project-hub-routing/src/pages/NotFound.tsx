@@ -1,10 +1,10 @@
-import { isRouteErrorResponse, Link, useRouteError } from "react-router";
+import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
 
 export default function NotFound() {
   const error = useRouteError();
   const title = isRouteErrorResponse(error)
     ? `${error.status} ${error.statusText}`
-    : "Something went wrong";
+    : "404 Not Found";
 
   return (
     <section>

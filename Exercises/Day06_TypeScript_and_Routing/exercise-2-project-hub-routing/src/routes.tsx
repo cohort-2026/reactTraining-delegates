@@ -1,4 +1,4 @@
-import type { RouteObject } from "react-router";
+import type { RouteObject } from "react-router-dom";
 import RequireAuth from "./components/RequireAuth";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./pages/Layout";
@@ -14,7 +14,7 @@ export const routes: RouteObject[] = [
     errorElement: <NotFound />,
     children: [
       { index: true, element: <Dashboard /> },
-      { path: "projects/projectId", element: <Project /> },
+      { path: "projects/:projectId", element: <Project /> },
       {
         path: "settings",
         element: (
@@ -24,6 +24,7 @@ export const routes: RouteObject[] = [
         ),
       },
       { path: "login", element: <Login /> },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ];
