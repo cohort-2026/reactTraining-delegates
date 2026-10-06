@@ -236,3 +236,20 @@
   font-weight: 600;
   color: #0f766e;
 }
+
+/* Lab 5.1: product search */
+.practice label {
+  margin-right: 8px;
+}
+
+.practice input,
+.practice select {
+  font: inherit;
+  padding: 4px 8px;
+}
+
+/* Lab 5.3: persistence and seed data */
+.reset-button {
+  font: inherit;
+  margin-bottom: 16px;
+}

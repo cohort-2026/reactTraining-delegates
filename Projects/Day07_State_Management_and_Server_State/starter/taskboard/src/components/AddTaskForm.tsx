@@ -2,15 +2,10 @@
 // TODO (Lab 7.3 steps 6-7): call useAddTask().mutate instead, and disable the button while it is pending.
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
-
-export type NewTaskFields = {
-  title: string;
-  assignee: string;
-  points: number;
-};
+import { useAddTask } from "../hooks/useAddTask";
 
 type AddTaskFormProps = {
-  onAdd: (task: NewTaskFields) => void;
+  projectId: string;
 };
 
 type FormState = {
@@ -19,9 +14,11 @@ type FormState = {
   points: string;
 };
 
+
 const emptyForm: FormState = { title: "", assignee: "", points: "1" };
 
-function AddTaskForm({ onAdd }: AddTaskFormProps) {
+function AddTaskForm({ projectId }: AddTaskFormProps) {
+ const addTask = useAddTask();
   const [form, setForm] = useState<FormState>(emptyForm);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -29,6 +26,7 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
@@ -43,16 +41,20 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
       return;
     }
     setError("");
-    onAdd({
-      title,
-      assignee: form.assignee.trim(),
-      points: Number(form.points),
-    });
-    setForm(emptyForm);
+    addTask.mutate({
+     title,
+        assignee: form.assignee.trim(),
+        points: Number(form.points),
+        status: "todo",
+        tags: [],
+        projectId,
+      },
+    {onSuccess : () => setForm(emptyForm)}
+    );
   }
 
   return (
-    <form className="add-task-form" onSubmit={handleSubmit}>
+     <form className="add-task-form" onSubmit={handleSubmit}>
       <label htmlFor="title">Title</label>
       <input id="title" name="title" ref={inputRef} value={form.title}
         aria-invalid={Boolean(error)} onChange={handleChange} />
@@ -66,7 +68,10 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
         value={form.points} onChange={handleChange} />
 
       {error && <p role="alert">{error}</p>}
-      <button type="submit">Add task</button>
+      {addTask.isError && <p role="alert">Could not save the task: {addTask.error.message}</p>}
+      <button type="submit" disabled={addTask.isPending}>
+        {addTask.isPending ? "Adding..." : "Add task"}
+      </button>
     </form>
   );
 }

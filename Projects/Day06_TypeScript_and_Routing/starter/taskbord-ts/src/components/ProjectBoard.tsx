@@ -1,5 +1,3 @@
-// TODO (Lab 7.2 steps 5-6): no more handlers passed as props. AddTaskForm and TaskCard call store actions
-// themselves, so this component is no longer needed.
 import { useOutletContext } from "react-router";
 import AddTaskForm from "./AddTaskForm";
 import type { NewTaskFields } from "./AddTaskForm";

@@ -1,0 +1,21 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Set up the home page",
+      "status": "todo",
+      "points": 2,
+      "projectId": "website",
+      "assignee": "Alex",
+      "tags": ["frontend"]
+    },
+    {
+      "id": "2",
+      "title": "Test mobile navigation",
+      "status": "doing",
+      "points": 3,
+      "projectId": "mobile",
+      "tags": ["testing"]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const emptyForm = { title: "", assignee: "", points: 1 };
 
@@ -6,6 +6,11 @@ const emptyForm = { title: "", assignee: "", points: 1 };
 function AddTaskForm({ onAdd }) {
   const [form, setForm] = useState(emptyForm);
   const [error, setError] = useState("");
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   function handleChange(e) {
     const { name, value } = e.target;

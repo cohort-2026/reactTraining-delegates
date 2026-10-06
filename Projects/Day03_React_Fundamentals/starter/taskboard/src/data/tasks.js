@@ -1,0 +1,42 @@
+export const tasks = [
+  {
+    id: 1,
+    title: "Learn React",
+    completed: false,
+    assignee: "John",
+    status: "todo",
+    points: 3,
+  },
+  {
+    id: 2,
+    title: "Learn JSX",
+    completed: false,
+    assignee: "Lucky",
+    status: "todo",
+    points: 1,
+  },
+  {
+    id: 3,
+    title: "Learn Hooks",
+    completed: false,
+    assignee: "Zodwa",
+    status: "todo",
+    points: 2,
+  },
+  {
+    id: 4,
+    title: "Learn State",
+    completed: true,
+    assignee: "Sipho",
+    status: "done",
+    points: 9,
+  },
+  {
+    id: 5,
+    title: "Learn Effects",
+    completed: true,
+    assignee: "Nomsa",
+    status: "done",
+    points: 7,
+  },
+];

@@ -34,15 +34,15 @@
 }
 
 .btn-secondary {
-  background: #ffffff;
+  background: var(--surface);
   color: #0f766e;
   border-color: #0f766e;
 }
 
 /* Lab 3.1: Card */
 .card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
@@ -83,7 +83,7 @@
 }
 
 .column {
-  background: #eef2f7;
+  background: var(--surface-muted);
   border-radius: 8px;
   padding: 12px;
 }
@@ -133,7 +133,7 @@
 .add-task-form p[role="alert"] {
   flex-basis: 100%;
   margin: 0;
-  color: #991b1b;
+  color: var(--danger);
 }
 
 .add-task-form button,
@@ -151,7 +151,7 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #0f766e;
+  color: var(--accent);
 }
 
 /* Lab 6.2: layout, navigation and search */
@@ -161,11 +161,11 @@ nav {
   gap: 16px;
   padding: 8px 0;
   margin-bottom: 16px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
 }
 
 nav a {
-  color: #0f766e;
+  color: var(--accent);
 }
 
 .search {
@@ -202,6 +202,11 @@ nav .user button {
 .login-form button {
   font: inherit;
   padding: 4px 8px;
+}
+
+/* Lab 7.1: theme button */
+.theme-button {
+  font: inherit;
 }
 
 /* Lab 5.3: persistence and seed data */
