@@ -1,16 +1,16 @@
 # Day 5 projects: Effects, Refs and Custom Hooks
 
-Every Day 5 lab is built inside your TaskBoard project, so this folder has one starter and one finished checkpoint per lab. Each checkpoint is a complete, runnable TaskBoard project that builds on the one before, so if you fall behind you can carry on from the last checkpoint.
+The Day 5 labs build on your TaskBoard project. This checkout currently contains the starter project; the finished checkpoints described in the course are not included here.
 
 ## Which folder to start from
 
 Start today from **`starter/taskboard/`** (or keep using your own TaskBoard from Day 4). It is an exact copy of the Day 4 Lab 4.3 solution, with `TODO` comments where today's labs change the code.
 
-| Lab | Checkpoint (finished result) | Built on |
+| Lab | What you build | Starts from |
 |---|---|---|
-| 5.1 Search-as-You-Type with Debouncing | `solution/lab-5.1-search-debounce/` | `starter/taskboard/` |
-| 5.2 Weather Dashboard from a Public API | `solution/lab-5.2-weather-dashboard/` | `solution/lab-5.1-search-debounce/` |
-| 5.3 TaskBoard: Persistence and Seed Data | `solution/lab-5.3-taskboard/` | `solution/lab-5.2-weather-dashboard/` |
+| 5.1 Search-as-You-Type with Debouncing | Debounced product search | `starter/taskboard/` |
+| 5.2 Weather Dashboard from a Public API | Reusable fetch Hook and weather dashboard | Your completed Lab 5.1 project |
+| 5.3 TaskBoard: Persistence and Seed Data | Persisted tasks seeded from an API | Your completed Lab 5.2 project |
 
 ## The labs
 
@@ -21,15 +21,15 @@ Start today from **`starter/taskboard/`** (or keep using your own TaskBoard from
 ## How to run any project here
 
 ```bash
-cd solution/lab-5.3-taskboard   # or any other folder
+cd starter/taskboard
 npm install
 npm run dev
 ```
 
-Open the **Local** URL Vite prints (usually `http://localhost:5173`). `npm run lint` runs ESLint and `npm run build` makes a production build. The labs call public APIs (DummyJSON, Open-Meteo and JSONPlaceholder), so you need an internet connection.
+Open the **Local** URL Vite prints (usually `http://localhost:5173`). `npm run lint` runs ESLint and `npm run build` makes a production build. Labs that use DummyJSON, Open-Meteo, or JSONPlaceholder need an internet connection.
 
 ## What comes next
 
-On Day 6 you convert `solution/lab-5.3-taskboard` to TypeScript in a new `taskboard-ts` project and add routing.
+After completing Lab 5.3, use that TaskBoard as the starting point for Day 6's TypeScript conversion and routing work.
 
 Requirements: Node.js 24 LTS and npm.

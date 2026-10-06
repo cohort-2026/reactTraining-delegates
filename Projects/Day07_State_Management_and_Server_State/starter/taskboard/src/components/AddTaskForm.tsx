@@ -1,17 +1,6 @@
-// TODO (Lab 7.2 step 6): call the store's addTask (generate the id here, not in the reducer).
-// TODO (Lab 7.3 steps 6-7): call useAddTask().mutate instead, and disable the button while it is pending.
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
-
-export type NewTaskFields = {
-  title: string;
-  assignee: string;
-  points: number;
-};
-
-type AddTaskFormProps = {
-  onAdd: (task: NewTaskFields) => void;
-};
+import { useAddTask } from "../hooks/useAddTask";
 
 type FormState = {
   title: string;
@@ -21,7 +10,12 @@ type FormState = {
 
 const emptyForm: FormState = { title: "", assignee: "", points: "1" };
 
-function AddTaskForm({ onAdd }: AddTaskFormProps) {
+type AddTaskFormProps = {
+  projectId: string;
+};
+
+function AddTaskForm({ projectId }: AddTaskFormProps) {
+  const addTask = useAddTask();
   const [form, setForm] = useState<FormState>(emptyForm);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -43,12 +37,13 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
       return;
     }
     setError("");
-    onAdd({
+    addTask.mutate({
       title,
       assignee: form.assignee.trim(),
       points: Number(form.points),
-    });
-    setForm(emptyForm);
+      status: "todo",
+      projectId,
+    }, { onSuccess: () => setForm(emptyForm) });
   }
 
   return (
@@ -66,7 +61,10 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
         value={form.points} onChange={handleChange} />
 
       {error && <p role="alert">{error}</p>}
-      <button type="submit">Add task</button>
+      {addTask.isError && <p role="alert">{addTask.error.message}</p>}
+      <button type="submit" disabled={addTask.isPending}>
+        {addTask.isPending ? "Adding..." : "Add task"}
+      </button>
     </form>
   );
 }

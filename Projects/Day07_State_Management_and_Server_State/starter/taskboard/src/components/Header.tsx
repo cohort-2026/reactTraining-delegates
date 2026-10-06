@@ -1,13 +1,9 @@
-// TODO (Lab 7.2 step 6): read the tasks from the store instead of a prop.
-// TODO (Lab 7.3 step 5): read them with useQuery.
+import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import type { Task } from "../types";
+import { fetchTasks } from "../api/tasks";
 
-type HeaderProps = {
-  tasks: Task[];
-};
-
-function Header({ tasks }: HeaderProps) {
+function Header() {
+  const { data: tasks = [] } = useQuery({ queryKey: ["tasks"], queryFn: fetchTasks });
   const doneCount = tasks.filter((t) => t.status === "done").length;
   const openCount = tasks.filter((t) => t.status !== "done").length;
 

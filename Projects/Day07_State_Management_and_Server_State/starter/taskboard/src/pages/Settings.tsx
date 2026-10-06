@@ -1,15 +1,18 @@
-// TODO (Lab 7.2 step 5): Reset board uses Layout's Outlet context, which this lab removes.
-import { useOutletContext } from "react-router";
-import type { BoardContext } from "./Layout";
+import { useQuery } from "@tanstack/react-query";
+import { fetchTasks } from "../api/tasks";
 
 export default function Settings() {
-  const { setTasks } = useOutletContext<BoardContext>();
+  const { refetch, isFetching, isError, error } =
+    useQuery({ queryKey: ["tasks"], queryFn: fetchTasks });
 
   return (
     <section>
       <h1>Settings</h1>
-      <p>Reset the board to load the starter tasks again.</p>
-      <button className="reset-button" onClick={() => setTasks(null)}>Reset board</button>
+      <p>Tasks are saved by the TaskBoard API and shared across projects.</p>
+      <button className="reset-button" onClick={() => refetch()} disabled={isFetching}>
+        {isFetching ? "Refreshing..." : "Refresh tasks"}
+      </button>
+      {isError && <p role="alert">{error.message}</p>}
     </section>
   );
 }

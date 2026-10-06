@@ -3,25 +3,27 @@ import { useDebounce } from "../hooks/useDebounce";
 
 export default function ProductSearch() {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [searchResult, setSearchResult] = useState({
+    query: "",
+    results: [],
+    error: null,
+  });
   const inputRef = useRef(null);
   const debouncedQuery = useDebounce(query, 400);
+  const hasQuery = Boolean(debouncedQuery.trim());
+  const resultIsCurrent = searchResult.query === debouncedQuery;
+  const results = resultIsCurrent ? searchResult.results : [];
+  const error = resultIsCurrent ? searchResult.error : null;
+  const loading = hasQuery && !resultIsCurrent;
 
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
   useEffect(() => {
-    if (!debouncedQuery.trim()) {
-      setResults([]);
-      return;
-    }
+    if (!debouncedQuery.trim()) return;
 
     const controller = new AbortController();
-    setLoading(true);
-    setError(null);
 
     fetch(
       `https://dummyjson.com/products/search?q=${encodeURIComponent(debouncedQuery)}`,
@@ -32,13 +34,15 @@ export default function ProductSearch() {
         return res.json();
       })
       .then((data) => {
-        setResults(data.products);
-        setLoading(false);
+        setSearchResult({
+          query: debouncedQuery,
+          results: data.products,
+          error: null,
+        });
       })
       .catch((err) => {
         if (err.name === "AbortError") return; // stale request, ignore
-        setError(err.message);
-        setLoading(false);
+        setSearchResult({ query: debouncedQuery, results: [], error: err.message });
       });
 
     return () => controller.abort(); // cancel the previous request

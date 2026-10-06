@@ -5,11 +5,6 @@ import AddTaskForm from "./components/AddTaskForm.jsx";
 import Board from "./components/Board.jsx";
 import { tasks as initialTasks } from "./data/tasks.js";
 import ProductSearch from "./components/ProductSearch";
-import { useLocalStorage } from "./hooks/useLocalStorage";
-
-const [tasks, setTasks] = useLocalStorage("taskboard-tasks", initialTasks);
-// ...
-<ProductSearch />
 
 // TODO (Lab 5.1): render ProductSearch here while you work on the lab.
 // TODO (Lab 5.2): render WeatherDashboard here while you work on the lab.
@@ -50,6 +45,7 @@ function App() {
         onRename={handleRename}
         onDelete={handleDelete}
       />
+      <ProductSearch />
     </>
   );
 }

@@ -1,52 +1,52 @@
-// TODO (Lab 7.2 steps 5-6): no more handlers passed as props. AddTaskForm and TaskCard call store actions
-// themselves, so this component is no longer needed.
-import { useOutletContext } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "react-router";
 import AddTaskForm from "./AddTaskForm";
-import type { NewTaskFields } from "./AddTaskForm";
 import Board from "./Board";
-import type { BoardContext } from "../pages/Layout";
-import type { Status, Task } from "../types";
+import { fetchTasks } from "../api/tasks";
+import { useFilterStore } from "../state/useFilterStore";
 
 type ProjectBoardProps = {
-  tasks: Task[];
   projectId: string;
 };
 
-// The add form and board, wired to the tasks state that Layout shares
-// through Outlet context. Dashboard and Project both render it.
-export default function ProjectBoard({ tasks, projectId }: ProjectBoardProps) {
-  const { setTasks } = useOutletContext<BoardContext>();
+export default function ProjectBoard({ projectId }: ProjectBoardProps) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { data: tasks = [] } = useQuery({ queryKey: ["tasks"], queryFn: fetchTasks });
+  const assignee = useFilterStore((s) => s.assignee);
+  const setAssignee = useFilterStore((s) => s.setAssignee);
+  const q = searchParams.get("q") ?? "";
+  const assignees = [...new Set(
+    tasks
+      .filter((task) => task.projectId === projectId)
+      .map((task) => task.assignee?.trim())
+      .filter((name): name is string => Boolean(name)),
+  )].sort((a, b) => a.localeCompare(b));
 
-  function handleAdd(newTask: NewTaskFields) {
-    const id = crypto.randomUUID();
-    setTasks((prev) => [...(prev ?? []), { ...newTask, id, status: "todo", projectId }]);
-  }
-
-  function handleStatusChange(id: string, status: Status) {
-    setTasks((prev) =>
-      (prev ?? []).map((t) => (t.id === id ? { ...t, status } : t))
-    );
-  }
-
-  function handleRename(id: string, title: string) {
-    setTasks((prev) =>
-      (prev ?? []).map((t) => (t.id === id ? { ...t, title } : t))
-    );
-  }
-
-  function handleDelete(id: string) {
-    setTasks((prev) => (prev ?? []).filter((t) => t.id !== id));
+  function handleSearch(value: string) {
+    setSearchParams((params) => {
+      if (value) params.set("q", value);
+      else params.delete("q");
+      return params;
+    });
   }
 
   return (
     <>
-      <AddTaskForm onAdd={handleAdd} />
-      <Board
-        tasks={tasks}
-        onStatusChange={handleStatusChange}
-        onRename={handleRename}
-        onDelete={handleDelete}
-      />
+      <div className="search">
+        <label htmlFor="search">Search tasks</label>
+        <input id="search" type="search" value={q}
+          onChange={(e) => handleSearch(e.target.value)} />
+        <label htmlFor="assignee-filter">Filter by assignee</label>
+        <select id="assignee-filter" value={assignee}
+          onChange={(e) => setAssignee(e.target.value)}>
+          <option value="">All assignees</option>
+          {assignees.map((name) => (
+            <option key={name} value={name}>{name}</option>
+          ))}
+        </select>
+      </div>
+      <AddTaskForm projectId={projectId} />
+      <Board projectId={projectId} />
     </>
   );
 }

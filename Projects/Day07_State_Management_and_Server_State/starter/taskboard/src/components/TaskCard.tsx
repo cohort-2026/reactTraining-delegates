@@ -1,35 +1,38 @@
-// TODO (Lab 7.2 step 6): select moveTask, renameTask and deleteTask from the store instead of props.
-// TODO (Lab 7.3 steps 6-7): use the useMoveTask and useDeleteTask mutations, and disable controls while they are pending.
 import { useState } from "react";
 import type { ChangeEvent } from "react";
 import type { Status, Task } from "../types";
+import { useDeleteTask } from "../hooks/useDeleteTask";
+import { useMoveTask } from "../hooks/useMoveTask";
+import { useRenameTask } from "../hooks/useRenameTask";
 
 type TaskCardProps = {
   task: Task;
-  onStatusChange: (id: string, status: Status) => void;
-  onRename: (id: string, title: string) => void;
-  onDelete: (id: string) => void;
 };
 
-function TaskCard({ task, onStatusChange, onRename, onDelete }: TaskCardProps) {
+function TaskCard({ task }: TaskCardProps) {
+  const moveTask = useMoveTask();
+  const renameTask = useRenameTask();
+  const deleteTask = useDeleteTask();
   const [isEditing, setIsEditing] = useState(false);
   const [draft, setDraft] = useState(task.title);
+  const failed = moveTask.isError || renameTask.isError || deleteTask.isError;
 
   function handleSave() {
     const title = draft.trim();
     if (title === "") return;
-    onRename(task.id, title);
-    setIsEditing(false);
+    renameTask.mutate({ id: task.id, title }, {
+      onSuccess: () => setIsEditing(false),
+    });
   }
 
   function handleDeleteClick() {
     if (window.confirm(`Delete "${task.title}"?`)) {
-      onDelete(task.id);
+      deleteTask.mutate(task.id);
     }
   }
 
   function handleStatusChange(e: ChangeEvent<HTMLSelectElement>) {
-    onStatusChange(task.id, e.target.value as Status);
+    moveTask.mutate({ id: task.id, status: e.target.value as Status });
   }
 
   return (
@@ -38,25 +41,32 @@ function TaskCard({ task, onStatusChange, onRename, onDelete }: TaskCardProps) {
         <>
           <input aria-label="Task title" value={draft}
             onChange={(e) => setDraft(e.target.value)} />
-          <button onClick={handleSave}>Save</button>
+          <button onClick={handleSave} disabled={renameTask.isPending}>
+            {renameTask.isPending ? "Saving..." : "Save"}
+          </button>
         </>
       ) : (
         <>
           <h3>{task.title}</h3>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
+          <button onClick={() => setIsEditing(true)}
+            disabled={moveTask.isPending || deleteTask.isPending}>Edit</button>
         </>
       )}
 
       {task.assignee && <p>Assigned to {task.assignee}</p>}
       {task.points > 0 && <span>{task.points} pts</span>}
 
-      <select aria-label="Status" value={task.status} onChange={handleStatusChange}>
+      <select aria-label="Status" value={task.status} onChange={handleStatusChange}
+        disabled={moveTask.isPending}>
         <option value="todo">To do</option>
         <option value="doing">In progress</option>
         <option value="done">Done</option>
       </select>
 
-      <button onClick={handleDeleteClick}>Delete</button>
+      <button onClick={handleDeleteClick} disabled={deleteTask.isPending}>
+        {deleteTask.isPending ? "Deleting..." : "Delete"}
+      </button>
+      {failed && <p role="alert">Could not save the change. Is json-server running?</p>}
     </article>
   );
 }

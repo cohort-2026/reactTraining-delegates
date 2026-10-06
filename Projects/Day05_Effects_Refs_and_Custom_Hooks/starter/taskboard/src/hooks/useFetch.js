@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 
 export function useFetch(url) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [result, setResult] = useState({
+    url: null,
+    data: null,
+    loading: false,
+    error: null,
+  });
 
   useEffect(() => {
     if (!url) return;
     const controller = new AbortController();
-    setLoading(true);
-    setError(null);
 
     fetch(url, { signal: controller.signal })
       .then((res) => {
@@ -17,17 +18,17 @@ export function useFetch(url) {
         return res.json();
       })
       .then((json) => {
-        setData(json);
-        setLoading(false);
+        setResult({ url, data: json, loading: false, error: null });
       })
       .catch((err) => {
         if (err.name === "AbortError") return;
-        setError(err.message);
-        setLoading(false);
+        setResult({ url, data: null, loading: false, error: err.message });
       });
 
     return () => controller.abort();
   }, [url]);
 
-  return { data, loading, error };
+  if (!url) return { data: null, loading: false, error: null };
+  if (result.url !== url) return { data: null, loading: true, error: null };
+  return result;
 }
