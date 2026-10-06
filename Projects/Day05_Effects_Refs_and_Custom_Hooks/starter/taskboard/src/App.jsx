@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header.jsx";
 import AddTaskForm from "./components/AddTaskForm.jsx";
 import Board from "./components/Board.jsx";
+import ProductSearch from "./components/ProductSearch.jsx";
 import { tasks as initialTasks } from "./data/tasks.js";
 
 // TODO (Lab 5.1): render ProductSearch here while you work on the lab.
@@ -44,7 +45,12 @@ function App() {
         onRename={handleRename}
         onDelete={handleDelete}
       />
+      <section className="practice">
+        <h2>Lab 5.1 product search</h2>
+        <ProductSearch />
+      </section>
     </>
+    
   );
 }
 

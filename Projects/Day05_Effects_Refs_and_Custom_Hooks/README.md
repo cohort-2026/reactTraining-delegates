@@ -1,7 +1,7 @@
 # Day 5 projects: Effects, Refs and Custom Hooks
 
-Every Day 5 lab is built inside your TaskBoard project, so this folder has one starter and one finished checkpoint per lab. Each checkpoint is a complete, runnable TaskBoard project that builds on the one before, so if you fall behind you can carry on from the last checkpoint.
-
+Every Day 5 lab `is built inside your TaskBoard project, so this folder has one starter and one finished checkpoint per lab. Each checkpoint is a complete, runnable TaskBoard project that builds on the one before, so if you fall behind you can carry on from the last checkpoint.
+`
 ## Which folder to start from
 
 Start today from **`starter/taskboard/`** (or keep using your own TaskBoard from Day 4). It is an exact copy of the Day 4 Lab 4.3 solution, with `TODO` comments where today's labs change the code.
