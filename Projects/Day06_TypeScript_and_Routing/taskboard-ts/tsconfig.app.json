@@ -22,5 +22,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "../../Day07_State_Management_and_Server_State/App.jsx", "src/App.tsx"]
 }
