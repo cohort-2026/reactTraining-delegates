@@ -23,7 +23,8 @@ export function TaskCard({ task, dispatch }: Props) {
       )}
       <button
         aria-label={`Delete ${task.title}`}
-        onClick={() => dispatch({ type: "delete", id: task.id })}
+        // Bug 3: the union uses "deleted", not "delete".
+        onClick={() => dispatch({ type: "deleted", id: task.id })}
       >
         Delete
       </button>

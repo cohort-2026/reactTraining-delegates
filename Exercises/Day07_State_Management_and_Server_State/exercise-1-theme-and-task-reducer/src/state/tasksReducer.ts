@@ -9,11 +9,11 @@ export function tasksReducer(tasks: Task[], action: TaskAction): Task[] {
   switch (action.type) {
     case "added":
       return [...tasks, action.task];
-    case "moved": {
-      const task = tasks.find((t) => t.id === action.id);
-      if (task) task.status = action.status;
-      return tasks;
-    }
+    // Bug 2: mutating the same array skips the re-render; return a new one.
+    case "moved":
+      return tasks.map((t) =>
+        t.id === action.id ? { ...t, status: action.status } : t,
+      );
     case "deleted":
       return tasks.filter((t) => t.id !== action.id);
   }
