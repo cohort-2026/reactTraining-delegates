@@ -23,7 +23,7 @@ export function TaskCard({ task, dispatch }: Props) {
       )}
       <button
         aria-label={`Delete ${task.title}`}
-        onClick={() => dispatch({ type: "delete", id: task.id })}
+        onClick={() => dispatch({ type: "deleted", id: task.id })}
       >
         Delete
       </button>

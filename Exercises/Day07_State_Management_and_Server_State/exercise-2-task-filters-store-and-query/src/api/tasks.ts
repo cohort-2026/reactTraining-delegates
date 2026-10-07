@@ -19,5 +19,6 @@ export async function createTask(task: NewTask): Promise<Task> {
     headers,
     body: JSON.stringify(task),
   });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }

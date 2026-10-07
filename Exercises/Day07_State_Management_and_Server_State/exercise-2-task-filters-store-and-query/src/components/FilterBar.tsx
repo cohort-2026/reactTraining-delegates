@@ -2,10 +2,8 @@ import { useFilterStore } from "../state/useFilterStore";
 import type { StatusFilter } from "../api/tasks";
 
 export function FilterBar() {
-  const { status, setStatus } = useFilterStore((s) => ({
-    status: s.status,
-    setStatus: s.setStatus,
-  }));
+  const status = useFilterStore((s) => s.status);
+  const setStatus = useFilterStore((s) => s.setStatus);
 
   return (
     <div className="filter-bar">
