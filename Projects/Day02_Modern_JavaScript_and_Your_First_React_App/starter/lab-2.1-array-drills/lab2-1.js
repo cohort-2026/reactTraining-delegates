@@ -15,6 +15,28 @@ const products = [
   { id: 6, name: "Clean Code", price: 480, category: "books", inStock: true },
 ];
 
+const names = products.map(product => product.name);
+console.log(`Names: ${names.join(', ')}`);
+
+const affordableInStockProducts = products.filter(product => product.inStock && product.price < 500);
+console.log(`Affordable in-stock products: ${affordableInStockProducts.length}`);
+
+const product4 = products.find(product => product.id === 4);
+console.log(`Product with ID 4: ${product4.name}`);
+
+const stockTotal = products.filter(product => product.inStock).reduce((total, product) => total + product.price, 0);
+console.log(`Total value of in-stock products: R${stockTotal}`);
+
+const updatedProducts = products.map(product => product.id ===2 ? { ...product, inStock: false } : product);
+console.log(`Updated products (product 2 marked out of stock): ${updatedProducts.map(product => `${product.name} (inStock: ${product.inStock})`).join(', ')}`);
+
+const remainingProducts = products.filter(product => product.id !== 5);
+console.log(`Remaining products (product 5 removed): ${remainingProducts.map(product => product.name).join(', ')}`);
+
+console.log(`Original products array: ${products.map(product => `${product.name} (inStock: ${product.inStock})`).join(', ')}`);
+console.log(`Original products array still has product 2 in stock: ${products.find(product => product.id === 2).inStock}`);
+console.log(`Original products array still has product 5: ${products.some(product => product.id === 5)}`);
+
 // TODO (step 2): use map to create an array of product names, then log it
 // with a template literal, for example: Names: Wireless Mouse, USB-C Charger, ...
 
