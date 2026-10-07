@@ -16,14 +16,16 @@ export function TaskCard({ task, dispatch }: Props) {
       {task.status !== "done" && (
         <button
           aria-label={`Mark ${task.title} as done`}
-          onClick={() => dispatch({ type: "moved", id: task.id, status: "done" })}
+          onClick={() =>
+            dispatch({ type: "moved", id: task.id, status: "done" })
+          }
         >
           Done
         </button>
       )}
       <button
         aria-label={`Delete ${task.title}`}
-        onClick={() => dispatch({ type: "delete", id: task.id })}
+        onClick={() => dispatch({ type: "deleted", id: task.id })}
       >
         Delete
       </button>
