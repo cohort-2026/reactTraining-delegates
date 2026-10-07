@@ -5,7 +5,32 @@
 const API = "https://jsonplaceholder.typicode.com";
 
 // TODO (step 2): make this an async function so you can use await inside it.
-function loadTodos(limit) {
+async function loadTodos(limit) {
+
+ try {
+  const res = await fetch(`${API}/todos?_limit=${limit}`);
+
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+  const todos = await res.json();
+
+  todos.map((todo, index) => {
+    const status = todo.completed ? "[done]" : "[open]";
+    console.log(`${index + 1}. ${status} ${todo.title}`);
+  });
+
+  const completed = todos.filter((todo) => todo.completed).length;
+  console.log(`Completed: ${completed} of ${limit}`);
+
+ } catch (err) {
+    console.log(`Error loading todos: ${err.message}`);
+  } finally {
+    console.log("Done loading");
+  }
+
+
+
   // TODO (step 5): wrap the code below in try / catch / finally.
   //   catch:   log a friendly message with err.message (no crash)
   //   finally: log "Done loading"
