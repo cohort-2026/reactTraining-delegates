@@ -10,11 +10,13 @@ export function tasksReducer(tasks: Task[], action: TaskAction): Task[] {
     case "added":
       return [...tasks, action.task];
     case "moved": {
-      const task = tasks.find((t) => t.id === action.id);
-      if (task) task.status = action.status;
-      return tasks;
+      return tasks.map((t) =>
+        t.id === action.id ? { ...t, status: action.status } : t
+      );
     }
     case "deleted":
       return tasks.filter((t) => t.id !== action.id);
+    default:
+      return tasks;
   }
 }

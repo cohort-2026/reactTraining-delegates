@@ -4,13 +4,11 @@ import { Board } from "./components/Board";
 
 export default function App() {
   return (
-    <>
-      <Header />
       <ThemeProvider>
+        <Header />
         <main>
           <Board />
         </main>
       </ThemeProvider>
-    </>
   );
 }
