@@ -1,5 +1,6 @@
 // TODO (Lab 7.1 step 3): add a theme toggle button to the nav.
 // TODO (Lab 7.2 step 5): remove the tasks state, the seeding effect, BoardContext and the Outlet context.
+import { useTheme } from "../context/ThemeContext";
 import { useEffect } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import { Link, NavLink, Outlet } from "react-router";
@@ -19,6 +20,7 @@ export type BoardContext = {
 
 export default function Layout() {
   const [tasks, setTasks] = useLocalStorage<Task[] | null>("tasks", null);
+  const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
   const needsSeed = tasks === null;
 
@@ -46,6 +48,9 @@ export default function Layout() {
           <NavLink key={p.id} to={`/projects/${p.id}`}>{p.name}</NavLink>
         ))}
         <NavLink to="/settings">Settings</NavLink>
+        <button onClick={toggleTheme}>
+         {theme === "light" ? "Dark" : "Light"}
+        </button>
         <span className="user">
           {user ? (
             <>
