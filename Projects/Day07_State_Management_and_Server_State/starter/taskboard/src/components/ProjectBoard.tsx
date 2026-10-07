@@ -1,52 +1,36 @@
-// TODO (Lab 7.2 steps 5-6): no more handlers passed as props. AddTaskForm and TaskCard call store actions
-// themselves, so this component is no longer needed.
-import { useOutletContext } from "react-router";
 import AddTaskForm from "./AddTaskForm";
 import type { NewTaskFields } from "./AddTaskForm";
 import Board from "./Board";
-import type { BoardContext } from "../pages/Layout";
-import type { Status, Task } from "../types";
+import { projects } from "../data/projects";
+import { useAddTask } from "../hooks/useAddTask";
+import { useTaskStore } from "../state/useTaskStore";
 
 type ProjectBoardProps = {
-  tasks: Task[];
-  projectId: string;
+  projectId?: string;
+  filtered?: boolean;
 };
 
-// The add form and board, wired to the tasks state that Layout shares
-// through Outlet context. Dashboard and Project both render it.
-export default function ProjectBoard({ tasks, projectId }: ProjectBoardProps) {
-  const { setTasks } = useOutletContext<BoardContext>();
+export default function ProjectBoard({ projectId, filtered = false }: ProjectBoardProps) {
+  const addTask = useAddTask();
+  const addTaskToStore = useTaskStore((state) => state.addTask);
 
   function handleAdd(newTask: NewTaskFields) {
-    const id = crypto.randomUUID();
-    setTasks((prev) => [...(prev ?? []), { ...newTask, id, status: "todo", projectId }]);
-  }
-
-  function handleStatusChange(id: string, status: Status) {
-    setTasks((prev) =>
-      (prev ?? []).map((t) => (t.id === id ? { ...t, status } : t))
-    );
-  }
-
-  function handleRename(id: string, title: string) {
-    setTasks((prev) =>
-      (prev ?? []).map((t) => (t.id === id ? { ...t, title } : t))
-    );
-  }
-
-  function handleDelete(id: string) {
-    setTasks((prev) => (prev ?? []).filter((t) => t.id !== id));
+    addTask.mutate({
+      id: crypto.randomUUID(),
+      ...newTask,
+      status: "todo",
+      projectId: projectId ?? projects[0].id,
+      assignee: newTask.assignee.trim() || undefined,
+      tags: [],
+    }, {
+      onSuccess: addTaskToStore,
+    });
   }
 
   return (
     <>
-      <AddTaskForm onAdd={handleAdd} />
-      <Board
-        tasks={tasks}
-        onStatusChange={handleStatusChange}
-        onRename={handleRename}
-        onDelete={handleDelete}
-      />
+      <AddTaskForm onAdd={handleAdd} isPending={addTask.isPending} />
+      <Board projectId={projectId} filtered={filtered} />
     </>
   );
 }

@@ -1,4 +1,3 @@
-/* TODO (Lab 7.1 step 3): replace the hard-coded colours below with your CSS variables so dark mode reaches every component. */
 #root {
   max-width: 960px;
   margin: 0 auto;
@@ -29,20 +28,20 @@
 }
 
 .btn-primary {
-  background: #0f766e;
-  color: #ffffff;
+  background: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .btn-secondary {
-  background: #ffffff;
-  color: #0f766e;
-  border-color: #0f766e;
+  background: var(--color-surface);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 /* Lab 3.1: Card */
 .card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
@@ -53,7 +52,7 @@
 }
 
 .card-highlight {
-  border-color: #0f766e;
+  border-color: var(--color-accent);
 }
 
 /* Lab 3.3: TaskBoard */
@@ -83,7 +82,7 @@
 }
 
 .column {
-  background: #eef2f7;
+  background: var(--color-column);
   border-radius: 8px;
   padding: 12px;
 }
@@ -133,7 +132,7 @@
 .add-task-form p[role="alert"] {
   flex-basis: 100%;
   margin: 0;
-  color: #991b1b;
+  color: var(--color-danger);
 }
 
 .add-task-form button,
@@ -151,7 +150,7 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #0f766e;
+  color: var(--color-accent);
 }
 
 /* Lab 6.2: layout, navigation and search */
@@ -161,11 +160,16 @@ nav {
   gap: 16px;
   padding: 8px 0;
   margin-bottom: 16px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-border);
 }
 
 nav a {
-  color: #0f766e;
+  color: var(--color-accent);
+}
+
+nav .user,
+.hint {
+  color: var(--color-muted);
 }
 
 .search {

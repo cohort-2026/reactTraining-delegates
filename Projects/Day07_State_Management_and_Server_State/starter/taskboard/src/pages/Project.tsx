@@ -1,14 +1,27 @@
-// TODO (Lab 7.2 step 6): read tasks with a store selector instead of Outlet context.
-// TODO (Lab 7.3 step 5): read tasks with useQuery instead.
-import { Link, useOutletContext, useParams } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import { Link, useParams } from "react-router";
 import ProjectBoard from "../components/ProjectBoard";
 import { projects } from "../data/projects";
-import type { BoardContext } from "./Layout";
+import { fetchTasks } from "../api/tasks";
+import { useEffect } from "react";
+import { useTaskStore } from "../state/useTaskStore";
 
 export default function Project() {
   const { projectId } = useParams();
-  const { tasks } = useOutletContext<BoardContext>();
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["tasks"],
+    queryFn: fetchTasks,
+  });
+  const tasks = useTaskStore((state) => state.tasks);
+  const loadTasks = useTaskStore((state) => state.loadTasks);
   const project = projects.find((p) => p.id === projectId);
+
+  useEffect(() => {
+    if (data) loadTasks(data);
+  }, [data, loadTasks]);
+
+  if (isLoading) return <p>Loading tasks...</p>;
+  if (isError) return <p role="alert">Could not load tasks. Is json-server running?</p>;
 
   if (!project) {
     return (
@@ -19,12 +32,13 @@ export default function Project() {
     );
   }
 
-  const projectTasks = tasks.filter((t) => t.projectId === projectId);
+  const projectTasks = tasks.filter((task) => task.projectId === projectId);
+
   return (
     <section>
       <h1>{project.name}</h1>
       <p>{projectTasks.length} tasks</p>
-      <ProjectBoard tasks={projectTasks} projectId={project.id} />
+      <ProjectBoard projectId={project.id} />
     </section>
   );
 }

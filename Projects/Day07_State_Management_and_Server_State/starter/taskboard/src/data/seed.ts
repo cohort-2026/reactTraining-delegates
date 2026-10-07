@@ -1,5 +1,4 @@
-// TODO (Lab 7.2): seeding lived in Layout. Once tasks move to the store and then to json-server (Lab 7.3),
-// the starter tasks live in db.json instead.
+// Lab 7.3 uses db.json as the task source; these helpers remain for the earlier seed-data exercise.
 import type { Task } from "../types";
 
 export const SEED_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";

@@ -1,5 +1,3 @@
-// TODO (Lab 7.2 step 6): call the store's addTask (generate the id here, not in the reducer).
-// TODO (Lab 7.3 steps 6-7): call useAddTask().mutate instead, and disable the button while it is pending.
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
 
@@ -11,6 +9,7 @@ export type NewTaskFields = {
 
 type AddTaskFormProps = {
   onAdd: (task: NewTaskFields) => void;
+  isPending?: boolean;
 };
 
 type FormState = {
@@ -21,7 +20,7 @@ type FormState = {
 
 const emptyForm: FormState = { title: "", assignee: "", points: "1" };
 
-function AddTaskForm({ onAdd }: AddTaskFormProps) {
+function AddTaskForm({ onAdd, isPending = false }: AddTaskFormProps) {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -66,7 +65,9 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
         value={form.points} onChange={handleChange} />
 
       {error && <p role="alert">{error}</p>}
-      <button type="submit">Add task</button>
+      <button type="submit" disabled={isPending}>
+        {isPending ? "Adding..." : "Add task"}
+      </button>
     </form>
   );
 }

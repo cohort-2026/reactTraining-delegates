@@ -1,17 +1,26 @@
-// TODO (Lab 7.2 step 6): select the tasks with useTaskStore((s) => s.tasks) and filter them here, outside the selector.
-// TODO (Lab 7.3 step 5): read the tasks with useQuery({ queryKey: ["tasks"], queryFn: fetchTasks }).
 import TaskCard from "./TaskCard";
-import type { Status, Task } from "../types";
+import { useTaskStore } from "../state/useTaskStore";
+import { useFilterStore } from "../state/useFilterStore";
+import type { Status } from "../types";
 
 type ColumnProps = {
   heading: string;
-  tasks: Task[];
-  onStatusChange: (id: string, status: Status) => void;
-  onRename: (id: string, title: string) => void;
-  onDelete: (id: string) => void;
+  status: Status;
+  projectId?: string;
+  filtered?: boolean;
 };
 
-function Column({ heading, tasks, onStatusChange, onRename, onDelete }: ColumnProps) {
+function Column({ heading, status, projectId, filtered = false }: ColumnProps) {
+  const allTasks = useTaskStore((state) => state.tasks);
+  const searchText = useFilterStore((state) => state.searchText);
+  const assignee = useFilterStore((state) => state.assignee);
+  const tasks = allTasks.filter((task) =>
+    task.status === status &&
+    (!projectId || task.projectId === projectId) &&
+    (!filtered || task.title.toLowerCase().includes(searchText.toLowerCase())) &&
+    (!filtered || !assignee || task.assignee === assignee),
+  );
+
   return (
     <section className="column">
       <h2>{heading} ({tasks.length})</h2>
@@ -21,12 +30,7 @@ function Column({ heading, tasks, onStatusChange, onRename, onDelete }: ColumnPr
         <ul>
           {tasks.map((task) => (
             <li key={task.id}>
-              <TaskCard
-                task={task}
-                onStatusChange={onStatusChange}
-                onRename={onRename}
-                onDelete={onDelete}
-              />
+              <TaskCard task={task} />
             </li>
           ))}
         </ul>

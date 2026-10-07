@@ -1,6 +1,6 @@
 # TaskBoard: Day 7 starter
 
-Your TaskBoard project as it stands at the end of Day 6. It is an exact copy of `Projects/Day06_TypeScript_and_Routing/solution/lab-6.3-taskboard-protected-routes`, with `TODO` comments where today's labs change the code.
+This TaskBoard includes the Day 7 shared theme and auth contexts, persisted Zustand task state and filters, and a JSON Server API managed with TanStack Query.
 
 If you already have your own `taskboard-ts` from Day 6, keep using it. Use this folder only if you need a clean starting point.
 
@@ -14,9 +14,10 @@ npm run dev
 ```
 
 Open the **Local** URL Vite prints (usually `http://localhost:5173`). `npm run lint` runs ESLint and `npm run build` type-checks and builds.
+In a separate terminal, run `npm run api` and keep it running; it serves `db.json` at `http://localhost:3001`.
 
-| Lab | Where the `TODO` comments are |
+| Lab | Main implementation |
 |---|---|
-| 7.1 Theme Switcher and Shared Auth with Context | `src/main.tsx`, `src/hooks/useAuth.ts`, `src/hooks/useLocalStorage.ts`, `src/pages/Layout.tsx`, `src/index.css` and `src/App.css` (you create `src/context`) |
-| 7.2 TaskBoard State Refactor | `src/pages/*`, `src/components/*` and `src/data/seed.ts` (you create `src/state/tasksReducer.ts`, `useTaskStore.ts` and a filter store) |
-| 7.3 TaskBoard Data Layer with TanStack Query | `src/main.tsx`, `src/pages/Project.tsx` and `src/components/*` (you create `db.json`, `src/api/tasks.ts` and the mutation Hooks) |
+| 7.1 Theme Switcher and Shared Auth with Context | `src/context`, `src/hooks/useLocalStorage.ts`, `src/pages/Layout.tsx` and the CSS files |
+| 7.2 TaskBoard State Refactor | `src/state/tasksReducer.ts`, `src/state/useTaskStore.ts`, `src/state/useFilterStore.ts` and the task-board components |
+| 7.3 TaskBoard Data Layer with TanStack Query | `src/api/tasks.ts`, `src/hooks/use*Task.ts`, `src/pages/*` and `db.json` |
