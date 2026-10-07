@@ -1,0 +1,44 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Design the new homepage layout",
+      "status": "todo",
+      "points": 3,
+      "assignee": "Sam",
+      "projectId": "website"
+    },
+    {
+      "id": "2",
+      "title": "Set up the mobile app navigation",
+      "status": "doing",
+      "points": 2,
+      "assignee": "Priya",
+      "projectId": "mobile"
+    },
+    {
+      "id": "3",
+      "title": "Write copy for the contact page",
+      "status": "todo",
+      "points": 1,
+      "assignee": "Lee",
+      "projectId": "website"
+    },
+    {
+      "id": "4",
+      "title": "Fix the login screen on small phones",
+      "status": "done",
+      "points": 2,
+      "assignee": "Sam",
+      "projectId": "mobile"
+    },
+    {
+      "id": "5",
+      "title": "Compress images for faster loading",
+      "status": "doing",
+      "points": 1,
+      "assignee": "Priya",
+      "projectId": "website"
+    }
+  ]
+}
