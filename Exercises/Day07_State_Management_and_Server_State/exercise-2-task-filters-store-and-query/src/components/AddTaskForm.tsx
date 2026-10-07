@@ -23,7 +23,7 @@ export function AddTaskForm() {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <button type="submit" disabled={addTask.isLoading}>
+      <button type="submit" disabled={addTask.isPending}>
         Add
       </button>
       {addTask.isError && (
