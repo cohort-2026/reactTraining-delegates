@@ -1,38 +1,33 @@
 // TODO (Lab 7.2 step 6): select the tasks with useTaskStore((s) => s.tasks) and filter them here, outside the selector.
 // TODO (Lab 7.3 step 5): read the tasks with useQuery({ queryKey: ["tasks"], queryFn: fetchTasks }).
-import TaskCard from "./TaskCard";
-import type { Status, Task } from "../types";
+import { useTaskStore } from '../store/useTaskStore'
+import type { Task } from '../store/useTaskStore'
+import TaskCard from './TaskCard'
 
-type ColumnProps = {
-  heading: string;
-  tasks: Task[];
-  onStatusChange: (id: string, status: Status) => void;
-  onRename: (id: string, title: string) => void;
-  onDelete: (id: string) => void;
-};
+function Column(props: { columnId: string, title: string }){
+  const tasks = useTaskStore((state) => state.tasks)
+  const addTask = useTaskStore((state) => state.addTask)
 
-function Column({ heading, tasks, onStatusChange, onRename, onDelete }: ColumnProps) {
-  return (
-    <section className="column">
-      <h2>{heading} ({tasks.length})</h2>
-      {tasks.length === 0 ? (
-        <p>Nothing here yet</p>
-      ) : (
-        <ul>
-          {tasks.map((task) => (
-            <li key={task.id}>
-              <TaskCard
-                task={task}
-                onStatusChange={onStatusChange}
-                onRename={onRename}
-                onDelete={onDelete}
-              />
-            </li>
-          ))}
-        </ul>
-      )}
-    </section>
-  );
+  const myTasks = tasks.filter((t: Task) => t.columnId === props.columnId)
+
+  function handleAdd(){
+    const newTask: Task = {
+      id: Date.now().toString(),
+      title: 'new task',
+      columnId: props.columnId
+    }
+    addTask(newTask)
+  }
+
+  return(
+    <div>
+      <h3>{props.title}</h3>
+      <button onClick={handleAdd}>+ Add</button>
+      {myTasks.map((task: Task) => (
+        <TaskCard key={task.id} id={task.id} title={task.title} columnId={task.columnId} />
+      ))}
+    </div>
+  )
 }
 
-export default Column;
+export default Column

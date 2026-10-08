@@ -1,64 +1,42 @@
 // TODO (Lab 7.2 step 6): select moveTask, renameTask and deleteTask from the store instead of props.
 // TODO (Lab 7.3 steps 6-7): use the useMoveTask and useDeleteTask mutations, and disable controls while they are pending.
-import { useState } from "react";
-import type { ChangeEvent } from "react";
-import type { Status, Task } from "../types";
+import { useTaskStore } from '../store/useTaskStore'
+import { useState } from 'react'
 
-type TaskCardProps = {
-  task: Task;
-  onStatusChange: (id: string, status: Status) => void;
-  onRename: (id: string, title: string) => void;
-  onDelete: (id: string) => void;
-};
+function TaskCard(props: { id: string, title: string, columnId: string }){
+  const deleteTask = useTaskStore((s:any) => s.deleteTask)
+  const moveTask = useTaskStore((s:any) => s.moveTask)
+  const renameTask = useTaskStore((s:any) => s.renameTask)
 
-function TaskCard({ task, onStatusChange, onRename, onDelete }: TaskCardProps) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [draft, setDraft] = useState(task.title);
+  const [isEdit, setIsEdit] = useState(false)
+  const [newTitle, setNewTitle] = useState(props.title)
 
-  function handleSave() {
-    const title = draft.trim();
-    if (title === "") return;
-    onRename(task.id, title);
-    setIsEditing(false);
+  function handleRename(){
+    renameTask(props.id, newTitle)
+    setIsEdit(false)
   }
 
-  function handleDeleteClick() {
-    if (window.confirm(`Delete "${task.title}"?`)) {
-      onDelete(task.id);
-    }
-  }
-
-  function handleStatusChange(e: ChangeEvent<HTMLSelectElement>) {
-    onStatusChange(task.id, e.target.value as Status);
-  }
-
-  return (
-    <article className="card">
-      {isEditing ? (
-        <>
-          <input aria-label="Task title" value={draft}
-            onChange={(e) => setDraft(e.target.value)} />
-          <button onClick={handleSave}>Save</button>
-        </>
+  return(
+    <div style={{border: '1px solid black', margin: '5px', padding: '5px'}}>
+      {isEdit ? (
+        <div>
+          <input value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
+          <button onClick={handleRename}>save</button>
+        </div>
       ) : (
-        <>
-          <h3>{task.title}</h3>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-        </>
+        <p>{props.title}</p>
       )}
 
-      {task.assignee && <p>Assigned to {task.assignee}</p>}
-      {task.points > 0 && <span>{task.points} pts</span>}
+      <button onClick={() => setIsEdit(true)}>rename</button>
+      <button onClick={() => deleteTask(props.id)}>delete</button>
 
-      <select aria-label="Status" value={task.status} onChange={handleStatusChange}>
-        <option value="todo">To do</option>
-        <option value="doing">In progress</option>
-        <option value="done">Done</option>
-      </select>
-
-      <button onClick={handleDeleteClick}>Delete</button>
-    </article>
-  );
+      <div>
+        <button onClick={() => moveTask(props.id, 'todo')}>todo</button>
+        <button onClick={() => moveTask(props.id, 'doing')}>doing</button>
+        <button onClick={() => moveTask(props.id, 'done')}>done</button>
+      </div>
+    </div>
+  )
 }
 
-export default TaskCard;
+export default TaskCard
