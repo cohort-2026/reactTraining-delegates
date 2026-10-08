@@ -1,15 +1,23 @@
-// TODO (Lab 7.2 step 5): Reset board uses Layout's Outlet context, which this lab removes.
-import { useOutletContext } from "react-router";
-import type { BoardContext } from "./Layout";
+import { useResetTasks } from "../hooks/useTasks";
 
 export default function Settings() {
-  const { setTasks } = useOutletContext<BoardContext>();
+  const reset = useResetTasks();
 
   return (
     <section>
       <h1>Settings</h1>
-      <p>Reset the board to load the starter tasks again.</p>
-      <button className="reset-button" onClick={() => setTasks(null)}>Reset board</button>
+      <p>Replace the tasks on the server with the starter tasks.</p>
+      {reset.isError && (
+        <p role="alert">Could not reset tasks: {reset.error.message}</p>
+      )}
+      <button
+        className="reset-button"
+        type="button"
+        disabled={reset.isPending}
+        onClick={() => reset.mutate()}
+      >
+        {reset.isPending ? "Resetting..." : "Reset board"}
+      </button>
     </section>
   );
 }

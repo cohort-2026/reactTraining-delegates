@@ -1,22 +1,35 @@
-# TaskBoard: Day 7 starter
+# TaskBoard: Day 7
 
-Your TaskBoard project as it stands at the end of Day 6. It is an exact copy of `Projects/Day06_TypeScript_and_Routing/solution/lab-6.3-taskboard-protected-routes`, with `TODO` comments where today's labs change the code.
+This project combines the Day 7 labs:
 
-If you already have your own `taskboard-ts` from Day 6, keep using it. Use this folder only if you need a clean starting point.
+- Light/dark theme and shared mock-auth state use React Context and persist in local storage.
+- Search stays in the URL; the assignee filter uses a small Zustand store.
+- Tasks are stored by json-server and loaded/cached with TanStack Query. Add, move, rename, delete, and reset actions update the API and invalidate the task query.
 
-Try this before the first module: log in on the Login page and watch the header. It does not show your name until you refresh, because `Login` and `Layout` each have their own copy of the `useAuth` state. Lab 7.1 fixes it.
+## Requirements
 
-## How to run
+Node.js 24 LTS and npm. json-server 1 requires Node.js 22.12 or newer.
+
+## Run the app
+
+Install dependencies once:
 
 ```bash
 npm install
+```
+
+Start the mock API in one terminal and leave it running:
+
+```bash
+npm run api
+```
+
+Start the Vite app in a second terminal:
+
+```bash
 npm run dev
 ```
 
-Open the **Local** URL Vite prints (usually `http://localhost:5173`). `npm run lint` runs ESLint and `npm run build` type-checks and builds.
+Open the **Local** URL Vite prints (usually `http://localhost:5173`). The API is available at `http://localhost:3001`; set `VITE_TASKS_API_URL` if it runs at a different base URL.
 
-| Lab | Where the `TODO` comments are |
-|---|---|
-| 7.1 Theme Switcher and Shared Auth with Context | `src/main.tsx`, `src/hooks/useAuth.ts`, `src/hooks/useLocalStorage.ts`, `src/pages/Layout.tsx`, `src/index.css` and `src/App.css` (you create `src/context`) |
-| 7.2 TaskBoard State Refactor | `src/pages/*`, `src/components/*` and `src/data/seed.ts` (you create `src/state/tasksReducer.ts`, `useTaskStore.ts` and a filter store) |
-| 7.3 TaskBoard Data Layer with TanStack Query | `src/main.tsx`, `src/pages/Project.tsx` and `src/components/*` (you create `db.json`, `src/api/tasks.ts` and the mutation Hooks) |
+`npm run lint` runs ESLint and `npm run build` type-checks and builds the app.

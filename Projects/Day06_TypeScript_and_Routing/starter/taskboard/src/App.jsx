@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";
 import AddTaskForm from "./components/AddTaskForm.jsx";
-import Board from "./components/Board.jsx";
+import Board from "./components/Board";
 import { useLocalStorage } from "./hooks/useLocalStorage.js";
 
 const SEED_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";

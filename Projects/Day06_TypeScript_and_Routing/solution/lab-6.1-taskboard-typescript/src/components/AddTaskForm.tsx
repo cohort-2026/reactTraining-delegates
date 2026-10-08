@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type SubmitEvent,
+} from "react";
 import type { NewTask } from "../types";
 
 type AddTaskFormProps = {
@@ -27,7 +33,7 @@ export default function AddTaskForm({ onAdd }: AddTaskFormProps) {
     setForm((previous) => ({ ...previous, [name]: value }));
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     const title = form.title.trim();
     if (title.length < 3) {

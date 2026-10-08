@@ -1,15 +1,10 @@
-// TODO (Lab 7.2 step 6): read the tasks from the store instead of a prop.
-// TODO (Lab 7.3 step 5): read them with useQuery.
 import { useEffect } from "react";
-import type { Task } from "../types";
+import { useTasks } from "../hooks/useTasks";
 
-type HeaderProps = {
-  tasks: Task[];
-};
-
-function Header({ tasks }: HeaderProps) {
-  const doneCount = tasks.filter((t) => t.status === "done").length;
-  const openCount = tasks.filter((t) => t.status !== "done").length;
+function Header() {
+  const { data: tasks = [] } = useTasks();
+  const doneCount = tasks.filter((task) => task.status === "done").length;
+  const openCount = tasks.filter((task) => task.status !== "done").length;
 
   useEffect(() => {
     document.title = `TaskBoard (${openCount} open)`;

@@ -1,0 +1,44 @@
+{
+  "tasks": [
+    {
+      "id": "task-1",
+      "title": "Build the landing page",
+      "status": "todo",
+      "points": 3,
+      "assignee": "Alex",
+      "projectId": "website"
+    },
+    {
+      "id": "task-2",
+      "title": "Add responsive navigation",
+      "status": "doing",
+      "points": 2,
+      "assignee": "Sam",
+      "projectId": "website"
+    },
+    {
+      "id": "task-3",
+      "title": "Write the getting started guide",
+      "status": "doing",
+      "points": 1,
+      "assignee": "Alex",
+      "projectId": "website"
+    },
+    {
+      "id": "task-4",
+      "title": "Create the sign-in screen",
+      "status": "todo",
+      "points": 2,
+      "assignee": "Jordan",
+      "projectId": "mobile"
+    },
+    {
+      "id": "task-5",
+      "title": "Test offline mode",
+      "status": "doing",
+      "points": 3,
+      "projectId": "mobile"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

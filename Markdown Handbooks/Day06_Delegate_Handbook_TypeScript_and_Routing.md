@@ -730,7 +730,7 @@ Work through the errors one file at a time: start with `types.ts`, then the smal
 
 #### Steps
 
-1. Create `taskboard-ts` with the react-ts template (`npm create vite@latest taskboard-ts -- --template react-ts --eslint`) and bring your Git history across (see [Moving TaskBoard to TypeScript](#moving-taskboard-to-typescript)).
+1. Create `taskboard-ts` with the react-ts template (`npm create vite@latest taskboard-ts -- --template react-ts --eslint`), bring your Git history across (see [Moving TaskBoard to TypeScript](#moving-taskboard-to-typescript)), then enter the project with `cd taskboard-ts` and install its dependencies with `npm install`.
 2. Copy your `src` folder into the new project, replacing the template's files, then rename files to `.tsx` (components) and `.ts` (everything else).
 3. Create `src/types.ts` with `Status` and `Task`.
 4. Add a Props type to every component.

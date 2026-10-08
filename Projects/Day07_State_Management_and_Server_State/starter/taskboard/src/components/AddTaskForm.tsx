@@ -1,16 +1,9 @@
-// TODO (Lab 7.2 step 6): call the store's addTask (generate the id here, not in the reducer).
-// TODO (Lab 7.3 steps 6-7): call useAddTask().mutate instead, and disable the button while it is pending.
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
-
-export type NewTaskFields = {
-  title: string;
-  assignee: string;
-  points: number;
-};
+import { useAddTask } from "../hooks/useTasks";
 
 type AddTaskFormProps = {
-  onAdd: (task: NewTaskFields) => void;
+  projectId: string;
 };
 
 type FormState = {
@@ -21,7 +14,8 @@ type FormState = {
 
 const emptyForm: FormState = { title: "", assignee: "", points: "1" };
 
-function AddTaskForm({ onAdd }: AddTaskFormProps) {
+function AddTaskForm({ projectId }: AddTaskFormProps) {
+  const addTask = useAddTask();
   const [form, setForm] = useState<FormState>(emptyForm);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -42,13 +36,22 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
       setError("Title needs 3+ characters.");
       return;
     }
+    const points = Number(form.points);
+    if (!Number.isInteger(points) || points < 1) {
+      setError("Points must be a whole number greater than zero.");
+      return;
+    }
     setError("");
-    onAdd({
-      title,
-      assignee: form.assignee.trim(),
-      points: Number(form.points),
-    });
-    setForm(emptyForm);
+    addTask.mutate(
+      {
+        title,
+        assignee: form.assignee.trim(),
+        points,
+        status: "todo",
+        projectId,
+      },
+      { onSuccess: () => setForm(emptyForm) }
+    );
   }
 
   return (
@@ -66,7 +69,10 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
         value={form.points} onChange={handleChange} />
 
       {error && <p role="alert">{error}</p>}
-      <button type="submit">Add task</button>
+      {addTask.isError && <p role="alert">Could not add task: {addTask.error.message}</p>}
+      <button type="submit" disabled={addTask.isPending}>
+        {addTask.isPending ? "Adding..." : "Add task"}
+      </button>
     </form>
   );
 }

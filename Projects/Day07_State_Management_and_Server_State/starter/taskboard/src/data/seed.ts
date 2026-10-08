@@ -1,17 +1,38 @@
-// TODO (Lab 7.2): seeding lived in Layout. Once tasks move to the store and then to json-server (Lab 7.3),
-// the starter tasks live in db.json instead.
 import type { Task } from "../types";
 
-export const SEED_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";
-
-export type Todo = { id: number; title: string; completed: boolean };
-
-export function toTasks(todos: Todo[]): Task[] {
-  return todos.map((t) => ({
-    id: String(t.id),
-    title: t.title,
-    status: t.completed ? "done" : "todo",
+export const INITIAL_TASKS: Omit<Task, "id">[] = [
+  {
+    title: "Build the landing page",
+    status: "todo",
+    points: 3,
+    assignee: "Alex",
+    projectId: "website",
+  },
+  {
+    title: "Add responsive navigation",
+    status: "doing",
+    points: 2,
+    assignee: "Sam",
+    projectId: "website",
+  },
+  {
+    title: "Write the getting started guide",
+    status: "done",
     points: 1,
-    projectId: t.id % 2 === 1 ? "website" : "mobile",
-  }));
-}
+    assignee: "Alex",
+    projectId: "website",
+  },
+  {
+    title: "Create the sign-in screen",
+    status: "todo",
+    points: 2,
+    assignee: "Jordan",
+    projectId: "mobile",
+  },
+  {
+    title: "Test offline mode",
+    status: "doing",
+    points: 3,
+    projectId: "mobile",
+  },
+];
