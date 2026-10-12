@@ -1,0 +1,95 @@
+
+/* Overall page */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+/* Header */
+.app-header {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.app-header h1 {
+  margin-bottom: 8px;
+}
+
+.app-header p {
+  color: #666;
+  margin: 0;
+}
+
+/* Three-column board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+/* Each column */
+.board-column {
+  min-width: 0;
+  padding: 16px;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+}
+
+.board-column h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+/* Tasks inside each column */
+.column-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Cards */
+.card {
+  padding: 16px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.card h2 {
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.card__content p {
+  line-height: 1.5;
+}
+
+/* Buttons */
+.button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.button--primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.button--secondary {
+  background-color: #e5e7eb;
+  color: #222;
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
