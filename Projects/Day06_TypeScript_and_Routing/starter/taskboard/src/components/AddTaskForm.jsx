@@ -1,11 +1,17 @@
-import { useState } from "react";
+// TODO (Lab 6.1 steps 4 and 6): add a Props type, type the ref with useRef<HTMLInputElement>(null),
+// and type the ChangeEvent and SubmitEvent handlers.
+import { useEffect, useRef, useState } from "react";
 
 const emptyForm = { title: "", assignee: "", points: 1 };
 
-// TODO (Lab 5.3 step 6): auto-focus the title input with a ref.
 function AddTaskForm({ onAdd }) {
   const [form, setForm] = useState(emptyForm);
   const [error, setError] = useState("");
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -31,7 +37,7 @@ function AddTaskForm({ onAdd }) {
   return (
     <form className="add-task-form" onSubmit={handleSubmit}>
       <label htmlFor="title">Title</label>
-      <input id="title" name="title" value={form.title}
+      <input id="title" name="title" ref={inputRef} value={form.title}
         aria-invalid={Boolean(error)} onChange={handleChange} />
 
       <label htmlFor="assignee">Assignee</label>

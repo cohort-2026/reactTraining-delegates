@@ -1,19 +1,44 @@
-import { useState } from "react";
+// TODO (Lab 6.1 steps 2 and 5): in taskboard-ts this becomes App.tsx. Type every handler parameter
+// (id: string, status: Status) and pass the type to the Hook: useLocalStorage<Task[] | null>("tasks", null).
+// TODO (Lab 6.2 steps 2-5): move the tasks state, the seeding effect and the handlers into src/pages/Layout.tsx,
+// share tasks with the pages through Outlet context, and add a projectId to every seeded and new task.
+// TODO (Lab 6.3 step 6): show the user's name and a Log out button in Layout.
+import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";
 import AddTaskForm from "./components/AddTaskForm.jsx";
 import Board from "./components/Board.jsx";
-import ProductSearch from "./components/ProductSearch.jsx";
-import WeatherDashboard from "./components/WeatherDashboard.jsx";
-import { tasks as initialTasks } from "./data/tasks.js";
+import { useLocalStorage } from "./hooks/useLocalStorage.js";
 
-// TODO (Lab 5.1): render ProductSearch here while you work on the lab.
-// TODO (Lab 5.2): render WeatherDashboard here while you work on the lab.
-// TODO (Lab 5.3 steps 2-5): replace useState with useLocalStorage("tasks", null), seed the board from
-//   JSONPlaceholder when tasks is null, and show a loading message while seeding.
-// TODO (Lab 5.3 step 8): add a Reset board button.
+const SEED_URL = "https://jsonplaceholder.typicode.com/todos?_limit=5";
+
 function App() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useLocalStorage("tasks", null);
+  const needsSeed = tasks === null;
+
+  useEffect(() => {
+    if (!needsSeed) return;
+    const controller = new AbortController();
+    fetch(SEED_URL, { signal: controller.signal })
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((todos) =>
+        setTasks(
+          todos.map((t) => ({
+            id: String(t.id),
+            title: t.title,
+            status: t.completed ? "done" : "todo",
+            points: 1,
+          }))
+        )
+      )
+      .catch((err) => {
+        if (err.name !== "AbortError") console.error(err);
+      });
+    return () => controller.abort();
+  }, [needsSeed, setTasks]);
 
   function handleAdd(newTask) {
     const id = crypto.randomUUID();
@@ -36,9 +61,12 @@ function App() {
     setTasks((prev) => prev.filter((t) => t.id !== id));
   }
 
+  if (tasks === null) return <p>Loading starter tasks...</p>;
+
   return (
     <>
       <Header tasks={tasks} />
+      <button className="reset-button" onClick={() => setTasks(null)}>Reset board</button>
       <AddTaskForm onAdd={handleAdd} />
       <Board
         tasks={tasks}
@@ -46,8 +74,6 @@ function App() {
         onRename={handleRename}
         onDelete={handleDelete}
       />
-      <ProductSearch />
-      <WeatherDashboard />
     </>
   );
 }

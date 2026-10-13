@@ -1,3 +1,4 @@
+// TODO (Lab 6.1 step 4): add a ColumnProps type.
 import TaskCard from "./TaskCard.jsx";
 
 function Column({ heading, tasks, onStatusChange, onRename, onDelete }) {

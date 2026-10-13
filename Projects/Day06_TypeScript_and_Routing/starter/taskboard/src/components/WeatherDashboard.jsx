@@ -1,106 +1,45 @@
+// TODO (Lab 6.1): practice code from an earlier lab that App no longer renders. Leave it out of taskboard-ts.
 import { useState } from "react";
-import useFetch from "../hooks/useFetch";
-import cities from "../data/cities";
+import { useFetch } from "../hooks/useFetch.js";
 
-/**
- * WeatherDashboard
- * Pick a city → fetch current weather from Open-Meteo.
- * Uses the useFetch custom hook for all the fetch/loading/error logic.
- */
+const cities = [
+  { name: "Johannesburg", lat: -26.2, lon: 28.05 },
+  { name: "Cape Town", lat: -33.92, lon: 18.42 },
+  { name: "Durban", lat: -29.86, lon: 31.02 },
+];
+
 function WeatherDashboard() {
-  const [cityId, setCityId] = useState(cities[0].id);
+  const [cityName, setCityName] = useState(cities[0].name);
+  const city = cities.find((c) => c.name === cityName); // derived, not state
 
-  const city = cities.find((c) => c.id === cityId);
+  const url =
+    "https://api.open-meteo.com/v1/forecast" +
+    `?latitude=${city.lat}&longitude=${city.lon}` +
+    "&current=temperature_2m,wind_speed_10m&timezone=auto";
+  const { data, loading, error } = useFetch(url);
 
-  // Build the weather URL. Open-Meteo returns current temperature
-  // (2m above ground) and windspeed (10m above ground).
-  const url = city
-    ? `https://api.open-meteo.com/v1/forecast?latitude=${city.latitude}&longitude=${city.longitude}&current=temperature_2m,wind_speed_10m`
-    : null;
-
-  const { data, status, error } = useFetch(url);
+  let content;
+  if (loading) content = <p>Loading weather...</p>;
+  else if (error) content = <p role="alert">Could not load the weather: {error}</p>;
+  else
+    content = (
+      <div>
+        <p>Temperature: {data.current.temperature_2m} °C</p>
+        <p>Wind speed: {data.current.wind_speed_10m} km/h</p>
+        <p>Last updated: {data.current.time.replace("T", " ")}</p>
+      </div>
+    );
 
   return (
-    <section className="mx-auto mt-12 max-w-4xl px-6">
-      <header className="mb-4">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-          Lab 5.2
-        </p>
-        <h2 className="mt-1 text-2xl font-bold text-gray-900">
-          Weather dashboard
-        </h2>
-        <p className="mt-1 text-sm text-gray-600">
-          Pick a city to see its current weather.
-        </p>
-      </header>
-
-      <label className="block">
-        <span className="mb-1 block text-sm font-medium text-gray-700">
-          City
-        </span>
-        <select
-          value={cityId}
-          onChange={(e) => setCityId(e.target.value)}
-          className="w-full max-w-xs rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm outline-none transition focus:border-black focus:ring-2 focus:ring-black/20"
-        >
-          {cities.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <div className="mt-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-        {status === "loading" && (
-          <p className="text-sm text-gray-500">Loading weather…</p>
-        )}
-
-        {status === "error" && (
-          <p className="text-sm text-red-600">Error: {error}</p>
-        )}
-
-        {status === "success" && data?.current && (
-          <div>
-            <h3 className="text-lg font-bold text-gray-900">{city.name}</h3>
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-widest text-gray-500">
-                  Temperature
-                </p>
-                <p className="mt-1 text-3xl font-bold text-gray-900">
-                  {data.current.temperature_2m}°C
-                </p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-gray-500">
-                  Wind speed
-                </p>
-                <p className="mt-1 text-3xl font-bold text-gray-900">
-                  {data.current.wind_speed_10m} km/h
-                </p>
-              </div>
-            </div>
-            <p className="mt-4 text-xs text-gray-500">
-              Data from{" "}
-              <a
-                href="https://open-meteo.com/"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="underline hover:text-gray-700"
-              >
-                Open-Meteo
-              </a>
-            </p>
-          </div>
-        )}
-
-        {status === "idle" && (
-          <p className="text-sm text-gray-500">
-            Pick a city to see the weather.
-          </p>
-        )}
-      </div>
+    <section>
+      <h2>Weather in {city.name}</h2>
+      <label htmlFor="city">City </label>
+      <select id="city" value={cityName} onChange={(e) => setCityName(e.target.value)}>
+        {cities.map((c) => (
+          <option key={c.name} value={c.name}>{c.name}</option>
+        ))}
+      </select>
+      {content}
     </section>
   );
 }
