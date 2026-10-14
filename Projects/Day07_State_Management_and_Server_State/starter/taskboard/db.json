@@ -7,15 +7,46 @@
       "points": 2,
       "projectId": "website",
       "assignee": "Alex",
-      "tags": ["frontend"]
+      "tags": [
+        "frontend"
+      ]
     },
     {
-      "id": "2",
-      "title": "Test mobile navigation",
+      "id": "3",
+      "title": "Implement authentication",
+      "status": "done",
+      "points": 5,
+      "projectId": "website",
+      "assignee": "Jordan",
+      "tags": [
+        "backend",
+        "security"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Design the user profile page",
+      "status": "todo",
+      "points": 4,
+      "projectId": "website",
+      "assignee": "Taylor",
+      "tags": [
+        "frontend",
+        "design"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Optimize database queries",
       "status": "doing",
       "points": 3,
-      "projectId": "mobile",
-      "tags": ["testing"]
+      "projectId": "backend",
+      "assignee": "Morgan",
+      "tags": [
+        "backend",
+        "performance"
+      ]
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
